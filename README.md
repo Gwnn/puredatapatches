@@ -4,7 +4,7 @@
 
 ### About Pure Data
 
-[Pure Data](msp.ucsd.edu) is a visual programming language/environment
+[Pure Data](http://msp.ucsd.edu) is a visual programming language/environment
 for multimedia programming, created as a research into
 further development of [MAX/MSP](https://cycling74.com/) concepts.
 
@@ -23,26 +23,27 @@ can be used to port patches to MAX/MSP, and vice versa.
 
 With the commerical adoption of MAX/MSP, for example, as
 [Max for Live](https://www.ableton.com/en/live/max-for-live/) in
-Ableton live, its' potential has become more than evident.
+Ableton Live, its' potential has become more than evident.
 
 On top of all this, it is cross-platform (based on Tk framework),
 supporting ASIO, portaudio, Jack, ALSA, etc.
 
 ### About the patches
 
-My patches are divided into Pure Data patches (under pd/) and their
-interchange format equivalents (under pat/).
+My patches are divided into Pure Data patches (under [pd/](./pd/)) and their
+interchange format equivalents (under [pat/](./pat)).
 Subpatches (more precisely, submodules or abstractions) can be found
 in pd/abstractions.
 
 In order to execute patches that use other patches (abstractions),
-the Pd environment needs told where to find them, otherwise
+the Pd environment needs to be told where to find them, otherwise
 it expects the submodules to be in the same directory as the
 top level patch. The folder hierarchy I employed highlights the
 relation between main modules and submodules, which are essentially
 "libraries".
 
-Check out the web page for more info on particular patches.
+Check out the [web page](https://chainjazz.github.io/puredatapatches)
+for more info on particular patches.
 
 
 
