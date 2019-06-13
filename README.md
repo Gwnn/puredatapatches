@@ -1,6 +1,6 @@
-#Pure Data patches
+# Pure Data patches
 
-##Various audio and MIDI utilites for Pd environment
+## Various audio and MIDI utilites for Pd environment
 
 ### About Pure Data
 
