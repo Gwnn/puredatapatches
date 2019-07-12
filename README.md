@@ -54,4 +54,11 @@ also very easily integrate Pd into other environments, due to existence of
 a larger "rtpMIDI" (virtual) driver that implements Apple CoreMIDI RTP on 
 Windows OS.
 
+Other uses might include
+* porting Pd patches to Max/MSP using minimum effort search and replace text 
+editing
+* using Pd's built-in networking "classes"
+* importing/exporting data in "offline" files
+* using additonal extensions
+* etc.
 
