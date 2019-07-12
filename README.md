@@ -45,5 +45,13 @@ relation between main modules and submodules, which are essentially
 Check out the [web page](https://chainjazz.github.io/puredatapatches)
 for more info on particular patches.
 
+### Real world application
+
+Although Pure Data is a self sufficient audio/video "runtime", meaning you
+create patches and then use them within Pd for creative purposes, you can
+also very easily integrate Pd into other environments, due to existence of
+"loopback" MIDI ports. My favorite one is "loopMIDI" which is part of
+a larger "rtpMIDI" (virtual) driver that implements Apple CoreMIDI RTP on 
+Windows OS.
 
 
