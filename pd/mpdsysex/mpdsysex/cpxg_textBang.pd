@@ -1,0 +1,29 @@
+#N canvas 167 275 654 559 12;
+#X obj 133 101 bng 15 250 50 0 www empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 117 101 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 101 101 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 101 100 cnv 13 47 15 empty \$0-dump_disp \$2 8 7 0 14 -143491
+-99865 0;
+#X obj 65 227 s \$0-dump_disp;
+#X obj 171 122 delay 500;
+#X obj 171 22 loadbang;
+#X msg 65 148 color 13 3 3;
+#X msg 171 147 color 23 21 21;
+#X obj 133 50 symbol \$1;
+#X msg 133 71 send \$1;
+#X obj 241 69 text;
+#X connect 0 0 7 0;
+#X connect 0 0 5 0;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 5 0 8 0;
+#X connect 6 0 8 0;
+#X connect 6 0 9 0;
+#X connect 7 0 4 0;
+#X connect 8 0 4 0;
+#X connect 9 0 10 0;
+#X connect 10 0 0 0;
+#X coords 0 -1 1 1 49 17 2 100 100;
