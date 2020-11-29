@@ -2,4 +2,4 @@
 
 ### Under construction!
 
-![Image](mpd24_sysex_main_ux_preview.png)
+![Image](mpd24sysex+livecontrolsurface.jpg)
