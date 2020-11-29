@@ -1,8 +1,8 @@
 #N struct template_padno float x float y float iov_ptype float iov_pchan
 float iov_pnpc float iov_ptrig float iov_paftc float iov_pno float
 bg float fg;
-#N struct template_ccs2 float x float y float ctlno float vmin float
-vmax;
+#N struct template_ccs2 float x float y float ccn float vmin float
+vmax float chan;
 #N struct template_circletest float x float y float x1 float y1 float
 x2 float y2 float ccn float vmin float vmax float chan;
 #N struct template_pads float type float ch float noteprogcc float
@@ -18,8 +18,8 @@ psnd1ccn float psnd2ccn float barmccn;
 float brecccn float bloopccn float brwdccn float bfwdccn;
 #N struct ucs_symbols float x float y symbol sportn symbol mvolmap
 symbol msendmap symbol mencmap;
-#N canvas -9 -9 1845 1028 12;
-#N canvas -1929 104 1920 1028 sequence_list 1;
+#N canvas 231 18 995 780 12;
+#N canvas -9 -9 1845 1028 sequence_list 0;
 #N canvas -1929 104 1920 1028 template_pads 0;
 #X obj 24 11 struct template_pads float type float ch float noteprogcc
 float triggermsb float atlsb float padpos float x float y;
@@ -242,22 +242,22 @@ padpos;
 #X connect 15 3 2 1;
 #X connect 24 0 4 0;
 #X coords 0 514 1 513 96 96 0;
-#X restore 701 86 pd template_pads;
+#X restore 511 199 pd template_pads;
 #X obj 20 20 cnv 15 479 239 empty empty empty 20 12 0 14 -195568 -66577
 0;
 #X obj 318 24 cnv 11 176 12 empty empty ▐▄░▄█▐███▐▀▀▄░▀▀▀▄▐▄▄█
 12 4 0 12 -195568 -196685 0;
 #N canvas -9 -9 1845 1028 data_padno 0;
-#X scalar template_padno 0 0 2 0 0 0 0 31 0 0 \;;
+#X scalar template_padno 0 0 0 0 0 0 0 0 0 0 \;;
 #X coords 0 0 110 128 110 128 2 100 100;
 #X restore 214 76 pd data_padno;
 #N canvas 0 50 450 300 data_ccs2 0;
-#X scalar template_ccs2 0 0 0 0 127 \;;
-#X scalar template_ccs2 32 0 0 0 127 \;;
-#X scalar template_ccs2 64 0 0 0 127 \;;
-#X scalar template_ccs2 96 0 0 0 127 \;;
-#X scalar template_ccs2 128 0 0 0 127 \;;
-#X scalar template_ccs2 160 0 0 0 127 \;;
+#X scalar template_ccs2 0 0 102 89 127 11 \;;
+#X scalar template_ccs2 32 0 103 89 127 11 \;;
+#X scalar template_ccs2 64 0 104 89 127 11 \;;
+#X scalar template_ccs2 96 0 105 89 127 11 \;;
+#X scalar template_ccs2 128 0 106 89 127 11 \;;
+#X scalar template_ccs2 160 0 107 89 127 11 \;;
 #X coords 0 127 188 0 180 48 2 0 0;
 #X restore 26 23 pd data_ccs2;
 #X obj 318 48 cnv 8 176 8 empty empty S░Y░S░E░X░░P░A░T░C░H░░E░D░I░T░O░R
@@ -266,21 +266,21 @@ padpos;
 12 4 0 12 -195568 -196685 0;
 #N canvas -1929 104 1920 1028 data_circletest 0;
 #X scalar template_circletest 0 0 -61.2906 79.0156 64.3084 76.5796
-70 0 127 0 \;;
+98 0 127 11 \;;
 #X scalar template_circletest 450 0 -61.2906 79.0156 64.3084 76.5796
-70 0 127 0 \;;
+71 0 127 11 \;;
 #X scalar template_circletest 0 256 -61.2906 79.0156 64.3084 76.5796
-70 0 127 0 \;;
+39 0 127 11 \;;
 #X scalar template_circletest 450 256 -61.2906 79.0156 64.3084 76.5796
-70 0 127 0 \;;
+73 0 127 11 \;;
 #X scalar template_circletest 0 512 -61.2906 79.0156 64.3084 76.5796
-70 0 127 0 \;;
+74 0 127 11 \;;
 #X scalar template_circletest 450 512 -61.2906 79.0156 64.3084 76.5796
-70 0 127 0 \;;
+75 0 127 11 \;;
 #X scalar template_circletest 0 768 -61.2906 79.0156 64.3084 76.5796
-70 0 127 0 \;;
+76 0 127 11 \;;
 #X scalar template_circletest 450 768 -61.2906 79.0156 64.3084 76.5796
-70 0 127 0 \;;
+77 0 127 11 \;;
 #X coords -150 -150 750 870 164 180 2 0 0;
 #X restore 333 77 pd data_circletest;
 #N canvas -9 -9 1845 1028 template_paddisp 0;
@@ -314,7 +314,7 @@ iov_ptrig iov_paftc iov_pno bg fg, f 47;
 iov_pno;
 #X obj 136 68 unpack f f f f f f;
 #X obj 136 30 t l b, f 57;
-#X obj 532 164 cpx_structptri pd-data_padno 1;
+#X obj 540 159 cpx_structptri pd-data_padno 1;
 #X connect 0 0 3 0;
 #X connect 2 0 1 0;
 #X connect 2 1 1 1;
@@ -365,7 +365,7 @@ iov_pno float bg float fg, f 17;
 #X connect 9 0 10 0;
 #X connect 12 0 11 0;
 #X connect 13 0 1 0;
-#X restore 701 65 pd template_paddisp;
+#X restore 511 178 pd template_paddisp;
 #N canvas -9 -9 1845 1028 template_knobs 0;
 #X obj 20 65 route click;
 #N canvas -9 -9 1845 1028 getvminvmax 0;
@@ -393,7 +393,7 @@ iov_pno float bg float fg, f 17;
 #X obj 235 118 mpdsysex_ci 450 900;
 #X obj 18 257 append template_circletest x1 y1 x2 y2 ccn chan vmin
 vmax x y, f 68;
-#X obj 18 197 pack -61 79 61 79 70 -1 0 127;
+#X obj 18 197 pack -61 79 61 79 70 0 0 127;
 #X connect 0 0 3 0;
 #X connect 1 0 8 10;
 #X connect 2 0 6 0;
@@ -474,123 +474,171 @@ y1 float x2 float y2 float ccn float vmin float vmax float chan, f
 #X connect 5 0 1 0;
 #X connect 5 1 6 1;
 #X connect 7 0 0 0;
-#X restore 701 107 pd template_knobs;
+#X restore 511 220 pd template_knobs;
 #N canvas -9 -9 1845 1028 template_faders 0;
-#X obj 32 21 struct template_ccs2 float x float y float ctlno float
-vmin float vmax, f 71;
-#N canvas -775 333 1921 1028 struct_ccs2_init 0;
-#X msg 24 208 0;
+#N canvas -1961 200 1921 1028 struct_ccs2_init 0;
 #X obj 24 4 inlet;
 #X obj 24 55 t f b, f 6;
 #X obj 24 83 until;
-#X obj 24 258 append template_ccs2 x y ctlno vmin vmax, f 47;
 #X msg 23 32 6;
-#X msg 206 226 0;
-#X msg 274 225 127;
 #X obj 36 163 mpdsysex_ci 32 1024;
 #X obj 350 233 cpx_structptr0 pd-data_ccs2;
-#X connect 0 0 4 2;
-#X connect 0 0 4 1;
-#X connect 1 0 5 0;
-#X connect 2 0 3 0;
-#X connect 2 1 8 1;
-#X connect 2 1 9 0;
-#X connect 3 0 0 0;
-#X connect 3 0 7 0;
-#X connect 3 0 6 0;
-#X connect 3 0 8 0;
-#X connect 5 0 2 0;
-#X connect 6 0 4 3;
-#X connect 7 0 4 4;
-#X connect 8 0 4 0;
-#X connect 9 0 4 5;
-#X restore 375 196 pd struct_ccs2_init;
-#X obj 375 167 r struct_ccs2_init;
-#X text 458 73 note the reverse order and the reverse range for GOP
+#X obj 24 258 append template_ccs2 x y ccn vmin vmax chan, f 47;
+#X obj 75 206 pack 0 20 21 127 0;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 1 1 4 1;
+#X connect 1 1 5 0;
+#X connect 2 0 4 0;
+#X connect 2 0 7 0;
+#X connect 3 0 1 0;
+#X connect 4 0 6 0;
+#X connect 5 0 6 6;
+#X connect 7 0 6 1;
+#X restore 31 199 pd struct_ccs2_init;
+#X obj 31 170 r struct_ccs2_init;
+#X text 387 430 note the reverse order and the reverse range for GOP
 ;
-#X text 458 85 basically \, its upside down (reversed Y axis);
-#X obj 89 328 filledpolygon -xv 666 666 0 0 127 32 127 32 0 0 0 0 127
+#X text 387 442 basically \, its upside down (reversed Y axis);
+#X obj 29 464 filledpolygon -xv 666 666 0 0 127 32 127 32 0 0 0 0 127
 , f 62;
-#X obj 89 302 filledpolygon 777 777 0 1 48 24 48 24 80 1 80 1 48;
-#X obj 89 262 filledpolygon -xv 990 990 0 12 vmin 13 vmin 13 vmax 12
+#X obj 29 438 filledpolygon 777 777 0 1 48 24 48 24 80 1 80 1 48;
+#X obj 29 398 filledpolygon -xv 990 990 0 12 vmin 13 vmin 13 vmax 12
 vmax 12 vmin, f 62;
-#X obj 21 119 drawtext vmin 2 32 111;
-#X obj 21 141 drawtext vmax 2 128 111;
-#X obj 20 163 drawtext ctlno 2 80 111;
-#X connect 2 0 1 0;
-#X restore 701 128 pd template_faders;
+#X obj 29 327 drawtext vmin 2 32 111;
+#X obj 29 349 drawtext vmax 2 128 111;
+#X text 179 173 (we mostly want to init x \, y coords for drawing objects
+here;
+#X text 198 321 In the end \, the "data" subpatch (not this one) is
+what holds the data - so this is essentially just a definition \; data
+subpatch can be graphical or just a plain subpatch to hold numbers
+\; the point of Pd though is that graphical data subpatches are INHERENTLY
+INTERACTIVE \, so you kill two birds with one stone, f 66;
+#X obj 641 120 pointer;
+#X msg 641 95 next;
+#X obj 713 122 bng 15 250 50 0 empty empty Silly_me 17 7 0 10 -262144
+-1 -1;
+#X text 639 78 v-- get to the ith element;
+#X text 666 41 v-- set pointer to array/object;
+#X msg 669 60 traverse SOMEDATASUBPATCH;
+#X text 185 184 and/or simply prepare the object for plain data get/set)
+;
+#X text 177 200 <- the ugly init subpatch \, open to see APPEND in
+action;
+#X text 28 5 1 It's pretty simple \, folks: first \, we define a C-like
+struct (heterogenous object \, albeit with awkward string handling
+\; nesting is allowed \, as well as simpler arrays) \; struct and data-canvas
+names are arbitrary but be consistent, f 81;
+#X text 28 88 ^--(the left outlet can be used to handle GUI events
+\, eg. mouse), f 64;
+#X text 630 8 4 THE NECESSARY GET/SET POINTER EVIL;
+#X obj 687 195 pointer;
+#X obj 641 217 pointer;
+#X msg 641 195 bang;
+#X obj 641 144 get SOMESTRUCT SOMEFIELD ANOTHERONE;
+#X obj 641 243 set SOMESTRUCT SOMEFIELD ANOTHER;
+#X text 638 165 You can use the right inlet to;
+#X text 639 178 assign the pointer W/OUT output;
+#X text 28 98 2 Then we "append" zeros/empty/initial data to populate
+the memory (every append instantiates an additional element of the
+array of type defined above \; btw \, we refer to elements with [pointer]
+objects when getting/setting values \; append does pointers automatically
+\, since it changes the length) \; data goes to a separate subpatch
+(come up with a naming convention fast), f 81;
+#X text 629 20 (thank you C) \, [get]/[set] examples;
+#X text 675 95 (essentially \, pointer++);
+#X text 176 215 (even uglier are set and get subpatches \, you need
+to write them every time \; append can more or less be generic);
+#X text 37 265 3 And finally \, but not obligatory \, we use the "fields"
+of the object to draw stuff \; most numbers you see below are coordinates
+\, some fixed \, and some variable \, depending on whether we need
+user interaction (pretty limited stuff still) \; for every appended
+element \, this stuff gets drawn \, so we're basically TILING graphics
+, f 89;
+#X obj 30 62 struct template_ccs2 float x float y float ccn float vmin
+float vmax float chan, f 71;
+#X obj 28 371 drawtext ccn 2 80 111;
+#X connect 1 0 0 0;
+#X connect 11 0 25 0;
+#X connect 11 1 13 0;
+#X connect 12 0 11 0;
+#X connect 16 0 11 0;
+#X connect 22 0 23 1;
+#X connect 23 0 26 2;
+#X connect 24 0 23 0;
+#X restore 511 241 pd template_faders;
 #X obj 25 76 cnv 15 180 180 empty empty empty 20 12 0 14 -24967 -66577
 0;
 #N canvas -1929 104 1920 1028 data_pads 0;
-#X scalar template_pads 2 0 0 0 0 0 0 0 \;;
-#X scalar template_pads 2 0 0 0 0 1 12 0 \;;
-#X scalar template_pads 2 0 0 0 0 2 24 0 \;;
-#X scalar template_pads 2 0 0 0 0 3 36 0 \;;
-#X scalar template_pads 2 0 0 0 0 4 0 12 \;;
-#X scalar template_pads 2 0 0 0 0 5 12 12 \;;
-#X scalar template_pads 2 0 0 0 0 6 24 12 \;;
-#X scalar template_pads 2 0 0 0 0 7 36 12 \;;
-#X scalar template_pads 2 0 0 0 0 8 0 24 \;;
-#X scalar template_pads 2 0 0 0 0 9 12 24 \;;
-#X scalar template_pads 2 0 0 0 0 10 24 24 \;;
-#X scalar template_pads 2 0 0 0 0 11 36 24 \;;
-#X scalar template_pads 2 0 0 0 0 12 0 36 \;;
-#X scalar template_pads 2 0 0 0 0 13 12 36 \;;
-#X scalar template_pads 2 0 0 0 0 14 24 36 \;;
-#X scalar template_pads 2 0 0 0 0 15 36 36 \;;
-#X scalar template_pads 2 0 0 0 0 16 48 0 \;;
-#X scalar template_pads 2 0 0 0 0 17 60 0 \;;
-#X scalar template_pads 2 0 0 0 0 18 72 0 \;;
-#X scalar template_pads 2 0 0 0 0 19 84 0 \;;
-#X scalar template_pads 2 0 0 0 0 20 48 12 \;;
-#X scalar template_pads 2 0 0 0 0 21 60 12 \;;
-#X scalar template_pads 2 0 0 0 0 22 72 12 \;;
-#X scalar template_pads 2 0 0 0 0 23 84 12 \;;
-#X scalar template_pads 2 0 0 0 0 24 48 24 \;;
-#X scalar template_pads 2 0 0 0 0 25 60 24 \;;
-#X scalar template_pads 2 0 0 0 0 26 72 24 \;;
-#X scalar template_pads 2 0 0 0 0 27 84 24 \;;
-#X scalar template_pads 2 0 0 0 0 28 48 36 \;;
-#X scalar template_pads 2 0 0 0 0 29 60 36 \;;
-#X scalar template_pads 2 0 0 0 0 30 72 36 \;;
-#X scalar template_pads 2 0 0 0 0 31 84 36 \;;
-#X scalar template_pads 2 0 0 0 0 32 0 48 \;;
-#X scalar template_pads 2 0 0 0 0 33 12 48 \;;
-#X scalar template_pads 2 0 0 0 0 34 24 48 \;;
-#X scalar template_pads 2 0 0 0 0 35 36 48 \;;
-#X scalar template_pads 2 0 0 0 0 36 0 60 \;;
-#X scalar template_pads 2 0 0 0 0 37 12 60 \;;
-#X scalar template_pads 2 0 0 0 0 38 24 60 \;;
-#X scalar template_pads 2 0 0 0 0 39 36 60 \;;
-#X scalar template_pads 2 0 0 0 0 40 0 72 \;;
-#X scalar template_pads 2 0 0 0 0 41 12 72 \;;
-#X scalar template_pads 2 0 0 0 0 42 24 72 \;;
-#X scalar template_pads 2 0 0 0 0 43 36 72 \;;
-#X scalar template_pads 2 0 0 0 0 44 0 84 \;;
-#X scalar template_pads 2 0 0 0 0 45 12 84 \;;
-#X scalar template_pads 2 0 0 0 0 46 24 84 \;;
-#X scalar template_pads 2 0 0 0 0 47 36 84 \;;
-#X scalar template_pads 2 0 0 0 0 48 48 48 \;;
-#X scalar template_pads 2 0 0 0 0 49 60 48 \;;
-#X scalar template_pads 2 0 0 0 0 50 72 48 \;;
-#X scalar template_pads 2 0 0 0 0 51 84 48 \;;
-#X scalar template_pads 2 0 8 0 0 52 48 60 \;;
-#X scalar template_pads 2 0 0 0 0 53 60 60 \;;
-#X scalar template_pads 2 0 0 0 0 54 72 60 \;;
-#X scalar template_pads 2 0 0 0 0 55 84 60 \;;
-#X scalar template_pads 2 0 0 0 0 56 48 72 \;;
-#X scalar template_pads 2 0 0 0 0 57 60 72 \;;
-#X scalar template_pads 2 0 0 0 0 58 72 72 \;;
-#X scalar template_pads 2 0 0 0 0 59 84 72 \;;
-#X scalar template_pads 2 0 0 0 0 60 48 84 \;;
-#X scalar template_pads 2 0 0 0 0 61 60 84 \;;
-#X scalar template_pads 2 0 0 0 0 62 72 84 \;;
-#X scalar template_pads 2 0 0 0 0 63 84 84 \;;
+#X scalar template_pads 0 0 0 0 0 0 0 0 \;;
+#X scalar template_pads 0 0 0 0 0 1 12 0 \;;
+#X scalar template_pads 0 0 0 0 0 2 24 0 \;;
+#X scalar template_pads 0 0 0 0 0 3 36 0 \;;
+#X scalar template_pads 0 0 0 0 0 4 0 12 \;;
+#X scalar template_pads 0 0 0 0 0 5 12 12 \;;
+#X scalar template_pads 0 0 0 0 0 6 24 12 \;;
+#X scalar template_pads 0 0 0 0 0 7 36 12 \;;
+#X scalar template_pads 0 0 0 0 0 8 0 24 \;;
+#X scalar template_pads 0 0 0 0 0 9 12 24 \;;
+#X scalar template_pads 0 0 0 0 0 10 24 24 \;;
+#X scalar template_pads 0 0 0 0 0 11 36 24 \;;
+#X scalar template_pads 0 0 0 0 0 12 0 36 \;;
+#X scalar template_pads 0 0 0 0 0 13 12 36 \;;
+#X scalar template_pads 0 0 0 0 0 14 24 36 \;;
+#X scalar template_pads 0 0 0 0 0 15 36 36 \;;
+#X scalar template_pads 0 0 0 0 0 16 48 0 \;;
+#X scalar template_pads 0 0 0 0 0 17 60 0 \;;
+#X scalar template_pads 0 0 0 0 0 18 72 0 \;;
+#X scalar template_pads 0 0 0 0 0 19 84 0 \;;
+#X scalar template_pads 0 0 0 0 0 20 48 12 \;;
+#X scalar template_pads 0 0 0 0 0 21 60 12 \;;
+#X scalar template_pads 0 0 0 0 0 22 72 12 \;;
+#X scalar template_pads 0 0 0 0 0 23 84 12 \;;
+#X scalar template_pads 0 0 0 0 0 24 48 24 \;;
+#X scalar template_pads 0 0 0 0 0 25 60 24 \;;
+#X scalar template_pads 0 0 0 0 0 26 72 24 \;;
+#X scalar template_pads 0 0 0 0 0 27 84 24 \;;
+#X scalar template_pads 0 0 0 0 0 28 48 36 \;;
+#X scalar template_pads 0 0 0 0 0 29 60 36 \;;
+#X scalar template_pads 0 0 0 0 0 30 72 36 \;;
+#X scalar template_pads 0 0 0 0 0 31 84 36 \;;
+#X scalar template_pads 0 0 0 0 0 32 0 48 \;;
+#X scalar template_pads 0 0 0 0 0 33 12 48 \;;
+#X scalar template_pads 0 0 0 0 0 34 24 48 \;;
+#X scalar template_pads 0 0 0 0 0 35 36 48 \;;
+#X scalar template_pads 0 0 0 0 0 36 0 60 \;;
+#X scalar template_pads 0 0 0 0 0 37 12 60 \;;
+#X scalar template_pads 0 0 0 0 0 38 24 60 \;;
+#X scalar template_pads 0 0 0 0 0 39 36 60 \;;
+#X scalar template_pads 0 0 0 0 0 40 0 72 \;;
+#X scalar template_pads 0 0 0 0 0 41 12 72 \;;
+#X scalar template_pads 0 0 0 0 0 42 24 72 \;;
+#X scalar template_pads 0 0 0 0 0 43 36 72 \;;
+#X scalar template_pads 0 0 0 0 0 44 0 84 \;;
+#X scalar template_pads 0 0 0 0 0 45 12 84 \;;
+#X scalar template_pads 0 0 0 0 0 46 24 84 \;;
+#X scalar template_pads 0 0 0 0 0 47 36 84 \;;
+#X scalar template_pads 0 0 0 0 0 48 48 48 \;;
+#X scalar template_pads 0 0 0 0 0 49 60 48 \;;
+#X scalar template_pads 0 0 0 0 0 50 72 48 \;;
+#X scalar template_pads 0 0 0 0 0 51 84 48 \;;
+#X scalar template_pads 0 0 0 0 0 52 48 60 \;;
+#X scalar template_pads 0 0 0 0 0 53 60 60 \;;
+#X scalar template_pads 0 0 0 0 0 54 72 60 \;;
+#X scalar template_pads 0 0 0 0 0 55 84 60 \;;
+#X scalar template_pads 0 0 0 0 0 56 48 72 \;;
+#X scalar template_pads 0 0 0 0 0 57 60 72 \;;
+#X scalar template_pads 0 0 0 0 0 58 72 72 \;;
+#X scalar template_pads 0 0 0 0 0 59 84 72 \;;
+#X scalar template_pads 0 0 0 0 0 60 48 84 \;;
+#X scalar template_pads 0 0 0 0 0 61 60 84 \;;
+#X scalar template_pads 0 0 0 0 0 62 72 84 \;;
+#X scalar template_pads 0 0 0 0 0 63 84 84 \;;
 #X coords 0 0 96 96 180 180 2 0 0;
 #X restore 26 77 pd data_pads;
 #N canvas -9 -9 1845 1028 presetparams 0;
 #X msg 226 407 label \$1;
-#X obj 225 381 r \$0-pstname;
+#X obj 226 381 r \$0-pstname;
 #X obj 226 435 s \$0-pstname_disp;
 #X obj 373 219 r \$0-pstbank;
 #X obj 374 427 s \$0-pstbank_disp;
@@ -604,10 +652,10 @@ vmax 12 vmin, f 62;
 #X obj 552 219 r \$0-psttrsp;
 #X obj 684 219 r \$0-pstaddr;
 #X obj 684 369 s \$0-pstaddr_disp;
-#X obj 638 107 cpxg_textBang newbangs isSameLabel;
-#X obj 749 106 cpxg_textBang www lbl;
-#X obj 639 22 cnv 72 268 38 empty \$0-resizedcanvas HITHERE 134 19
-0 38 -33289 -4034 0;
+#X obj 536 30 cpxg_textBang newbangs isSameLabel;
+#X obj 485 31 cpxg_textBang www lbl;
+#X obj 639 22 cnv 72 176 25 empty \$0-resizedcanvas HITHERE 62 12 0
+25 -33289 -4034 0;
 #X obj 434 85 s \$0-resizedcanvas;
 #X floatatom 132 368 5 0 0 0 - - -;
 #X floatatom 183 369 5 0 0 0 - - -;
@@ -617,80 +665,92 @@ vmax 12 vmin, f 62;
 #X msg 396 313 s ░░B░░░░;
 #X msg 420 335 s ░░░░C░░;
 #X msg 439 356 s ░░░░░░D;
-#X obj 100 100 cnv 15 110 48 empty empty empty 20 12 0 14 -195568 -66577
+#X obj 100 100 cnv 8 110 48 empty empty empty 20 12 0 14 -195568 -66577
 0;
-#X symbolatom 114 101 8 0 0 1 - #0-mpd24_bangall #0-pstname;
-#X obj 100 100 cnv 11 80 20 empty \$0-pstname_disp whattheh 16 10 0
-11 -86277 -261234 0;
-#N canvas -9 -9 1845 1028 canvbtn_dump 0;
-#X obj 132 100 bng 15 250 50 0 \$0-mpd24sysex_dump empty empty 17 7
-0 10 -262144 -1 -1;
-#X obj 116 100 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 100 100 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 100 100 cnv 13 47 15 empty \$0-dump_disp DUMP 8 8 0 14 -143491
--99865 0;
-#X obj 132 260 s \$0-dump_disp;
-#X msg 262 215 color 23 21 21;
-#X msg 132 216 color 13 3 3;
-#X msg 132 73 send \$0-mpd24sysex_dump;
-#X obj 132 184 cpxg_bmetro 500 8;
-#X connect 0 0 8 0;
-#X connect 1 0 0 0;
-#X connect 2 0 1 0;
-#X connect 5 0 4 0;
-#X connect 6 0 4 0;
-#X connect 7 0 0 0;
-#X connect 8 0 6 0;
-#X connect 8 1 5 0;
-#X coords 0 0 48 16 48 16 2 100 100;
-#X restore 163 133 pd canvbtn_dump;
-#X obj 152 121 nbx 2 11 0 1 0 0 \$0-psttrsp \$0-mpd24_bangall empty
-0 -8 0 10 -262144 -1 -1 1 256;
-#X obj 148 120 cnv 11 32 12 empty \$0-psttrsp_disp CTL 8 6 0 10 -86277
--261234 0;
-#X obj 102 121 hradio 11 1 0 4 \$0-pstbank \$0-mpd24_bangall empty
-0 -8 0 10 -262144 -1 -1 2;
-#X obj 100 120 cnv 11 48 12 empty \$0-pstbank_disp ░░░░C░░
-2 6 0 10 -86277 -261234 0;
-#X obj 184 105 nbx 1 24 1 30 0 0 \$0-pstaddr \$0-mpd24_bangall empty
-0 -8 0 10 -262144 -1 -1 22 256;
-#X obj 180 100 cnv 11 30 32 empty \$0-pstaddr_disp P22 2 16 0 14 -86277
--261234 0;
-#X obj 118 135 tgl 12 0 \$0-mpd24_ppux_sticky empty W 3 6 0 10 -128992
+#X symbolatom 114 102 8 0 0 1 - #0-pstname-in #0-pstname;
+#X obj 152 121 nbx 2 11 0 1 0 0 \$0-psttrsp \$0-psttrsp-in empty 0
+-8 0 10 -262144 -1 -1 1 256;
+#X obj 102 121 hradio 11 1 0 4 \$0-pstbank \$0-pstbank-in empty 0 -8
+0 10 -262144 -1 -1 2;
+#X obj 184 105 nbx 1 24 1 30 0 0 \$0-pstaddr \$0-pstaddr-in empty 0
+-8 0 10 -4032 -13330 -13330 24 256;
+#X obj 117 135 tgl 12 0 \$0-mpd24_ppux_sticky empty W 3 6 0 10 -128992
 -258113 -86277 0 1;
-#X obj 148 136 tgl 12 0 \$0-mpd24_ppux_nninc empty I 3 6 0 10 -128992
+#X obj 145 135 tgl 12 0 \$0-mpd24_ppux_nninc empty I 3 6 0 10 -128992
 -159808 -16662 0 1;
 #X msg 684 341 label P\$1;
-#X obj 106 135 tgl 12 0 empty remove_recv W 3 6 0 10 -228856 -1 -1
+#X obj 105 135 tgl 12 0 empty remove_recv W 3 6 0 10 -228856 -1 -1
 0 1;
-#X obj 100 132 cnv 6 62 16 empty empty empty 20 12 0 14 -86277 -66577
+#X obj 100 132 cnv 6 110 16 empty empty empty 20 12 0 14 -4032 -13330
 0;
-#X obj 103 134 cnv 8 28 14 empty empty empty 20 12 0 14 -261234 -99865
+#X obj 102 134 cnv 8 28 13 empty empty empty 20 12 0 14 -13330 -13330
 0;
-#X obj 104 135 cnv 10 26 12 empty \$0-dump_disp_wrt WRT 4 6 0 10 -143491
--99865 0;
-#X obj 136 136 tgl 12 0 empty remove_recv I 3 6 0 10 -228856 -1 -1
-0 1;
-#X msg 24 267 color 13 3 3;
-#X msg 35 246 color 23 21 21;
+#X obj 103 135 cnv 10 26 11 empty \$0-dump_disp_wrt WRT 4 6 0 10 -44926
+-1109 0;
+#X obj 133 135 tgl 12 0 empty remove_recv I 3 6 0 10 -228856 -1 -1
+1 1;
 #X obj 25 203 r \$0-mpd24_ppux_sticky;
 #X obj 25 225 select 1;
 #X obj 24 288 s \$0-dump_disp_wrt;
 #X obj 186 203 r \$0-mpd24_ppux_nninc;
-#X msg 185 268 color 13 3 3;
-#X msg 196 247 color 23 21 21;
 #X obj 186 226 select 1;
 #X obj 185 289 s \$0-dump_disp_inc;
-#X obj 133 134 cnv 8 28 14 empty empty empty 20 12 0 14 -261234 -66577
+#X obj 131 134 cnv 8 28 13 empty empty empty 20 12 0 14 -13330 -13330
 0;
-#X obj 134 135 cnv 10 26 12 empty \$0-dump_disp_inc INC 4 6 0 10 -143491
--99865 0;
+#X obj 132 135 cnv 10 26 11 empty \$0-dump_disp_inc INC 4 6 0 10 -44926
+-1109 0;
 #X floatatom 434 29 5 0 0 0 - - -;
 #X obj 434 61 cpxg_dispscale HITHERE 64;
 #X text 510 141 UNDER CONSTRUCTION ^^^^^^^;
 #X text 510 127 __________________;
+#X obj 293 93 bng 48 250 50 0 empty empty empty 17 7 0 10 -44926 -143491
+-262144;
+#X msg 293 66 color \$1 \$2 \$3;
+#X obj 293 40 pack f f f, f 14;
+#X floatatom 292 13 5 0 33 0 - - -;
+#X floatatom 338 14 5 0 33 0 - - -;
+#X floatatom 385 15 5 0 33 0 - - -;
+#N canvas -402 12 1845 1028 canvbtn_dump 0;
+#X obj 136 101 bng 11 250 50 0 \$0-mpd24sysex_dump empty empty 17 7
+0 10 -262144 -1 -1;
+#X obj 124 101 bng 11 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 112 101 bng 11 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 132 260 s \$0-dump_disp;
+#X msg 132 73 send \$0-mpd24sysex_dump;
+#X obj 132 184 cpxg_bmetro 500 8;
+#X obj 101 101 bng 11 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 100 100 cnv 11 48 12 empty empty empty 20 12 0 14 -13330 -4032
+0;
+#X obj 101 101 cnv 9 46 10 empty \$0-dump_disp DUMP 12 5 0 10 -44926
+-1109 0;
+#X msg 262 215 color 17 27 27;
+#X msg 132 216 color 27 17 17;
+#X connect 0 0 5 0;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 4 0 0 0;
+#X connect 5 0 10 0;
+#X connect 5 1 9 0;
+#X connect 6 0 2 0;
+#X connect 9 0 3 0;
+#X connect 10 0 3 0;
+#X coords 0 0 48 13 48 13 2 100 100;
+#X restore 161 134 pd canvbtn_dump;
+#X msg 35 246 color 17 27 27;
+#X msg 24 267 color 27 17 17;
+#X msg 196 247 color 17 27 27;
+#X msg 185 268 color 27 17 17;
+#X obj 100 120 cnv 11 48 12 empty \$0-pstbank_disp ░░░░C░░
+2 6 0 10 -4032 -13330 0;
+#X obj 180 100 cnv 11 30 32 empty \$0-pstaddr_disp P24 2 16 0 14 -4032
+-13330 0;
+#X obj 148 120 cnv 11 32 12 empty \$0-psttrsp_disp CTL 8 6 0 10 -4032
+-13330 0;
+#X obj 101 100 cnv 11 80 20 empty \$0-pstname_disp Master\ \  16 10
+0 11 -4032 -13330 0;
 #X connect 0 0 2 0;
 #X connect 1 0 0 0;
 #X connect 3 0 6 0;
@@ -705,7 +765,7 @@ vmax 12 vmin, f 62;
 #X connect 9 0 7 0;
 #X connect 10 0 7 0;
 #X connect 12 0 8 0;
-#X connect 13 0 39 0;
+#X connect 13 0 34 0;
 #X connect 19 0 21 0;
 #X connect 20 0 21 1;
 #X connect 21 0 22 0;
@@ -713,28 +773,33 @@ vmax 12 vmin, f 62;
 #X connect 24 0 5 0;
 #X connect 25 0 5 0;
 #X connect 26 0 5 0;
-#X connect 39 0 14 0;
-#X connect 40 0 37 0;
-#X connect 44 0 38 0;
-#X connect 45 0 49 0;
-#X connect 46 0 49 0;
-#X connect 47 0 48 0;
-#X connect 48 0 45 0;
-#X connect 48 1 46 0;
-#X connect 50 0 53 0;
-#X connect 51 0 54 0;
-#X connect 52 0 54 0;
-#X connect 53 0 51 0;
-#X connect 53 1 52 0;
-#X connect 57 0 58 0;
-#X connect 58 0 18 0;
+#X connect 34 0 14 0;
+#X connect 35 0 32 0;
+#X connect 39 0 33 0;
+#X connect 40 0 41 0;
+#X connect 41 0 60 0;
+#X connect 41 1 59 0;
+#X connect 43 0 44 0;
+#X connect 44 0 62 0;
+#X connect 44 1 61 0;
+#X connect 48 0 49 0;
+#X connect 49 0 18 0;
+#X connect 53 0 52 0;
+#X connect 54 0 53 0;
+#X connect 55 0 54 0;
+#X connect 56 0 54 1;
+#X connect 57 0 54 2;
+#X connect 59 0 42 0;
+#X connect 60 0 42 0;
+#X connect 61 0 45 0;
+#X connect 62 0 45 0;
 #X coords 0 -1 1 1 111 49 2 100 100;
 #X restore 214 23 pd presetparams;
-#X obj 330 58 bng 12 250 50 0 \$0-preview_file_bang rcv_remove PREVIEW
+#X obj 353 59 bng 12 250 50 0 \$0-preview_file_bang rcv_remove empty
 14 6 0 12 -262144 -1 -1;
-#X obj 401 58 tgl 12 0 \$0-sysexbool rmv_receive ╚══▐PORT1▌
-14 6 0 12 -262144 -33289 -1 1 1;
-#N canvas -9 -9 1845 1028 on_dump 0;
+#X obj 475 59 tgl 12 1 \$0-sysexbool rmv_receive empty 14 6 0 12 -262144
+-33289 -1 1 1;
+#N canvas -1929 104 1920 1028 on_dump 0;
 #N canvas -9 -9 1845 1028 list_presetparams 0;
 #X obj 230 164 list fromsymbol;
 #X obj 153 299 list store;
@@ -781,8 +846,7 @@ struct data window;
 #X obj 203 422 r \$0-mpd24_ccs_initpos;
 #X obj 31 84 s \$0-mpd24_ccs_initpos;
 #X obj 8 489 s \$0-sysexbuffer;
-#X msg 205 146 bang;
-#N canvas 580 318 1076 567 getcc_ccn_knobs 0;
+#N canvas 44 412 1076 567 getcc_ccn_knobs 0;
 #X obj 21 10 inlet;
 #X obj 21 34 t b b;
 #X obj 21 60 cpx_structptri pd-data_circletest 8;
@@ -797,12 +861,12 @@ struct data window;
 #X obj 21 10 inlet;
 #X obj 21 34 t b b;
 #X obj 21 60 cpx_structptri pd-data_ccs2 6;
-#X obj 21 83 get template_ccs2 ctlno;
 #X obj 21 105 outlet;
+#X obj 21 83 get template_ccs2 ccn;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
-#X connect 2 0 3 0;
-#X connect 3 0 4 0;
+#X connect 2 0 4 0;
+#X connect 4 0 3 0;
 #X restore 320 269 pd getcc_ccn_faders;
 #X obj 205 179 t b b b b b b, f 21;
 #N canvas 580 318 1076 567 getcc_vmin_knobs 0;
@@ -848,39 +912,38 @@ struct data window;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
 #X connect 3 0 4 0;
-#X restore 204 382 pd getcc_vmax_faders;
-#X msg 15 125 list 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X restore 202 375 pd getcc_vmax_faders;
 #X obj 34 332 list store;
 #X msg 66 276 append \$1;
-#X text 316 118 CC channel (set all to common for now);
 #X obj 11 51 t b b b b b;
 #X text 105 52 right most bang clears the list;
-#X connect 0 0 19 0;
+#X msg 15 125 list 11 11 11 11 11 11 11 11 11 11 11 11 11 11;
+#X text 350 102 CC channel (set all to 11 for debug);
+#X connect 0 0 16 0;
 #X connect 1 0 3 0;
 #X connect 2 0 3 1;
 #X connect 3 0 6 0;
 #X connect 4 0 2 0;
-#X connect 7 0 10 0;
-#X connect 8 0 17 0;
-#X connect 9 0 17 0;
-#X connect 10 0 14 0;
-#X connect 10 1 13 0;
-#X connect 10 2 12 0;
-#X connect 10 3 11 0;
-#X connect 10 4 9 0;
-#X connect 10 5 8 0;
-#X connect 11 0 17 0;
-#X connect 12 0 17 0;
-#X connect 13 0 17 0;
-#X connect 14 0 17 0;
-#X connect 15 0 1 0;
-#X connect 16 0 1 1;
-#X connect 17 0 16 0;
-#X connect 19 0 15 0;
-#X connect 19 1 5 0;
-#X connect 19 2 16 0;
-#X connect 19 3 7 0;
-#X connect 19 4 16 1;
+#X connect 7 0 15 0;
+#X connect 8 0 15 0;
+#X connect 9 0 13 0;
+#X connect 9 1 12 0;
+#X connect 9 2 11 0;
+#X connect 9 3 10 0;
+#X connect 9 4 8 0;
+#X connect 9 5 7 0;
+#X connect 10 0 15 0;
+#X connect 11 0 15 0;
+#X connect 12 0 15 0;
+#X connect 13 0 15 0;
+#X connect 14 0 1 1;
+#X connect 15 0 14 0;
+#X connect 16 0 18 0;
+#X connect 16 1 5 0;
+#X connect 16 2 14 0;
+#X connect 16 3 9 0;
+#X connect 16 4 14 1;
+#X connect 18 0 1 0;
 #X restore 378 224 pd list_ccs;
 #X text 445 139 LIST BUILDERS;
 #N canvas 0 50 1800 789 list_filler1 0;
@@ -900,7 +963,6 @@ struct data window;
 #X msg 442 96 clear;
 #X obj 314 26 r \$0-mpd24sysex_dump;
 #X obj 314 49 t b b b b b b b b b b;
-#X obj 458 73 s \$0-mpd24_bangall;
 #X floatatom 476 49 5 0 0 1 DEBUG - -;
 #N canvas -9 -9 1845 1028 list_pads 0;
 #X obj 126 -23 inlet;
@@ -1096,21 +1158,22 @@ outlet);
 #X obj 314 315 s \$0-bufferops;
 #X obj 330 75 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X connect 5 0 11 0;
+#X obj 458 73 s \$0-diss_receive;
+#X connect 5 0 10 0;
 #X connect 6 0 7 0;
-#X connect 7 0 13 0;
-#X connect 7 1 15 0;
-#X connect 7 2 12 0;
-#X connect 7 3 10 0;
+#X connect 7 0 12 0;
+#X connect 7 1 14 0;
+#X connect 7 2 11 0;
+#X connect 7 3 9 0;
 #X connect 7 4 1 0;
 #X connect 7 5 3 0;
 #X connect 7 6 0 0;
 #X connect 7 7 4 0;
 #X connect 7 8 5 0;
-#X connect 7 9 8 0;
-#X connect 9 0 8 0;
-#X connect 13 0 14 0;
-#X restore 542 87 pd on_dump;
+#X connect 7 9 15 0;
+#X connect 8 0 15 0;
+#X connect 12 0 13 0;
+#X restore 512 60 pd on_dump;
 #N canvas 0 50 1368 536 on_load 0;
 #X obj 15 10 loadbang;
 #X msg 15 48 \; pd-data_padno clear \; pd-data_ccs2 clear \; pd-data_pads
@@ -1125,30 +1188,368 @@ bang \; struct_pads_init bang \; struct_circletest_init 8 \;;
 #X connect 0 0 5 0;
 #X connect 5 0 4 0;
 #X connect 6 0 4 0;
-#X restore 542 66 pd on_load;
-#N canvas 548 159 1043 601 on_receive 0;
-#X obj 18 92 textfile;
-#X msg 29 68 clear;
-#X msg 18 44 add \$1;
-#X text 15 110 read sysex from device;
-#X text 15 124 (device needs to send);
+#X restore 512 39 pd on_load;
+#N canvas -1929 104 1920 1028 on_receive 0;
+#X obj 18 219 textfile;
+#X msg 77 192 clear;
+#X msg 18 193 add \$1;
 #X obj 18 17 midiin;
-#X floatatom 105 47 5 0 0 0 - - -;
+#X floatatom 86 39 5 0 0 1 MIDI_IN_Port_number_(useful_to_get_for_sysex_dump)
+- -;
+#X obj 160 308 r \$0-sysexbufferin;
+#X obj 18 308 s \$0-sysexbufferin;
+#X obj 154 219 until;
+#X text 23 357 PRESET;
+#X text 23 340 BOILER;
+#X text 141 339 1;
+#X text 141 356 1;
+#X text 114 390 5;
+#X text 37 408 PADS;
+#X text 80 407 16;
+#X text 114 407 5;
+#X text 141 406 4;
+#X text 16 425 PADDING;
+#X text 107 424 76;
+#X text 44 442 EOX;
+#X text 87 441 1;
+#X text 87 356 1;
+#X text 114 356 4;
+#X obj 160 429 list store;
+#X obj 18 171 spigot;
+#X obj 57 150 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 160 361 float;
+#X msg 160 383 append \$1;
+#X obj 177 407 r \$0-getrange;
+#X obj 807 322 s \$0-getrange;
+#X obj 160 451 s \$0-rangeout;
+#X obj 807 345 r \$0-rangeout;
+#X text 87 339 1;
+#X text 114 339 7;
+#X text 87 424 1;
+#X text 16 374 PADDING;
+#X text 107 373 20;
+#X text 87 373 1;
+#X obj 629 323 s \$0-getrange;
+#X obj 629 346 r \$0-rangeout;
+#X obj 451 324 s \$0-getrange;
+#X obj 451 347 r \$0-rangeout;
+#X text 80 390 14;
+#X text 44 391 CCS;
+#N canvas -1929 104 1920 1028 update_preset 0;
+#X obj 424 20 inlet;
+#X obj 804 170 list store;
+#X obj 804 132 r \$0-getparam;
+#X obj 804 215 s \$0-paramout;
+#X obj 694 154 r \$0-paramout;
+#X obj 695 132 s \$0-getparam;
+#X obj 663 82 t b b;
+#X obj 592 154 r \$0-paramout;
+#X obj 593 132 s \$0-getparam;
+#X obj 561 82 t b b;
+#X obj 561 202 list tosymbol;
+#X msg 695 109 get 0 1;
+#X msg 593 109 get 1 8;
+#X obj 561 179 list store;
+#X obj 424 51 t b b b b l b, f 46;
+#X obj 663 179 list store;
+#X text 473 402 WARNING: DO NOT MIX GUI OBJECTS AND LIST STORE OBJECTS
+;
+#X obj 492 152 r \$0-paramout;
+#X obj 493 130 s \$0-getparam;
+#X obj 461 80 t b b;
+#X obj 461 177 list store;
+#X obj 389 152 r \$0-paramout;
+#X obj 390 130 s \$0-getparam;
+#X obj 358 80 t b b;
+#X obj 358 177 list store;
+#X msg 493 107 get 9 1;
+#X msg 390 107 get 10 1;
+#X text 464 305 WARNING: WATCH YOUR SUBPATCH SEND/RECEIVE IDs!;
+#X obj 561 227 s \$0-pstname-in;
+#X obj 663 202 s \$0-pstaddr-in;
+#X obj 461 200 s \$0-pstbank-in;
+#X obj 358 200 s \$0-psttrsp-in;
+#X connect 0 0 14 0;
+#X connect 1 0 3 0;
+#X connect 2 0 1 0;
+#X connect 4 0 15 1;
+#X connect 6 0 15 0;
+#X connect 6 1 11 0;
+#X connect 7 0 13 1;
+#X connect 9 0 13 0;
+#X connect 9 1 12 0;
+#X connect 10 0 28 0;
+#X connect 11 0 5 0;
+#X connect 12 0 8 0;
+#X connect 13 0 10 0;
+#X connect 14 0 23 0;
+#X connect 14 1 19 0;
+#X connect 14 2 9 0;
+#X connect 14 3 6 0;
+#X connect 14 4 1 1;
+#X connect 14 5 1 1;
+#X connect 15 0 29 0;
+#X connect 17 0 20 1;
+#X connect 19 0 20 0;
+#X connect 19 1 25 0;
+#X connect 20 0 30 0;
+#X connect 21 0 24 1;
+#X connect 23 0 24 0;
+#X connect 23 1 26 0;
+#X connect 24 0 31 0;
+#X connect 25 0 18 0;
+#X connect 26 0 22 0;
+#X restore 733 406 pd update_preset;
+#X obj 57 107 select 240 247;
+#X obj 104 128 t b b;
+#X msg 807 300 get 7 11;
+#X obj 733 381 list store;
+#X obj 152 133 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 18 39 t f f;
+#X obj 57 128 t b b;
+#X text 105 146 open data path only when 0xF0 seen \, close after F7
+;
+#X text 228 244 only when reaching EOF on read (bang);
+#X obj 125 192 s \$0-clrinlist;
+#X obj 242 382 r \$0-clrinlist;
+#X text 185 346 ALWAYS CLEAR LIST STORE;
+#X text 234 363 BEFORE APPEND!!!;
+#N canvas -1929 104 1920 1028 update_ccs 0;
+#X obj 620 2 inlet;
+#X obj 393 229 list store;
+#X text 14 -1 BANKS === KNOB | FADER || 2;
+#X text 14 15 PARAMS == CHAN | CCN | VMIN | VMAX | INITPOS || 5;
+#X text 14 30 PERBANK = 14;
+#X text 741 54 BANK[PARAM[ITEMNO]];
+#X text 776 69 (for pads its);
+#X text 804 101 0 14 CHAN 14 14 CCN 28 14 VMIN 42 14 VMAX 56 14 INIT
+;
+#X text 783 85 PARAM[ITEMNO];
+#X obj 492 485 cpx_structptri pd-data_ccs2 1;
+#X obj 113 254 set template_circletest vmax vmin ccn chan, f 54;
+#X obj 104 485 set template_ccs2 vmax vmin ccn chan, f 54;
+#X msg 392 183 get \$1 1;
+#X obj 303 229 list store;
+#X msg 302 183 get \$1 1;
+#X obj 206 231 list store;
+#X msg 205 185 get \$1 1;
+#X obj 113 226 list store;
+#X msg 112 180 get \$1 1;
+#X obj 208 112 t f b;
+#X obj 301 112 t f b;
+#X obj 393 112 t f b;
+#X obj 113 109 t f b;
+#X obj 200 63 until;
+#X obj 114 63 cpx_ci 1 8;
+#X obj 601 73 list store;
+#X obj 113 87 t f f f f b f, f 67;
+#X obj 564 51 r \$0-getccs;
+#X obj 601 95 s \$0-ccsout;
+#X obj 124 204 r \$0-ccsout;
+#X obj 217 209 r \$0-ccsout;
+#X obj 312 206 r \$0-ccsout;
+#X obj 404 207 r \$0-ccsout;
+#X obj 427 160 s \$0-getccs;
+#X obj 335 159 s \$0-getccs;
+#X obj 241 161 s \$0-getccs;
+#X obj 147 157 s \$0-getccs;
+#X obj 740 229 + 1;
+#X text 513 232 (0 is "head" special pointer);
+#X text 485 218 WARNING: POINTERS START FROM 1!!!;
+#X msg 427 136 get 0 8;
+#X msg 335 135 get 14 8;
+#X msg 240 138 get 28 8;
+#X msg 147 133 get 42 8;
+#X obj 389 451 list store;
+#X msg 388 405 get \$1 1;
+#X obj 299 451 list store;
+#X msg 298 405 get \$1 1;
+#X obj 202 453 list store;
+#X msg 201 407 get \$1 1;
+#X obj 109 448 list store;
+#X msg 108 402 get \$1 1;
+#X obj 204 334 t f b;
+#X obj 297 334 t f b;
+#X obj 389 334 t f b;
+#X obj 109 331 t f b;
+#X obj 196 285 until;
+#X obj 110 308 t f f f f b f, f 67;
+#X obj 120 426 r \$0-ccsout;
+#X obj 213 431 r \$0-ccsout;
+#X obj 308 428 r \$0-ccsout;
+#X obj 400 429 r \$0-ccsout;
+#X obj 423 382 s \$0-getccs;
+#X obj 331 381 s \$0-getccs;
+#X obj 237 383 s \$0-getccs;
+#X obj 143 379 s \$0-getccs;
+#X obj 110 285 cpx_ci 1 6;
+#X msg 423 358 get 8 6;
+#X msg 331 357 get 22 6;
+#X msg 236 358 get 36 6;
+#X msg 143 355 get 50 6;
+#X obj 704 457 + 1;
+#X obj 498 254 cpx_structptri pd-data_circletest 1;
+#X text 492 464 (0 is "head" special pointer);
+#X text 464 450 WARNING: POINTERS START FROM 1!!!;
+#X obj 620 25 t b b l b;
+#X text 300 282 C O U L D B E S I M P L E R;
+#X connect 0 0 75 0;
+#X connect 1 0 10 3;
+#X connect 9 0 11 4;
+#X connect 12 0 1 0;
+#X connect 13 0 10 2;
+#X connect 14 0 13 0;
+#X connect 15 0 10 1;
+#X connect 16 0 15 0;
+#X connect 17 0 10 0;
+#X connect 18 0 17 0;
+#X connect 19 0 16 0;
+#X connect 19 1 42 0;
+#X connect 20 0 14 0;
+#X connect 20 1 41 0;
+#X connect 21 0 12 0;
+#X connect 21 1 40 0;
+#X connect 22 0 18 0;
+#X connect 22 1 43 0;
+#X connect 23 0 24 0;
+#X connect 24 0 26 0;
+#X connect 24 1 23 1;
+#X connect 25 0 28 0;
+#X connect 26 0 22 0;
+#X connect 26 1 19 0;
+#X connect 26 2 20 0;
+#X connect 26 3 21 0;
+#X connect 26 4 72 0;
+#X connect 26 5 37 0;
+#X connect 27 0 25 0;
+#X connect 29 0 17 1;
+#X connect 30 0 15 1;
+#X connect 31 0 13 1;
+#X connect 32 0 1 1;
+#X connect 37 0 72 1;
+#X connect 40 0 33 0;
+#X connect 41 0 34 0;
+#X connect 42 0 35 0;
+#X connect 43 0 36 0;
+#X connect 44 0 11 3;
+#X connect 45 0 44 0;
+#X connect 46 0 11 2;
+#X connect 47 0 46 0;
+#X connect 48 0 11 1;
+#X connect 49 0 48 0;
+#X connect 50 0 11 0;
+#X connect 51 0 50 0;
+#X connect 52 0 49 0;
+#X connect 52 1 69 0;
+#X connect 53 0 47 0;
+#X connect 53 1 68 0;
+#X connect 54 0 45 0;
+#X connect 54 1 67 0;
+#X connect 55 0 51 0;
+#X connect 55 1 70 0;
+#X connect 56 0 66 0;
+#X connect 57 0 55 0;
+#X connect 57 1 52 0;
+#X connect 57 2 53 0;
+#X connect 57 3 54 0;
+#X connect 57 4 9 0;
+#X connect 57 5 71 0;
+#X connect 58 0 50 1;
+#X connect 59 0 48 1;
+#X connect 60 0 46 1;
+#X connect 61 0 44 1;
+#X connect 66 0 57 0;
+#X connect 66 1 56 1;
+#X connect 67 0 62 0;
+#X connect 68 0 63 0;
+#X connect 69 0 64 0;
+#X connect 70 0 65 0;
+#X connect 71 0 9 1;
+#X connect 72 0 10 4;
+#X connect 75 0 23 0;
+#X connect 75 1 56 0;
+#X connect 75 2 25 1;
+#X connect 75 3 25 1;
+#X restore 557 406 pd update_ccs;
+#X obj 559 381 list store;
+#X text 141 389 1;
+#X msg 451 302 get 108 320;
+#X msg 629 301 get 38 70;
+#X text 653 248 WARNING: LIST STORE INDEXING 0-based;
+#X text 814 265 BE CONSISTENT;
+#X text 739 298 +20 pad;
+#X text 166 21;
+#X text 66 16 read sysex from device (device needs to send);
+#X obj 362 273 t b b b b b b, f 64;
+#X obj 378 382 list store;
+#X obj 181 60 r \$0-diss_receive;
+#X msg 181 110 0;
+#X obj 57 81 spigot;
+#X obj 180 84 t b b;
+#X obj 228 84 delay 4000;
+#X msg 228 110 1;
+#X text 305 72 ___ this is to prevent a SysEx feedback loop that;
+#X text 306 85 /``` probably occurs due to SELECT handling;
+#X connect 0 0 6 0;
+#X connect 0 1 7 1;
+#X connect 0 1 68 0;
 #X connect 1 0 0 0;
 #X connect 2 0 0 0;
-#X connect 5 0 2 0;
-#X connect 5 1 6 0;
-#X restore 542 108 pd on_receive;
-#X text 698 43 Data structures:;
-#X text 539 44 Subprocedures:;
-#N canvas 0 50 1816 707 on_preview 0;
+#X connect 3 0 50 0;
+#X connect 3 1 4 0;
+#X connect 5 0 26 0;
+#X connect 7 0 0 0;
+#X connect 23 0 30 0;
+#X connect 24 0 2 0;
+#X connect 25 0 24 1;
+#X connect 26 0 27 0;
+#X connect 27 0 23 0;
+#X connect 28 0 23 0;
+#X connect 31 0 48 1;
+#X connect 39 0 59 1;
+#X connect 41 0 69 1;
+#X connect 45 0 51 0;
+#X connect 45 1 46 0;
+#X connect 45 2 49 0;
+#X connect 46 0 25 0;
+#X connect 46 1 7 0;
+#X connect 47 0 29 0;
+#X connect 48 0 44 0;
+#X connect 50 0 24 0;
+#X connect 50 1 72 0;
+#X connect 51 0 25 0;
+#X connect 51 1 1 0;
+#X connect 51 1 54 0;
+#X connect 55 0 23 1;
+#X connect 59 0 58 0;
+#X connect 61 0 40 0;
+#X connect 62 0 38 0;
+#X connect 68 0 69 0;
+#X connect 68 1 61 0;
+#X connect 68 2 59 0;
+#X connect 68 3 62 0;
+#X connect 68 4 48 0;
+#X connect 68 5 47 0;
+#X connect 70 0 73 0;
+#X connect 71 0 72 1;
+#X connect 72 0 45 0;
+#X connect 73 0 71 0;
+#X connect 73 1 74 0;
+#X connect 74 0 75 0;
+#X connect 75 0 72 1;
+#X restore 512 81 pd on_receive;
+#X text 508 156 Data structures:;
+#X text 509 17 Subprocedures:;
+#N canvas -1929 104 1920 1028 on_preview 0;
 #X obj 19 13 r \$0-preview_file_bang;
 #X msg 19 35 preview;
 #X obj 19 57 s \$0-bufferops;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
-#X restore 542 129 pd on_preview;
-#N canvas 0 50 716 488 buffer_ops 1;
+#X restore 512 102 pd on_preview;
+#N canvas -1929 104 1920 1028 buffer_ops 0;
 #X obj 17 207 midiout;
 #X obj 20 16 r \$0-sysexbuffer;
 #X obj 20 40 cpx_list2file;
@@ -1158,77 +1559,63 @@ bang \; struct_pads_init bang \; struct_circletest_init 8 \;;
 #X obj 42 90 s \$0-mpd24sysex_debug;
 #X msg 41 66 printsysex;
 #X obj 78 137 r \$0-setmidiport;
+#X text 81 207 not so obvious \, but this object;
+#X text 81 224 must convert any data to binary;
+#X obj 101 382 s \$0-latch_indicator_strip;
+#X obj 102 291 select 1;
+#X text 493 289 ╔══╗═╝╚═╬═╦═╩ ║;
+#X text 561 178 ▀▄█▌▐░▒▓■▌;
+#X msg 102 324 label ═══☑═════════════──═
+;
+#X msg 101 353 label ═══☑═════════════╛╒═
+;
 #X connect 1 0 2 0;
 #X connect 2 0 4 0;
 #X connect 2 0 7 0;
 #X connect 3 0 2 1;
 #X connect 4 0 0 0;
 #X connect 5 0 4 1;
+#X connect 5 0 12 0;
 #X connect 7 0 6 0;
 #X connect 8 0 0 1;
-#X restore 542 150 pd buffer_ops;
-#X text 264 279 TODO: fader/knobs channel set/get not implemented;
-#X text 416 381 IMPORTANT: PRESET THAT IS SENT TO WILL NOT;
-#X text 417 400 REFRESH IF IT IS ACTIVE \, BUT A SIMPLE ENTER PRESS
+#X connect 12 0 15 0;
+#X connect 12 1 16 0;
+#X connect 15 0 11 0;
+#X connect 16 0 11 0;
+#X restore 512 123 pd buffer_ops;
+#X text 33 349 TODO: fader/knobs channel set/get not implemented;
+#X text 520 387 IMPORTANT: PRESET THAT IS SENT TO WILL NOT;
+#X text 598 39 When this patch/subpatch loads;
+#X text 618 81 When receiving incoming MIDI (check port!);
+#X text 618 102 Memory buffer preview (mostly for debug);
+#X text 598 60 When data gets written to output buffer;
+#X text 618 124 Various operations on output buffer;
+#X text 659 199 Preset encapsulation for pads;
+#X text 659 220 Preset encapsulation for knobs;
+#X text 659 241 Preset encapsulation for faders;
+#X text 659 178 Light blue display encapsulation;
+#X text 39 261 NOTE: Technical limitations allow numbers to go out
+of range;
+#X text 18 278 but their values shall be clipped before storing to
+0 < x < 128, f 63;
+#X text 520 405 REFRESH IF IT IS ACTIVE \, BUT A SIMPLE [ENTER] PRESS
 ;
-#X text 419 420 WILL RELOAD IT \; EMPIRICAL EVIDENCE \, NOT TESTED
-;
+#X text 520 422 WILL RELOAD IT (device behavior by design);
+#X text 508 268 Click to open these subpatches \, but beware;
+#X text 508 286 all ye who entreth...;
+#X obj 327 58 cnv 8 172 14 empty \$0-latch_indicator_strip ═══☑═════════════──═
+0 7 0 14 -191407 -1 0;
+#X text 172 295 (todo - add clipping to all data patches);
+#X text 30 436 TODO======================;
+#X text 59 449 interactive display struct for entering and displaying
+values (for pads);
+#X text 272 372 TODO: switch pad numbers;
+#X text 251 388 to a selected param in disp;
+#X text 265 404 so we can edit each param;
+#X text 335 419 on the pad view;
+#X text 32 374 TODO: now were cooking with gas \; cockpit sim!!!;
 #X coords 0 -1 1 1 480 240 2 20 20;
 #X restore 10 9 pd sequence_list;
-#X text 64 402 TODO======================;
-#X text 93 415 interactive display struct for entering and displaying
-values (for pads);
-#N canvas -9 -9 1845 1028 debug 0;
-#X obj 17 1 inlet;
-#X obj 485 329 r \$0-pixo;
-#X obj 503 349 r \$0-piyo;
-#X obj 466 307 r \$0-piy;
-#X obj 447 287 r \$0-pix;
-#X obj 522 380 r \$0-dbg-padno;
-#X obj 429 407 pack b f f f f f;
-#X obj 429 436 print DEBUG;
-#X obj 117 6 inlet;
-#X obj 294 197 t b b b;
-#X obj 295 276 s \$0-cireset;
-#X obj 315 255 s \$0-struct_pads;
-#X msg 333 221 \; pd-data_pads clear \;;
-#X obj 26 77 symbol;
-#X obj 17 46 select 1;
-#X obj 17 23 int;
-#X obj 117 42 symbol;
-#X text 36 318 ║ BOX DRAWING ║╔══╗═╝╚═╬═╦═╩
-║;
-#X text 36 305 ╔═════════════╗░▀▄█▌▐░▒▓■▌
-;
-#X text 36 331 ╚═════════════╝;
-#X obj 26 116 select drawpads drawpad clearpads logdbg printsysex,
-f 96;
-#X obj 561 268 print SYSEXOUT;
-#X obj 614 195 r \$0-sysexbuffer;
-#X obj 561 219 pack b l;
-#X connect 0 0 15 0;
-#X connect 1 0 6 3;
-#X connect 2 0 6 4;
-#X connect 3 0 6 2;
-#X connect 4 0 6 1;
-#X connect 5 0 6 5;
-#X connect 6 0 7 0;
-#X connect 8 0 16 0;
-#X connect 9 0 10 0;
-#X connect 9 1 11 0;
-#X connect 9 2 12 0;
-#X connect 13 0 20 0;
-#X connect 14 0 13 0;
-#X connect 15 0 14 0;
-#X connect 16 0 13 1;
-#X connect 20 2 9 0;
-#X connect 20 3 6 0;
-#X connect 20 4 23 0;
-#X restore 168 305 pd debug;
-#X obj 168 267 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 221 267 r \$0-mpd24sysex_debug;
-#X text 76 266 DEBUG SWITCH;
 #N canvas -9 -9 1845 1028 read_live_ucs_data 0;
 #X floatatom 648 96 5 0 0 0 - - -;
 #X obj 600 31 ctlin;
@@ -1637,10 +2024,58 @@ ucs_transport_init 6 \; ucs_symbols_setglobalstr symbol \$1 symbol
 #X connect 37 0 27 3;
 #X coords 0 0 129 640 130 480 2 24 24;
 #X restore 505 9 pd read_live_ucs_data;
-#X text 283 331 TODO: switch pad numbers;
-#X text 262 348 to a selected param in disp;
-#X text 276 364 so we can edit each param;
-#X text 346 379 on the pad view;
-#X text 16 349 TODO: now were cooking with gas \; cockpit sim!!!;
-#X connect 4 0 3 0;
-#X connect 5 0 3 1;
+#N canvas 234 516 685 443 mpd24sysex_debug 0;
+#N canvas -9 -9 1845 1028 debug 0;
+#X obj 17 1 inlet;
+#X obj 485 329 r \$0-pixo;
+#X obj 503 349 r \$0-piyo;
+#X obj 466 307 r \$0-piy;
+#X obj 447 287 r \$0-pix;
+#X obj 522 380 r \$0-dbg-padno;
+#X obj 429 407 pack b f f f f f;
+#X obj 429 436 print DEBUG;
+#X obj 117 6 inlet;
+#X obj 294 197 t b b b;
+#X obj 295 276 s \$0-cireset;
+#X obj 315 255 s \$0-struct_pads;
+#X msg 333 221 \; pd-data_pads clear \;;
+#X obj 26 77 symbol;
+#X obj 17 46 select 1;
+#X obj 17 23 int;
+#X obj 117 42 symbol;
+#X text 36 318 ║ BOX DRAWING ║╔══╗═╝╚═╬═╦═╩
+║;
+#X text 36 305 ╔═════════════╗░▀▄█▌▐░▒▓■▌
+;
+#X text 36 331 ╚═════════════╝;
+#X obj 26 116 select drawpads drawpad clearpads logdbg printsysex,
+f 96;
+#X obj 561 268 print SYSEXOUT;
+#X obj 614 195 r \$0-sysexbuffer;
+#X obj 561 219 pack b l;
+#X connect 0 0 15 0;
+#X connect 1 0 6 3;
+#X connect 2 0 6 4;
+#X connect 3 0 6 2;
+#X connect 4 0 6 1;
+#X connect 5 0 6 5;
+#X connect 6 0 7 0;
+#X connect 8 0 16 0;
+#X connect 9 0 10 0;
+#X connect 9 1 11 0;
+#X connect 9 2 12 0;
+#X connect 13 0 20 0;
+#X connect 14 0 13 0;
+#X connect 15 0 14 0;
+#X connect 16 0 13 1;
+#X connect 20 2 9 0;
+#X connect 20 3 6 0;
+#X connect 20 4 23 0;
+#X restore 108 203 pd debug;
+#X obj 108 108 tgl 15 0 empty empty Debug 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 161 165 r \$0-mpd24sysex_debug;
+#X connect 1 0 0 0;
+#X connect 2 0 0 1;
+#X coords 0 -1 1 1 85 60 2 100 100;
+#X restore 644 10 pd mpd24sysex_debug;
