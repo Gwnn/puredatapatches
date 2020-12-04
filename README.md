@@ -50,9 +50,15 @@ for more info on particular patches.
 Although Pure Data is a self sufficient audio/video "runtime", meaning you
 create patches and then use them within Pd for creative purposes, you can
 also very easily integrate Pd into other environments, due to existence of
-"loopback" MIDI ports. My favorite one is "loopMIDI" which is part of
-a larger "rtpMIDI" (virtual) driver that implements Apple CoreMIDI RTP on 
+"loopback" MIDI ports. My favorite one is [loopMIDI](http://www.tobias-erichsen.de/software/loopmidi.html) which is part of
+a larger [rtpMIDI (virtual) driver](http://www.tobias-erichsen.de/software/rtpmidi.html) that implements Apple CoreMIDI RTP on 
 Windows OS.
+
+### Distribution
+Since you will need the Pd environment (pretty much self-contained) to
+run the patches, I've made [my own signed 32-bit build for Windows](https://drive.google.com/drive/folders/1Fn-sp9pZsP7rSD6SxID2r7sPU6FRVnxV?usp=sharing), but
+I highly recommend using one of the [official builds](https://puredata.info/downloads/pure-data), since mine is under
+adaptation still.
 
 Other uses might include
 * porting Pd patches to Max/MSP using minimum effort search and replace text 
