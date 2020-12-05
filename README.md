@@ -56,17 +56,22 @@ also very easily integrate Pd into other environments, due to existence of
 a larger [rtpMIDI (virtual) driver](http://www.tobias-erichsen.de/software/rtpmidi.html) that implements Apple CoreMIDI RTP on 
 Windows OS.
 
+### Highlights of Pd integration
+
+* Porting Pd patches to Max/MSP using minimum effort search and replace text 
+editing
+* Using Pd's built-in networking "classes" to create "client/server" systems
+* importing/exporting data in "offline" files (file I/O, with automatic formatting)
+* using extensions (extensions are divided into single object binary library, multi-library, or plain patches)
+* loopback MIDI driver connections
+* multi-device MIDI and Audio
+* Portable to the bone (Tcl/Tk GUI framework, small source code base, extensible, \*Nix, macOS, Win)
+
 ### Distribution
 Since you will need the Pd environment (pretty much self-contained) to
 run the patches, I've made [my own signed 32-bit build for Windows](https://drive.google.com/drive/folders/1Fn-sp9pZsP7rSD6SxID2r7sPU6FRVnxV?usp=sharing), but
 I highly recommend using one of the [official builds](https://puredata.info/downloads/pure-data), since mine is under
 adaptation still.
 
-Other uses might include
-* porting Pd patches to Max/MSP using minimum effort search and replace text 
-editing
-* using Pd's built-in networking "classes"
-* importing/exporting data in "offline" files
-* using additonal extensions
-* etc.
+
 
