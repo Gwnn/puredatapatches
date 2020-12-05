@@ -18,8 +18,11 @@ Being a free program, it also has a large [community contributed](https://pureda
 specialised GUI controls, etc., some of which have become
 widely adopted as standard.
 
-It also supports a textual interchange patch format, which
-can be used to port patches to MAX/MSP, and vice versa.
+<strike>It also supports a textual interchange patch format, which
+can be used to port patches to MAX/MSP, and vice versa.</strike>
+The updated format for Pure Data patches is now textual and
+interchangable (although Pd is still aware of the old style
+extensions).
 
 With the commerical adoption of MAX/MSP, for example, as
 [Max for Live](https://www.ableton.com/en/live/max-for-live/) in
@@ -31,9 +34,8 @@ supporting ASIO, portaudio, Jack, ALSA, etc.
 ### About the patches
 
 My patches are divided into Pure Data patches (under [pd/](./pd/)) and their
-interchange format equivalents (under [pat/](./pat)).
-Subpatches (more precisely, submodules or abstractions) can be found
-in pd/abstractions.
+general-use patch dependencies, called "abstractions"
+(under [pd/externals/](./pd/externals/)).
 
 In order to execute patches that use other patches (abstractions),
 the Pd environment needs to be told where to find them, otherwise
