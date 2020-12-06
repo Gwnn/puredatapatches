@@ -1,5 +1,8 @@
-#N struct template_ADSR float ax float dx1 float dx2 float sy float
-rx1 float rx2 float rx3;
+#N struct template_adsr_mode float x float y symbol m;
+#N struct template_adsr_multi float x float y array adsra template_adsrs
+array adsrf template_adsrs array adsrm template_adsrs float gvisa float
+gvisf float gvism;
+#N struct template_adsrs float x float y float yamp;
 #N canvas -9 -9 1845 1028 12;
 #X declare -path cpx;
 #N canvas 923 0 904 1010 ammod_path 0;
@@ -62,7 +65,7 @@ CLEAR -2 32 1 8 -99865 -191407 -228856;
 #X connect 17 0 6 0;
 #X restore 79 83 pd color;
 #X coords 0 -1 1 1 64 256 2 200 200;
-#X restore 177 77 pd ammod_path;
+#X restore 178 77 pd ammod_path;
 #N canvas -1929 104 1920 1028 ammod_map 0;
 #X obj 34 39 r \$0-CtlKPathRate;
 #X floatatom 34 61 5 0 0 0 - - -;
@@ -344,7 +347,7 @@ CLEAR -2 32 1 8 -99865 -191407 -228856;
 #X connect 157 0 149 0;
 #X connect 158 0 150 0;
 #X connect 159 0 151 0;
-#X restore 233 20 pd ammod_map;
+#X restore 681 268 pd ammod_map;
 #N canvas 48 79 890 671 ammod_orbit 0;
 #X obj 200 211 cnv 15 64 244 empty empty empty 20 12 1 12 -66577 -228856
 0;
@@ -361,57 +364,23 @@ CLEAR -2 32 1 8 -99865 -191407 -228856;
 #X coords 0 -1 1 1 64 256 2 200 200;
 #X restore 46 77 pd ammod_orbit;
 #N canvas 757 18 956 750 ammod_vcaenv 0;
-#X obj 200 200 cnv 15 96 64 empty empty empty 20 12 0 14 -13381 -66577
-0;
-#X obj 212 218 vsl 15 32 0 127 0 0 \$0-CtlKVcaA empty A 4 -9 1 10 -59137
--92993 -25345 2538 1;
-#X obj 232 218 vsl 15 32 0 127 0 0 \$0-CtlKVcaD empty D 4 -9 1 10 -59137
--92993 -25345 3124 1;
-#X obj 252 218 vsl 15 32 0 127 0 0 \$0-CtlKVcaS empty S 4 -9 1 10 -59137
--92993 -25345 2588 1;
-#X obj 272 218 vsl 15 32 0 127 0 0 \$0-CtlKVcaR empty R 4 -9 1 10 -59137
--92993 -25345 1562 1;
-#X obj 200 255 cnv 15 96 16 empty empty AMP 20 4 1 8 -13381 -92993
-0;
+#X obj 177 203 vsl 15 32 0 127 0 0 \$0-CtlKVcaA empty A 4 -9 1 10 -59137
+-92993 -25345 6200 1;
+#X obj 197 203 vsl 15 32 0 127 0 0 \$0-CtlKVcaD empty D 4 -9 1 10 -59137
+-92993 -25345 1074 1;
+#X obj 217 203 vsl 15 32 0 127 0 0 \$0-CtlKVcaS empty S 4 -9 1 10 -59137
+-92993 -25345 5394 1;
+#X obj 237 203 vsl 15 32 0 127 0 0 \$0-CtlKVcaR empty R 4 -9 1 10 -59137
+-92993 -25345 5000 1;
 #X obj 177 139 unpack f f f f;
 #X obj 172 98 r \$0-data_adsr_amp;
-#X connect 6 0 1 0;
-#X connect 6 1 2 0;
-#X connect 6 2 3 0;
-#X connect 6 3 4 0;
-#X connect 7 0 6 0;
-#X coords 0 -1 1 1 96 72 2 200 200;
-#X restore 243 77 pd ammod_vcaenv;
-#N canvas 509 119 956 509 ammod_vcaenv 0;
-#X obj 200 200 cnv 15 96 64 empty empty empty 20 12 0 14 -13381 -66577
-0;
-#X obj 212 218 vsl 15 32 0 127 0 0 \$0-CtlKVcfA empty A 4 -9 1 10 -59137
--92993 -25345 0 1;
-#X obj 232 218 vsl 15 32 0 127 0 0 \$0-CtlKVcfD empty D 4 -9 1 10 -59137
--92993 -25345 0 1;
-#X obj 252 218 vsl 15 32 0 127 0 0 \$0-CtlKVcfS empty S 4 -9 1 10 -59137
--92993 -25345 0 1;
-#X obj 272 218 vsl 15 32 0 127 0 0 \$0-CtlKVcfR empty R 4 -9 1 10 -59137
--92993 -25345 0 1;
-#X obj 200 255 cnv 15 96 16 empty empty FILTER 20 4 1 8 -29505 -4034
-0;
-#X coords 0 -1 1 1 96 72 2 200 200;
-#X restore 243 168 pd ammod_vcaenv;
-#N canvas 453 243 956 680 ammod_vcaenv 0;
-#X obj 200 200 cnv 15 96 64 empty empty empty 20 12 0 14 -13381 -66577
-0;
-#X obj 212 218 vsl 15 32 0 127 0 0 \$0-CtlKModA empty A 4 -9 1 10 -59137
--92993 -25345 0 1;
-#X obj 232 218 vsl 15 32 0 127 0 0 \$0-CtlKModD empty D 4 -9 1 10 -59137
--92993 -25345 0 1;
-#X obj 252 218 vsl 15 32 0 127 0 0 \$0-CtlKModS empty S 4 -9 1 10 -59137
--92993 -25345 0 1;
-#X obj 272 218 vsl 15 32 0 127 0 0 \$0-CtlKModR empty R 4 -9 1 10 -59137
--92993 -25345 0 1;
-#X obj 200 255 cnv 15 96 16 empty empty MOD 20 4 1 8 -29505 -4034 0
-;
-#X coords 0 -1 1 1 96 72 2 200 200;
-#X restore 243 261 pd ammod_vcaenv;
+#X connect 4 0 0 0;
+#X connect 4 1 1 0;
+#X connect 4 2 2 0;
+#X connect 4 3 3 0;
+#X connect 5 0 4 0;
+#X coords 0 375 1 374 96 72 0;
+#X restore 681 291 pd ammod_vcaenv;
 #N canvas 703 206 450 492 ammod_lfo 0;
 #X obj 35 20 cnv 15 176 72 empty empty empty 0 7 0 14 -13381 -66577
 0;
@@ -420,12 +389,12 @@ CLEAR -2 32 1 8 -99865 -191407 -228856;
 #X obj 96 53 tgl 24 0 \$0-CtlTLfoSync \$0-CtlTLfoSync SYNC 0 30 1 8
 -59137 -59137 -228856 0 1;
 #X obj 177 53 tgl 24 0 \$0-CtlTLfoKbd \$0-CtlTLfoKbd KB 6 30 1 8 -59137
--59137 -228856 0 1;
+-59137 -228856 1 1;
 #X obj 21 20 cnv 11 16 72 empty empty LFO 4 7 1 8 -13381 -92993 0;
 #X obj 131 41 hsl 36 36 0 4 0 0 \$0-CtlSLfoShape \$0-CtlSLfoShapeIn
 SHAPE 8 42 1 8 -59137 -92993 -228856 0 1;
 #X coords 0 -1 1 1 192 72 2 20 20;
-#X restore 340 77 pd ammod_lfo;
+#X restore 244 261 pd ammod_lfo;
 #N canvas 613 313 450 580 ammod_filter 0;
 #X obj 21 32 cnv 15 64 244 empty empty empty 20 12 0 14 -66577 -66577
 0;
@@ -458,8 +427,6 @@ SHAPE 8 42 1 8 -59137 -92993 -228856 0 1;
 2 42 1 8 -191407 -99865 -228856 0 1;
 #X coords 0 -1 1 1 64 256 2 20 20;
 #X restore 534 77 pd ammod_thick;
-#X obj 45 47 cnv 15 480 24 empty empty ____________________________[ANIMOOG]_______________moog
-20 12 1 14 -233017 -66577 0;
 #N canvas -1929 104 1920 1028 notesq 0;
 #X obj 45 214 random 12;
 #X msg 59 101 stop;
@@ -519,7 +486,7 @@ SHAPE 8 42 1 8 -59137 -92993 -228856 0 1;
 #X connect 17 0 12 0;
 #X connect 18 0 11 2;
 #X coords 0 -1 1 1 85 24 2 100 100;
-#X restore 446 265 pd notesq;
+#X restore 445 261 pd notesq;
 #N canvas 88 144 671 583 Kbd 0;
 #X obj 151 35 ctlin 1;
 #X obj 100 100 cnv 15 100 64 empty empty empty 20 12 0 14 -128992 -66577
@@ -609,7 +576,7 @@ SHAPE 8 42 1 8 -59137 -92993 -228856 0 1;
 #X connect 9 2 2 1;
 #X connect 10 0 2 0;
 #X coords 0 -1 1 1 85 24 2 100 100;
-#X restore 239 382 pd presetsel;
+#X restore 244 231 pd presetsel;
 #N canvas 1299 223 450 639 ammod_dly 0;
 #X obj 20 33 cnv 15 64 244 empty empty empty 20 12 0 14 -66577 -66577
 0;
@@ -625,34 +592,225 @@ SHAPE 8 42 1 8 -59137 -92993 -228856 0 1;
 8 -191407 -99865 -228856 0 1;
 #X coords 0 -1 1 1 64 256 2 20 20;
 #X restore 600 77 pd ammod_dly;
-#N canvas -9 -9 1845 1028 template_adsr_data 0;
-#X scalar template_ADSR 0 6.5 24 26.5 88 88 98 \;;
-#X coords 0 0 128 64 128 64 2 0 0;
-#X restore 584 362 pd template_adsr_data;
-#N canvas -9 -9 1845 1028 template_adsr 0;
-#X obj 142 123 r animoooo_struct_adsr_init;
-#X obj 460 281 cpx_structptr0 pd-template_adsr_data;
-#X obj 141 185 until;
-#X obj 141 161 t f b;
-#X obj 142 235 t f f f f f f, f 18;
-#X floatatom 63 273 5 0 0 0 - - -;
-#X obj 32 354 print coords;
-#X floatatom 77 242 5 0 0 0 - - -;
-#X obj 142 212 cpx_ci 64 192;
-#X obj 404 23 struct template_ADSR float ax float dx1 float dx2 float
-sy float rx1 float rx2 float rx3;
-#X obj 141 358 append template_ADSR ax dx1 dx2 sy rx1 rx2 rx3;
-#X obj 269 266 + 88;
-#X obj 340 266 + 120;
-#X obj 179 268 + 16;
-#X obj 220 268 + 32;
-#X obj 142 330 pack f 0 f 32 f f f;
-#X obj 22 428 filledpolygon 120 120 0 0 0 128 0 128 64 0 64 0 0;
-#X obj 21 407 drawpolygon 50 1 0 64 dx1 0 dx2 sy 88 sy;
-#X obj 305 266 + 88;
-#X obj 325 407 drawcurve 50 1 88 sy rx2 64 rx3 64;
-#X obj 404 98 get template_ADSR dx1 dx2 sy rx3;
-#X obj 404 153 s \$0-data_adsr_amp;
+#X obj 680 80 declare -path cpx;
+#X obj 680 109 loadbang;
+#N canvas -9 -9 1845 1028 canvas_title 0;
+#X obj 161 114 cnv 15 640 24 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X restore 44 38 pd canvas_title;
+#N canvas 509 119 956 509 ammod_vcfenv 0;
+#X obj 184 180 vsl 15 32 0 127 0 0 \$0-CtlKVcfA empty A 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 204 180 vsl 15 32 0 127 0 0 \$0-CtlKVcfD empty D 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 224 180 vsl 15 32 0 127 0 0 \$0-CtlKVcfS empty S 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 244 180 vsl 15 32 0 127 0 0 \$0-CtlKVcfR empty R 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 177 139 unpack f f f f;
+#X obj 177 98 r \$0-data_adsr_flt;
+#X connect 4 0 0 0;
+#X connect 4 1 1 0;
+#X connect 4 2 2 0;
+#X connect 4 3 3 0;
+#X connect 5 0 4 0;
+#X coords 0 254.5 1 253.5 96 72 0;
+#X restore 681 314 pd ammod_vcfenv;
+#N canvas -1929 81 1920 1028 template_adsr_mode 0;
+#X obj 586 205 r struct_adsr_mode_init;
+#N canvas -1929 81 1920 1028 adsr_mode_init 0;
+#X obj 273 56 inlet;
+#X obj 275 90 t f b;
+#X obj 275 130 until;
+#X obj 274 161 t b b b b;
+#X obj 400 210 cpx_structptr0 pd-data_adsr_mode;
+#X obj 272 267 pack f 0, f 9;
+#X obj 272 207 cpx_ci 64 256;
+#X obj 180 335 append template_adsr_mode x y;
+#X text 393 336 CANNOT SET SYMBOLS AT APPEND/INIT;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 4 0;
+#X connect 1 1 6 1;
+#X connect 2 0 3 0;
+#X connect 3 0 6 0;
+#X connect 4 0 7 2;
+#X connect 5 0 7 0;
+#X connect 6 0 5 0;
+#X restore 586 229 pd adsr_mode_init;
+#X obj 70 115 struct template_adsr_mode float x float y symbol m,
+f 72;
+#X obj 70 142 route click change, f 72;
+#X obj 111 220 select 0 64 128 192, f 48;
+#X obj 298 425 filledpolygon 120 120 0 0 1 63 1 63 15 0 15 0 1;
+#X obj 299 395 filledpolygon 451 120 0 8 1 56 1 56 15 8 15 8 1;
+#X obj 16 365 set -symbol template_adsr_mode m;
+#X obj 299 368 drawsymbol m 20 1 120;
+#N canvas -1929 81 1920 1028 set_adsr_mode 0;
+#X obj 37 37 inlet;
+#X obj 107 111 select VCA VCF MOD ALL, f 61;
+#X obj 42 171 t b b b, f 35;
+#X obj 43 291 list store;
+#X obj 36 63 t b s b;
+#X obj 533 139 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 43 234 get 0 3;
+#X text 101 234 LISTS 0-BASED! (in Hitlers voice \, accent \, language
+and dialect), f 70;
+#X obj 110 261 pack f f f, f 31;
+#X obj 110 140 cpx_ci 1 2;
+#X obj 218 141 cpx_ci 1 2;
+#X obj 327 144 cpx_ci 1 2;
+#X msg 132 214 bang;
+#X obj 43 316 set template_adsr_multi gvisa gvisf gvism;
+#X obj 329 288 cpx_structptri pd-data_adsr_multi 1;
+#X connect 0 0 4 0;
+#X connect 1 0 9 0;
+#X connect 1 1 10 0;
+#X connect 1 2 11 0;
+#X connect 1 4 5 0;
+#X connect 2 0 6 0;
+#X connect 2 2 14 0;
+#X connect 3 0 13 0;
+#X connect 4 0 2 0;
+#X connect 4 1 1 0;
+#X connect 6 0 3 0;
+#X connect 8 0 3 1;
+#X connect 9 0 8 0;
+#X connect 10 0 8 1;
+#X connect 10 0 12 0;
+#X connect 11 0 8 2;
+#X connect 11 0 12 0;
+#X connect 12 0 8 0;
+#X connect 14 0 13 3;
+#X restore 282 343 pd set_adsr_mode;
+#X msg 111 256 symbol ALL;
+#X msg 193 256 symbol VCA;
+#X msg 277 258 symbol VCF;
+#X msg 361 258 symbol MOD;
+#X obj 70 189 unpack p f f;
+#X obj 26 298 pointer;
+#X obj 111 298 symbol;
+#X obj 34 166 t b b l;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 17 0;
+#X connect 4 0 10 0;
+#X connect 4 1 11 0;
+#X connect 4 2 12 0;
+#X connect 4 3 13 0;
+#X connect 10 0 16 1;
+#X connect 11 0 16 1;
+#X connect 12 0 16 1;
+#X connect 13 0 16 1;
+#X connect 14 0 15 1;
+#X connect 14 1 4 0;
+#X connect 15 0 7 1;
+#X connect 16 0 9 0;
+#X connect 16 0 7 0;
+#X connect 17 0 16 0;
+#X connect 17 1 15 0;
+#X connect 17 2 14 0;
+#X restore 681 414 pd template_adsr_mode;
+#N canvas 0 50 450 300 data_adsr_mode 0;
+#X scalar template_adsr_mode 0 0 ALL \;;
+#X scalar template_adsr_mode 64 0 VCA \;;
+#X scalar template_adsr_mode 128 0 VCF \;;
+#X scalar template_adsr_mode 192 0 MOD \;;
+#X coords 0 0 256 16 256 16 2 100 100;
+#X restore 246 209 pd data_adsr_mode;
+#N canvas 453 243 956 680 ammod_vcmenv 0;
+#X obj 212 218 vsl 15 32 0 127 0 0 \$0-CtlKModA empty A 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 232 218 vsl 15 32 0 127 0 0 \$0-CtlKModD empty D 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 252 218 vsl 15 32 0 127 0 0 \$0-CtlKModS empty S 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 272 218 vsl 15 32 0 127 0 0 \$0-CtlKModR empty R 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X coords 0 680 1 679 96 72 0;
+#X restore 681 337 pd ammod_vcmenv;
+#N canvas -1929 81 1920 1028 template_adsr_multi 0;
+#X obj 461 165 r struct_adsr_multi_init;
+#X text 761 367 shoudl be equiv to append;
+#X obj 501 279 append template_adsr_multi x y;
+#X obj 460 198 t b b b b;
+#X obj 500 255 pack 0 0;
+#X obj 708 249 cpx_structptr0 pd-data_adsr_multi;
+#X obj 525 367 setsize template_adsr_multi adsra;
+#X msg 525 333 6;
+#X obj 184 395 unpack f f f;
+#X obj 501 306 t b b p;
+#X obj 370 447 element template_adsr_multi adsra;
+#X text 650 162 APPEND MASTER STRUCT \; SET POINTER FOR SETSIZE AND
+ELEMENT \; SETSIZE FOR SUBSTRUCT \; SET SUBSTRUCT ELEMENT VALUES (multilist)
+;
+#X obj 343 474 element template_adsr_multi adsrf;
+#X obj 326 502 element template_adsr_multi adsrm;
+#X obj 492 389 setsize template_adsr_multi adsrf;
+#X obj 470 412 setsize template_adsr_multi adsrm;
+#X text 593 449 template is just template \; pointers decide which
+data gets written \; so we could have several array of the same \;
+template;
+#X obj 26 74 filledpolygon 120 451 1 0 0 128 0 128 64 0 64 0 0;
+#X msg 27 342 0 62 0 \, 16 0 1 \, 32 32 2 \, 88 32 3 \, 88 62 4 \,
+120 62 5;
+#X obj 27 14 struct template_adsr_multi float x float y array adsra
+template_adsrs array adsrf template_adsrs array adsrm template_adsrs
+float gvisa float gvisf float gvism;
+#X obj 184 446 set template_adsrs x yamp;
+#X obj 160 472 set template_adsrs x yamp;
+#X obj 139 499 set template_adsrs x yamp;
+#X obj 25 96 plot -v gvisa -x x(0:100)(0:128) -y yamp(0:100)(0:62)
+adsra 500 1 1 1 2, f 75;
+#X obj 25 117 plot -v gvisf -x x(0:100)(0:128) -y yamp(0:100)(0:62)
+adsrf 50 1 1 1 2, f 75;
+#X obj 25 138 plot -v gvism -x x(0:100)(0:128) -y yamp(0:100)(0:62)
+adsrm 5 1 1 1 2, f 75;
+#X obj 26 169 plot -y noy adsrm 5 1 1 1 2;
+#X obj 13 201 plot -x nox -y yamp adsrm 5 1 1 1 20;
+#X connect 0 0 3 0;
+#X connect 2 0 9 0;
+#X connect 3 2 4 0;
+#X connect 3 3 5 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 2;
+#X connect 7 0 6 0;
+#X connect 7 0 14 0;
+#X connect 7 0 15 0;
+#X connect 8 0 20 0;
+#X connect 8 0 21 0;
+#X connect 8 0 22 0;
+#X connect 8 1 20 1;
+#X connect 8 1 21 1;
+#X connect 8 1 22 1;
+#X connect 8 2 10 0;
+#X connect 8 2 12 0;
+#X connect 8 2 13 0;
+#X connect 9 0 18 0;
+#X connect 9 1 7 0;
+#X connect 9 2 6 1;
+#X connect 9 2 10 1;
+#X connect 9 2 12 1;
+#X connect 9 2 13 1;
+#X connect 9 2 14 1;
+#X connect 9 2 15 1;
+#X connect 10 0 20 2;
+#X connect 12 0 21 2;
+#X connect 13 0 22 2;
+#X connect 18 0 8 0;
+#X restore 681 364 pd template_adsr_multi;
+#N canvas 0 50 1308 883 data_adsr_multi 0;
+#X scalar template_adsr_multi 0 0 0 0 0 \; 0 0 62 \; 17.3828 0 1.60041
+\; 32 0 32 \; 68.3594 0 0 \; 84.2891 0 66.8012 \; 100 0 34.7834 \;
+\; 0 0 62 \; 21.4688 0 0 \; 36.1016 0 0 \; 66.4063 0 49.2126 \; 88
+0 62 \; 120 0 62 \; \; 0.75 61.5194 11.9854 \; 11.25 61.2714 37.5359
+\; 41.8047 61.2714 56.3887 \; 69.2891 60.7753 56.3886 \; 68.8906 59.0388
+23.8924 \; 100 57.7985 12.4815 \; \;;
+#X coords 0 0 128 64 256 129 2 100 100;
+#X restore 246 77 pd data_adsr_multi;
+#N canvas -1929 81 1920 1028 template_adsrs 0;
+#X obj 404 172 s \$0-data_adsr_amp;
 #N canvas 722 444 849 504 clipnscale_adsr 0;
 #X obj 22 29 inlet;
 #X obj 89 29 inlet;
@@ -695,38 +853,25 @@ sy float rx1 float rx2 float rx3;
 #X connect 19 0 13 0;
 #X restore 404 126 pd clipnscale_adsr;
 #X f 32;
-#X obj 404 71 route change;
-#X connect 0 0 3 0;
-#X connect 1 0 10 7;
-#X connect 2 0 8 0;
-#X connect 3 0 2 0;
-#X connect 3 1 1 0;
-#X connect 3 1 8 1;
-#X connect 4 0 5 0;
-#X connect 4 0 15 0;
-#X connect 4 1 13 0;
-#X connect 4 2 14 0;
-#X connect 4 3 11 0;
-#X connect 4 4 18 0;
-#X connect 4 5 12 0;
-#X connect 8 0 4 0;
-#X connect 8 0 7 0;
-#X connect 9 0 23 0;
-#X connect 11 0 15 4;
-#X connect 12 0 15 6;
-#X connect 13 0 15 1;
-#X connect 14 0 15 2;
-#X connect 15 0 6 0;
-#X connect 15 0 10 0;
-#X connect 18 0 15 5;
-#X connect 20 0 22 0;
-#X connect 20 1 22 1;
-#X connect 20 2 22 2;
-#X connect 20 3 22 3;
-#X connect 22 0 21 0;
-#X connect 23 0 20 0;
+#X obj 404 71 route change click;
+#X obj 689 125 print ONCLICK;
+#X obj 404 98 get template_adsrs dx1 dx2 sy rx3;
+#X text 326 272 TODO R \, E \, W \, R \, I \, T \, E;
+#X obj 445 382 filledpolygon 240 240 0 -1 -1 1 -1 1 1 -1 1 -1 -1;
+#X obj 404 11 struct template_adsrs float x float y float yamp;
+#X connect 1 0 0 0;
+#X connect 2 0 4 0;
+#X connect 2 1 3 0;
+#X connect 4 0 1 0;
+#X connect 4 1 1 1;
+#X connect 4 2 1 2;
+#X connect 4 3 1 3;
+#X connect 7 0 2 0;
 #X coords 0 514 1 513 85 60 0;
-#X restore 41 20 pd template_adsr;
-#X obj 741 58 declare -path cpx;
-#X msg 680 147 \; pd-template_adsr_data clear \; animoooo_struct_adsr_init
-1;
+#X restore 681 385 pd template_adsrs;
+#N canvas -9 -9 1845 1028 data_adsrs 0;
+#X coords 0 514 1 513 256 128 0;
+#X restore 678 471 pd data_adsrs;
+#X msg 680 147 \; pd-data_adsr_mode clear \; pd-data_adsr_multi clear
+\; struct_adsr_multi_init bang \; struct_adsr_mode_init 4 \;;
+#X connect 12 0 22 0;
