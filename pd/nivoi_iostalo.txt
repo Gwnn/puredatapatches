@@ -1,0 +1,23 @@
+Pd 0.45.4. on win32
+Tcl/Tk 8.5.10
+------------------------------------------------------------------------------
+{} 3 {'pd-gui' connecting to 'pd' on localhost 5400 ...
+} {} 4 {------------------ done with main ----------------------
+} {} 4 {Default font: DejaVu Sans Mono
+} {} 14 {The Pd window filtered 3 lines
+} {} 2 {GEM: Graphics Environment for Multimedia
+} {} 2 {GEM: ver: 0.93.3 
+} {} 2 {GEM: compiled: Nov 10 2011
+} {} 2 {GEM: maintained by IOhannes m zmoelnig
+} {} 2 {GEM: Authors :	Mark Danks (original version)
+} {} 2 {GEM:		Chris Clepper
+} {} 2 {GEM:		Cyrille Henry
+} {} 2 {GEM:		IOhannes m zmoelnig
+} {} 2 {GEM: with help by Guenter Geiger, Daniel Heckenberg, James Tittle, Hans-Christoph Steiner, et al.
+} {} 2 {GEM: found a bug? miss a feature? please report it:
+} {} 2 {GEM: 	homepage http://gem.iem.at/
+} {} 2 {GEM: 	bug-tracker http://sourceforge.net/projects/pd-gem/
+} {} 2 {GEM: 	mailing-list http://lists.puredata.info/listinfo/gem-dev/
+} {} 2 {GEM: compiled for SIMD architecture: } {} 2 {SSE2 } {} 2 {MMX } {} 2 {
+} {} 2 {GEM: using } {} 2 SSE2 {} 2 { optimization
+}

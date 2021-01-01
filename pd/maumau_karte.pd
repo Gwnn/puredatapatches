@@ -1,0 +1,65 @@
+#N canvas 38 2 1263 715 12;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array Spil 52 float 1;
+#A 0 43 30 29 0 38 42 46 27 23 26 48 13 15 36 46 35 32 28 31 51 9 45
+22 19 39 2 18 13 28 31 48 27 34 3 13 40 34 34 47 26 49 1 2 21 19 48
+13 30 30 3 36 38;
+#X coords 0 0 51 52 200 140 1;
+#X restore 13 557 graph;
+#X floatatom 806 14 5 0 0 0 Player_pointer - -;
+#X obj 90 56 bng 24 250 50 0 RandomizeArray empty Shuffle 25 7 0 12
+-262144 -1 -1;
+#X floatatom 806 36 5 0 0 0 Card_pointer - -;
+#X obj 91 150 RandomizeArray Spil;
+#X floatatom 806 60 5 0 0 0 - - -;
+#N canvas 196 97 914 493 (subpatch) 0;
+#X array HandPlayer 52 float 3;
+#A 0 1 31 55.8933 81.0266 74.7867 70.8 65.9467 64.04 62.1333 59.36
+58.06 4.76 5.28 5.39555 5.51111 5.62667 5.88667 6.14667 6.23333 6.32
+6.32 5.8 11.3467 11.6933 12.04 12.3867 12.7333 13.4267 13.7733 14.12
+23.48 24.0867 24.6933 25.3867 26.08 26.6 27.12 27.8133 29.3733 31.1067
+35.44 20 2 19 13 7.80002 16 6 42 28 17 3;
+#X coords 0 0 51 52 320 240 1;
+#X restore 254 461 graph;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array HandCPU 52 float 3;
+#A 0 24.8858 23.7715 22.6572 22.2858 21.9143 20.8 20.4286 20.0572 19.8715
+19.6858 19.5 19.3143 19.3143 19.3143 19.3143 19.3143 19.3143 20.0572
+20.8 21.5429 22.2858 22.6572 23.7715 25.6286 27.1143 29.7144 32.3144
+34.9144 37.5144 38.6287 39.743 39.743 39.0001 38.2572 37.5144 36.5858
+35.6572 34.5429 33.0572 14.8572 14.8572 14.8572 14.8572 15.6 16.3429
+17.4572 19.3143 21.1715 23.0286 26.0001 40.0525 41.2287;
+#X coords 0 0 51 52 200 140 1;
+#X restore 609 556 graph;
+#X obj 445 252 FindElementByVal Spil;
+#X msg 445 193 52;
+#X obj 591 195 int 0;
+#X obj 650 195 + 1;
+#X obj 481 145 until;
+#X obj 481 108 int 0;
+#X floatatom 228 56 5 0 0 1 cards - -;
+#X obj 180 57 bng 15 250 50 0 empty empty Deal 17 7 0 12 -262144 -1
+-1;
+#X obj 445 340 tabwrite HandPlayer;
+#X obj 649 288 int 0;
+#X obj 706 288 + 1;
+#X obj 600 289 %;
+#X connect 2 0 4 0;
+#X connect 3 0 11 0;
+#X connect 5 0 18 0;
+#X connect 5 0 19 1;
+#X connect 8 0 16 0;
+#X connect 9 0 8 0;
+#X connect 10 0 3 0;
+#X connect 10 0 8 1;
+#X connect 10 0 19 0;
+#X connect 11 0 10 1;
+#X connect 12 0 9 0;
+#X connect 12 0 10 0;
+#X connect 12 0 17 0;
+#X connect 13 0 12 0;
+#X connect 14 0 13 1;
+#X connect 15 0 13 0;
+#X connect 17 0 5 0;
+#X connect 18 0 17 1;
+#X connect 19 0 16 1;

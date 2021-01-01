@@ -1,0 +1,7 @@
+#N canvas 477 221 450 300 10;
+#X text 294 9 Audio output device abstraction;
+#X obj 152 181 dac~;
+#X obj 207 58 inlet~;
+#X obj 98 60 inlet~;
+#X connect 2 0 1 1;
+#X connect 3 0 1 0;

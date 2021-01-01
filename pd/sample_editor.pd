@@ -1,0 +1,22 @@
+#N canvas -8 -8 1280 758 10;
+#X obj 722 192 soundfiler;
+#X floatatom 723 213 5 0 0 0 - - -;
+#X obj 19 75 * 100;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array thefuck 1000 float 2;
+#X coords 0 1 1000 -1 1200 480 1 0 0;
+#X restore 23 245 graph;
+#X obj 23 39 hsl 640 32 0 10000 0 0 empty empty Offset -2 -8 0 10 -260097
+-1 -1 14500 1;
+#X obj 723 138 pack 0 1;
+#X obj 682 39 hsl 128 32 100 44100 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 1700 1;
+#X msg 722 165 read -skip \$1 -resize -maxsize \$2 ./LS100002.WAV thefuck
+;
+#X connect 0 0 1 0;
+#X connect 2 0 5 0;
+#X connect 4 0 2 0;
+#X connect 5 0 7 0;
+#X connect 6 0 5 1;
+#X connect 7 0 0 0;
+#X coords 0 -1 1 1 85 60 1 100 100;

@@ -1,0 +1,323 @@
+#N canvas 461 18 926 549 10;
+#N canvas 163 125 1280 758 micmod 1;
+#X obj 326 172 nbx 5 14 -1e+037 1e+037 0 0 empty empty High 56 8 0
+10 -16662 -4032 -1 0 256;
+#X obj 326 195 nbx 5 14 -1e+037 1e+037 0 0 empty empty Mid 56 8 0 10
+-16662 -4032 -1 0 256;
+#X obj 326 218 nbx 5 14 -1e+037 1e+037 0 0 empty empty Low 56 8 0 10
+-16662 -4032 -1 0 256;
+#X obj 326 241 nbx 5 14 -1e+037 1e+037 0 0 empty empty FX 56 8 0 10
+-86277 -228856 -1 0 256;
+#X obj 326 264 nbx 5 14 -1e+037 1e+037 0 0 empty empty Pan 56 8 0 10
+-33289 -228856 -1 0 256;
+#X obj 111 -133 inlet~;
+#X obj 122 -113 inlet~;
+#X obj 686 -130 outlet~;
+#X obj 220 173 nbx 5 14 -1e+037 1e+037 0 0 empty empty High 56 8 0
+10 -16662 -4032 -1 0 256;
+#X obj 220 196 nbx 5 14 -1e+037 1e+037 0 0 empty empty Mid 56 8 0 10
+-16662 -4032 -1 0 256;
+#X obj 220 219 nbx 5 14 -1e+037 1e+037 0 0 empty empty Low 56 8 0 10
+-16662 -4032 -1 0 256;
+#X obj 220 242 nbx 5 14 -1e+037 1e+037 0 0 empty empty FX 56 8 0 10
+-86277 -228856 -1 0 256;
+#X obj 220 265 nbx 5 14 -1e+037 1e+037 0 0 empty empty Pan 56 8 0 10
+-33289 -228856 -1 0 256;
+#X obj 220 150 nbx 5 14 -1e+037 1e+037 0 0 empty empty Gain 56 8 0
+8 -1 -262144 -1 0 256;
+#X obj 120 172 nbx 5 14 -1e+037 1e+037 0 0 eq1h empty High 56 8 0 10
+-16662 -4032 -1 0 256;
+#X obj 120 195 nbx 5 14 -1e+037 1e+037 0 0 eq1m empty Mid 56 8 0 10
+-16662 -4032 -1 0 256;
+#X obj 120 218 nbx 5 14 -1e+037 1e+037 0 0 eq1l empty Low 56 8 0 10
+-16662 -4032 -1 0 256;
+#X obj 120 241 nbx 5 14 -1e+037 1e+037 0 0 l1fx empty FX 56 8 0 10
+-86277 -228856 -1 0 256;
+#X obj 120 264 nbx 5 14 -1e+037 1e+037 0 0 empty empty Pan 56 8 0 10
+-33289 -228856 -1 0 256;
+#X obj 220 288 nbx 3 14 0 1 0 0 l2 empty LEVEl 0 32 0 16 -262144 -1
+-1 0 256;
+#X obj 120 149 nbx 5 14 0 1 0 0 empty empty Gain 56 8 0 8 -1 -262144
+-1 0 256;
+#X obj 431 173 nbx 5 14 -1e+037 1e+037 0 0 empty empty High 56 8 0
+10 -16662 -4032 -1 0 256;
+#X obj 431 196 nbx 5 14 -1e+037 1e+037 0 0 empty empty Mid 56 8 0 10
+-16662 -4032 -1 0 256;
+#X obj 431 218 nbx 5 14 -1e+037 1e+037 0 0 empty empty Low 56 8 0 10
+-16662 -4032 -1 0 256;
+#X obj 431 241 nbx 5 14 -1e+037 1e+037 0 0 empty empty FX 56 8 0 10
+-86277 -228856 -1 0 256;
+#X obj 431 264 nbx 5 14 -1e+037 1e+037 0 0 empty empty Pan 56 8 0 10
+-33289 -228856 -1 0 256;
+#X obj 554 235 tgl 15 0 ttm empty CD/TAPE_TO_MIX 17 7 0 10 -1 -262144
+-1 0 1;
+#X obj 554 206 tgl 15 0 ttc empty CD/TAPE_TO_CTRL 17 7 0 10 -1 -262144
+-1 0 1;
+#X obj 555 183 nbx 5 14 -1e+037 1e+037 0 0 empty empty AUX_RETURN 0
+-8 0 10 -262144 -1 -1 0 256;
+#X obj 658 287 nbx 3 14 0 1 0 0 lmm empty SECTION -8 32 0 16 -262144
+-1 -1 0 256;
+#X obj 554 287 nbx 3 14 0 1 0 0 lct empty MAIN 24 32 0 16 -262144 -1
+-1 1 256;
+#X obj 203 -135 inlet~;
+#X obj 214 -115 inlet~;
+#X obj 314 -133 inlet~;
+#X obj 325 -113 inlet~;
+#X obj 410 -132 inlet~;
+#X obj 421 -112 inlet~;
+#X obj 497 -128 inlet~;
+#X obj 508 -108 inlet~;
+#X obj 703 -108 outlet~;
+#X obj 720 -85 outlet~;
+#X obj 834 -109 outlet~;
+#X obj 844 -87 outlet~;
+#X obj 607 -130 outlet~;
+#X obj 811 36 inlet~;
+#X obj 821 59 inlet~;
+#X obj 870 37 outlet~;
+#X obj 880 59 outlet~;
+#X text 54 -133 XLR;
+#X text 71 -111 PHO;
+#X text 169 -134 XLR;
+#X text 186 -112 PHO;
+#X text 215 -159 2;
+#X text 326 -157 3;
+#X text 419 -156 4;
+#X text 132 -159 1;
+#X text 462 -151 STEREO AUX RETURN;
+#X text 609 -151 FX SEND;
+#X text 748 -132 PHONES;
+#X text 764 -109 L;
+#X text 780 -84 R;
+#X text 682 -150 CTRL ROOM OUT;
+#X text 832 -149 MAIN OUT;
+#X text 892 -108 L;
+#X text 908 -83 R;
+#X text 783 36 L;
+#X text 799 61 R;
+#X text 932 33 L;
+#X text 948 58 R;
+#X text 841 15 CD/TAPE;
+#X obj 501 73 catch~ ctrlroom;
+#X obj 638 74 catch~ mainmix;
+#N canvas 570 116 450 300 eq 0;
+#X obj 203 80 inlet~;
+#X obj 203 254 outlet~;
+#X floatatom 143 133 5 0 0 0 - eq1h -, f 5;
+#X text 272 164 ... PROCESSING ...;
+#X connect 0 0 1 0;
+#X restore 121 -66 pd eq;
+#X obj 134 -43 *~;
+#X obj 394 73 catch~ fxsend;
+#X obj 221 41 throw~ fxsend;
+#X obj 223 72 throw~ mainmix;
+#X obj 122 -21 *~;
+#X text 295 -136 L;
+#X text 311 -111 R;
+#X text 387 -135 L;
+#X text 403 -110 R;
+#X text 479 -131 L;
+#X text 495 -106 R;
+#X text 142 123 1;
+#X text 109 104 XLR;
+#X text 151 104 PNO;
+#X text 208 104 XLR;
+#X text 257 104 PNO;
+#X text 433 104 L;
+#X text 492 104 R;
+#X text 239 123 2;
+#X text 347 123 3;
+#X text 452 123 4;
+#X text 551 123 AUX RETURN;
+#X text 554 104 L;
+#X text 613 104 R;
+#X text 674 122 CD/TAPE;
+#X text 671 104 L;
+#X text 717 104 R;
+#X obj 756 133 *~;
+#X obj 776 104 r ttm;
+#X obj 757 178 throw~ mainmix;
+#X obj 326 287 nbx 3 14 0 1 0 0 l3 empty LEVEl 0 32 0 16 -262144 -1
+-1 0 256;
+#X obj 431 287 nbx 3 14 0 1 0 0 l4 empty LEVEl 0 32 0 16 -262144 -1
+-1 0 256;
+#X obj 120 287 nbx 3 14 0 1 0 0 l1 empty LEVEl 0 32 0 16 -262144 -1
+-1 0 256;
+#X text 524 348 BEHRINGER 8-INPUT 2-BUS MIXER;
+#X obj 715 52 *~;
+#X obj 701 31 r lmm;
+#X obj 573 30 r lct;
+#X obj 586 51 *~;
+#X text 104 402 FX SEND;
+#X text 185 402 PHONES;
+#X text 290 402 L;
+#X text 376 402 R;
+#X text 454 402 L;
+#X text 542 402 R;
+#X text 632 402 L;
+#X text 718 402 R;
+#X text 305 384 CTRL ROOM;
+#X text 473 384 MAIN MIX;
+#X text 655 385 CD/TAPE;
+#X obj 163 -46 r l1;
+#X obj 163 -66 r l1fx;
+#X obj 508 -81 throw~ ctrlroom;
+#N canvas 0 50 450 300 sigsw 0;
+#X obj 78 83 inlet~;
+#X obj 203 87 inlet~;
+#X obj 315 107 inlet;
+#X obj 190 244 outlet~;
+#X obj 315 144 select 1;
+#X obj 78 105 send~ sswi1;
+#X obj 203 109 send~ sswi2;
+#X msg 287 168 set sswi1;
+#X msg 368 168 set sswi2;
+#X obj 189 206 receive~ sswi2;
+#X connect 0 0 5 0;
+#X connect 1 0 6 0;
+#X connect 2 0 4 0;
+#X connect 4 0 7 0;
+#X connect 4 1 8 0;
+#X connect 7 0 9 0;
+#X connect 8 0 9 0;
+#X connect 9 0 3 0;
+#X restore 908 195 pd sigsw;
+#X obj 978 173 r ttc;
+#X obj 907 226 throw~ ctrlroom;
+#N canvas 570 116 450 300 eq 0;
+#X obj 203 80 inlet~;
+#X obj 203 254 outlet~;
+#X floatatom 143 133 5 0 0 0 - eq1h -, f 5;
+#X text 272 164 ... PROCESSING ...;
+#X connect 0 0 1 0;
+#X restore 214 -66 pd eq;
+#X obj 227 -43 *~;
+#X obj 215 -21 *~;
+#X obj 256 -66 r l2fx;
+#X obj 256 -46 r l2;
+#N canvas 570 116 450 300 eq 0;
+#X obj 203 80 inlet~;
+#X obj 203 254 outlet~;
+#X floatatom 143 133 5 0 0 0 - eq1h -, f 5;
+#X text 272 164 ... PROCESSING ...;
+#X connect 0 0 1 0;
+#X restore 308 -66 pd eq;
+#X obj 321 -43 *~;
+#X obj 309 -21 *~;
+#X obj 350 -66 r l3fx;
+#X obj 350 -46 r l3;
+#N canvas 570 116 450 300 eq 0;
+#X obj 203 80 inlet~;
+#X obj 203 254 outlet~;
+#X floatatom 143 133 5 0 0 0 - eq1h -, f 5;
+#X text 272 164 ... PROCESSING ...;
+#X connect 0 0 1 0;
+#X restore 401 -67 pd eq;
+#X obj 414 -44 *~;
+#X obj 402 -22 *~;
+#X obj 443 -67 r l4fx;
+#X obj 443 -47 r l4;
+#X text 327 104 L;
+#X text 378 103 R;
+#N canvas 220 93 450 300 onparentjacks 0;
+#X obj 209 78 inlet~;
+#X obj 209 163 outlet~;
+#X restore 604 145 pd onparentjacks;
+#X connect 6 0 72 0;
+#X connect 32 0 128 0;
+#X connect 38 0 124 0;
+#X connect 44 0 100 0;
+#X connect 44 0 125 0;
+#X connect 45 0 100 0;
+#X connect 45 0 125 0;
+#X connect 70 0 110 0;
+#X connect 71 0 107 0;
+#X connect 72 0 73 0;
+#X connect 72 0 77 0;
+#X connect 73 0 75 0;
+#X connect 74 0 43 0;
+#X connect 77 0 76 0;
+#X connect 100 0 102 0;
+#X connect 101 0 100 1;
+#X connect 107 0 41 0;
+#X connect 107 0 42 0;
+#X connect 107 0 46 0;
+#X connect 107 0 47 0;
+#X connect 107 0 125 1;
+#X connect 108 0 107 1;
+#X connect 109 0 110 1;
+#X connect 110 0 7 0;
+#X connect 110 0 39 0;
+#X connect 110 0 40 0;
+#X connect 122 0 77 1;
+#X connect 123 0 73 1;
+#X connect 125 0 127 0;
+#X connect 126 0 125 2;
+#X connect 128 0 129 0;
+#X connect 128 0 130 0;
+#X connect 129 0 75 0;
+#X connect 130 0 76 0;
+#X connect 131 0 129 1;
+#X connect 132 0 130 1;
+#X connect 133 0 134 0;
+#X connect 133 0 135 0;
+#X connect 134 0 75 0;
+#X connect 135 0 76 0;
+#X connect 136 0 134 1;
+#X connect 137 0 135 1;
+#X connect 138 0 139 0;
+#X connect 138 0 140 0;
+#X connect 139 0 75 0;
+#X connect 140 0 76 0;
+#X connect 141 0 139 1;
+#X connect 142 0 140 1;
+#X coords 0 -1 1 1 640 320 2 100 100;
+#X restore 158 40 pd micmod;
+#N canvas 365 209 622 370 tape 0;
+#X obj 240 78 inlet~;
+#X obj 245 313 outlet~;
+#X obj 331 166 osc~ 440;
+#X obj 331 205 *~ 0.1;
+#X obj 244 245 +~;
+#X obj 97 195 catch~ vmonit;
+#X obj 104 255 catch~ vnull;
+#X msg 346 109 set vnull;
+#X obj 307 78 select 1;
+#X msg 259 109 set vmonit;
+#X obj 246 144 throw~ vnull;
+#X obj 103 104 tgl 23 0 empty empty SOFT-THRU 24 7 0 12 -260097 -1
+-1 0 1;
+#X text 102 143 TAPE MACHINE;
+#X connect 0 0 10 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 1;
+#X connect 4 0 1 0;
+#X connect 5 0 4 0;
+#X connect 7 0 10 0;
+#X connect 8 0 9 0;
+#X connect 8 1 7 0;
+#X connect 9 0 10 0;
+#X connect 11 0 8 0;
+#X coords 0 -1 1 1 96 60 2 100 100;
+#X restore 542 400 pd tape;
+#X obj 214 13 *~ 0.1;
+#X obj 350 470 dac~;
+#X obj 214 -9 osc~ 220;
+#X obj 543 472 send~ a;
+#X obj 733 7 receive~ a;
+#X obj 631 374 send~ b;
+#X obj 542 374 receive~ b;
+#X obj 331 7 adc~;
+#X text 461 490 Ovde paziti moraju se koristiti send~ i receive~ zato
+što odlažu audio za jedan buffer u protivnom pd engine onesposobljava
+DSP zbog soft-feedback-a;
+#X text 836 83 by Rastko;
+#X connect 0 2 3 0;
+#X connect 0 3 3 1;
+#X connect 0 6 7 0;
+#X connect 1 0 5 0;
+#X connect 2 0 0 1;
+#X connect 4 0 2 0;
+#X connect 6 0 0 10;
+#X connect 8 0 1 0;
+#X connect 9 0 0 3;

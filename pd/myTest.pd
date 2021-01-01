@@ -1,0 +1,10 @@
+#N canvas 830 330 450 300 12;
+#X obj 160 183 print -n;
+#X obj 83 68 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 160 130 myLooper 52;
+#X obj 247 66 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 1;

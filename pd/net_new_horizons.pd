@@ -1,0 +1,11 @@
+#N canvas 178 153 450 300 10;
+#X msg 259 69 disconnect;
+#X obj 254 179 print netio;
+#X msg 113 50 send 1;
+#X obj 155 152 netsend -u -b;
+#X msg 175 49 connect localhost 8089;
+#X obj 254 152 netreceive -u -b 8089;
+#X connect 0 0 3 0;
+#X connect 2 0 3 0;
+#X connect 4 0 3 0;
+#X connect 5 0 1 0;

@@ -1,0 +1,24 @@
+#N canvas 778 148 450 619 10;
+#X obj 179 278 hradio 32 1 0 4 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 179 143 vsl 24 128 0 127 0 0 empty empty empty 0 -9 0 10 -203904
+-1 -1 0 1;
+#X obj 209 143 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 7300 1;
+#X obj 230 143 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 250 143 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 500 1;
+#X obj 272 143 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1300 1;
+#X obj 292 143 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 313 143 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 98 43 iface_mpd24 0 0 0 0 0 0;
+#X connect 8 0 0 0;
+#X connect 8 1 4 0;
+#X connect 8 2 3 0;
+#X connect 8 3 1 0;
+#X connect 8 4 2 0;
+#X connect 8 5 5 0;

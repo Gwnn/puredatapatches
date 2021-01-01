@@ -1,0 +1,22 @@
+#N canvas 480 156 1263 745 12;
+#X obj 237 156 log;
+#X floatatom 247 84 5 20 8192 1 Hz - -;
+#X obj 289 116 / 440;
+#X floatatom 333 84 5 331 449 1 Hz_Y - -;
+#X obj 314 192 * 12;
+#X obj 247 267 + 69;
+#X floatatom 355 217 5 0 69 0 - - -;
+#X floatatom 249 341 5 0 0 0 - - -;
+#X obj 248 305 int;
+#X text 409 184 A formula for calculating pitch from frequency \, according
+to TTEM book. Written by Rastko Petrovic. As a good practice \, try
+to relate the mathematical form of the formula \, to the visual structure
+in pd;
+#X connect 0 0 4 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 1;
+#X connect 4 0 5 0;
+#X connect 5 0 8 0;
+#X connect 6 0 5 1;
+#X connect 8 0 7 0;

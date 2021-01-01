@@ -1,0 +1,25 @@
+#N canvas 0 0 1263 715 12;
+#X obj 644 237 int 0;
+#X obj 729 237 + 1;
+#X floatatom 597 369 5 0 0 0 - - -;
+#X obj 644 197 until;
+#X obj 729 269 mod 52;
+#X obj 806 236 sel 0;
+#X obj 412 267 random 52;
+#X obj 622 28 inlet;
+#X obj 413 308 tabwrite \$1;
+#X text 751 25 The inlet takes a signal \, and bangs "until" which
+sends bangs until the stored number ("int") becomes 52 \, at the same
+time writing a random value into the array element. The "mod" provides
+both a loop sentinel and a reset mechanism for the "tabwrite";
+#X connect 0 0 1 0;
+#X connect 0 0 2 0;
+#X connect 1 0 4 0;
+#X connect 2 0 8 1;
+#X connect 3 0 0 0;
+#X connect 3 0 6 0;
+#X connect 4 0 0 1;
+#X connect 4 0 5 0;
+#X connect 5 0 3 1;
+#X connect 6 0 8 0;
+#X connect 7 0 3 0;

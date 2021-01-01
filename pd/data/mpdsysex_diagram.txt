@@ -1,0 +1,42 @@
+ SysExBoiler	[7] (240, 71, 0, 104, 16, 3, 113)
+ PresetLocation [1] // is this input or output?
+ PresetName	[8] (ASCII)
+ PresetDefBank 	[1] (0=A, 3=D)
+ PresetTrspMode [1] (0=MMC, 1=CTRL)
+ ???		[20] = 0
+ KnobChannels	[8]
+ FaderChannels	[6]
+ KnobCC		[8]
+ FaderCC	[6]
+ KnobMinVal	[8]
+ FaderMinVal	[6]
+ KnobMaxVal	[8]
+ FaderMaxVal	[6]
+ KnobInitPos	[8]
+ FaderInitPos	[6]
+ BankAPadType	[16] (2=NOTE, 3=PROGCHANGE)
+ BankAPadCh	[16] (0=CC...32=16B)
+ BankAPadNn	[16] (CC; NN; PRG)
+ BankAPadTg	[16] (0=MTY, 1=TGL; MSB)
+ BankAPadAt	[16] (0=OFF...2=PPR; LSB)
+ BankBPadType	[16] 
+ BankBPadCh	[16]
+ BankBPadNn	[16]
+ BankBPadTg	[16] 
+ BankBPadAt	[16]
+ BankCPadType	[16] 
+ BankCPadCh	[16]
+ BankCPadNn	[16]
+ BankCPadTg	[16] 
+ BankCPadAt	[16]
+ BankDPadType	[16] 
+ BankDPadCh	[16]
+ BankDPadNn	[16]
+ BankDPadTg	[16] 
+ BankDPadAt	[16] 
+ ???		[16] = 0 (FILLERS?)
+ ???		[16] = 0
+ ???		[16] = 0
+ ???		[16] = 0
+ ???		[12] = 0
+ EOX		[1]

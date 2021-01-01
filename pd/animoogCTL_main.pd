@@ -1,0 +1,625 @@
+#N canvas -9 -9 1845 1028 12;
+#N canvas 923 0 904 1010 ammod_path 0;
+#X obj 200 212 cnv 15 64 244 empty empty empty 20 12 1 12 -66577 -228856
+0;
+#X obj 214 270 hsl 36 36 0 127 0 0 \$0-CtlKPathRate \$0-CtlKPathRateIn
+RATE 7 42 1 8 -191407 -66577 -228856 2600 1;
+#X obj 210 331 hradio 15 1 0 3 \$0-CtlSPathMode empty MODE 8 24 1 8
+-191407 -66577 -228856 0;
+#X obj 221 371 bng 24 250 50 0 \$0-CtlTPathClear \$0-CtlTPathClearIn
+CLEAR -2 32 1 8 -99865 -191407 -228856;
+#X obj 220 220 tgl 24 0 \$0-CtlWPathSync \$0-CtlWPathSyncIn SYNC 0
+32 1 8 -49153 -49153 -174763 0 1;
+#X obj 221 415 tgl 24 0 \$0-CtlWPathEdit \$0-CtlWPathEditIn EDIT 2
+32 1 8 -86277 -258113 -228856 0 1;
+#X obj 200 200 cnv 11 64 12 empty empty PATH 20 7 1 8 -233017 -66577
+0;
+#N canvas -9 -9 1845 1028 color 0;
+#X obj 241 51 r \$0-CtlWPathSync;
+#X obj 71 353 s \$0-CtlWPathSyncIn;
+#X obj 71 49 loadbang;
+#X symbolatom 71 221 10 0 0 0 - - -;
+#X symbolatom 146 221 10 0 0 0 - - -;
+#X symbolatom 222 221 10 0 0 0 - - -;
+#X msg 71 326 color \$1 \$2 \$3;
+#X obj 241 78 select 0 1;
+#X obj 222 246 t s s;
+#X obj 71 245 t s s;
+#X obj 71 170 unpack symbol symbol symbol symbol symbol symbol symbol
+;
+#X symbolatom 301 222 10 0 0 0 - - -;
+#X symbolatom 380 222 10 0 0 0 - - -;
+#X symbolatom 458 222 10 0 0 0 - - -;
+#X symbolatom 535 223 10 0 0 0 - - -;
+#X obj 146 247 t s s;
+#X msg 71 83 list #330000 #AA0000 #AAAAAA;
+#X obj 71 298 pack symbol symbol symbol symbol symbol symbol symbol
+;
+#X connect 0 0 7 0;
+#X connect 2 0 16 0;
+#X connect 3 0 9 0;
+#X connect 4 0 15 0;
+#X connect 5 0 8 0;
+#X connect 6 0 1 0;
+#X connect 7 0 3 0;
+#X connect 7 1 4 0;
+#X connect 8 1 17 2;
+#X connect 9 0 17 0;
+#X connect 9 1 17 1;
+#X connect 10 0 3 0;
+#X connect 10 1 4 0;
+#X connect 10 2 5 0;
+#X connect 10 3 11 0;
+#X connect 10 4 12 0;
+#X connect 10 5 13 0;
+#X connect 10 6 14 0;
+#X connect 15 0 17 0;
+#X connect 15 1 17 1;
+#X connect 16 0 10 0;
+#X connect 17 0 6 0;
+#X restore 79 83 pd color;
+#X coords 0 -1 1 1 64 256 2 200 200;
+#X restore 177 77 pd ammod_path;
+#N canvas -1929 104 1920 1028 ammod_map 0;
+#X obj 34 39 r \$0-CtlKPathRate;
+#X floatatom 34 61 5 0 0 0 - - -;
+#X obj 34 116 ctlout 22 14;
+#X floatatom 165 61 5 0 0 0 - - -;
+#X obj 165 39 r \$0-CtlSPathMode;
+#X obj 165 115 ctlout 23 14;
+#X obj 165 84 * 64;
+#X floatatom 302 62 5 0 0 0 - - -;
+#X obj 302 40 r \$0-CtlWPathSync;
+#X obj 302 85 * 128;
+#X obj 302 115 ctlout 24 14;
+#X floatatom 31 165 5 0 0 0 - - -;
+#X floatatom 165 165 5 0 0 0 - - -;
+#X floatatom 302 165 5 0 0 0 - - -;
+#X obj 31 143 r \$0-CtlKOrbitTime;
+#X obj 165 143 r \$0-CtlKOrbitXAmt;
+#X obj 302 143 r \$0-CtlKOrbitYAmt;
+#X obj 31 218 ctlout 25 14;
+#X obj 165 218 ctlout 26 14;
+#X obj 302 218 ctlout 27 14;
+#X floatatom 445 165 5 0 0 0 - - -;
+#X obj 445 188 * 128;
+#X obj 445 218 ctlout 28 14;
+#X obj 445 143 r \$0-CtlKOrbitSync;
+#X obj 165 188 * 1;
+#X obj 31 188 * 1;
+#X obj 302 188 * 1;
+#X floatatom 32 273 5 0 0 0 - - -;
+#X floatatom 166 273 5 0 0 0 - - -;
+#X floatatom 303 273 5 0 0 0 - - -;
+#X floatatom 446 273 5 0 0 0 - - -;
+#X obj 166 296 * 1;
+#X obj 32 296 * 1;
+#X obj 303 296 * 1;
+#X obj 32 251 r \$0-CtlKVcaA;
+#X obj 32 326 ctlout 29 14;
+#X obj 166 326 ctlout 30 14;
+#X obj 303 326 ctlout 31 14;
+#X obj 446 326 ctlout 32 14;
+#X obj 166 251 r \$0-CtlKVcaD;
+#X obj 303 251 r \$0-CtlKVcaS;
+#X obj 446 251 r \$0-CtlKVcaR;
+#X obj 446 296 * 1;
+#X floatatom 29 386 5 0 0 0 - - -;
+#X floatatom 163 386 5 0 0 0 - - -;
+#X floatatom 300 386 5 0 0 0 - - -;
+#X floatatom 443 386 5 0 0 0 - - -;
+#X obj 163 409 * 1;
+#X obj 29 409 * 1;
+#X obj 300 409 * 1;
+#X obj 443 409 * 1;
+#X obj 29 439 ctlout 33 14;
+#X obj 163 439 ctlout 34 14;
+#X obj 300 439 ctlout 35 14;
+#X obj 443 439 ctlout 36 14;
+#X obj 29 364 r \$0-CtlKVcfA;
+#X obj 163 364 r \$0-CtlKVcfD;
+#X obj 300 364 r \$0-CtlKVcfS;
+#X obj 443 364 r \$0-CtlKVcfR;
+#X floatatom 29 489 5 0 0 0 - - -;
+#X floatatom 163 489 5 0 0 0 - - -;
+#X floatatom 300 489 5 0 0 0 - - -;
+#X floatatom 443 489 5 0 0 0 - - -;
+#X obj 163 512 * 1;
+#X obj 29 512 * 1;
+#X obj 300 512 * 1;
+#X obj 443 512 * 1;
+#X obj 29 542 ctlout 37 14;
+#X obj 163 542 ctlout 38 14;
+#X obj 300 542 ctlout 39 14;
+#X obj 443 542 ctlout 40 14;
+#X obj 29 467 r \$0-CtlKModA;
+#X obj 163 467 r \$0-CtlKModD;
+#X obj 300 467 r \$0-CtlKModS;
+#X obj 443 467 r \$0-CtlKModR;
+#X floatatom 29 591 5 0 0 0 - - -;
+#X floatatom 163 591 5 0 0 0 - - -;
+#X floatatom 300 591 5 0 0 0 - - -;
+#X floatatom 443 591 5 0 0 0 - - -;
+#X obj 300 614 * 1;
+#X obj 28 644 ctlout 41 14;
+#X obj 163 644 ctlout 42 14;
+#X obj 300 644 ctlout 43 14;
+#X obj 443 644 ctlout 44 14;
+#X obj 29 569 r \$0-CtlTLfoSync;
+#X obj 163 569 r \$0-CtlTLfoKbd;
+#X obj 300 569 r \$0-CtlKLfoRate;
+#X obj 443 569 r \$0-CtlSLfoShape;
+#X obj 443 614 * 32;
+#X obj 163 614 * 127;
+#X obj 29 614 * 127;
+#X floatatom 28 692 5 0 0 0 - - -;
+#X floatatom 162 692 5 0 0 0 - - -;
+#X floatatom 299 692 5 0 0 0 - - -;
+#X floatatom 442 692 5 0 0 0 - - -;
+#X obj 299 715 * 1;
+#X obj 27 745 ctlout 45 14;
+#X obj 162 745 ctlout 46 14;
+#X obj 299 745 ctlout 47 14;
+#X obj 442 745 ctlout 48 14;
+#X obj 28 670 r \$0-CtlSVcfType;
+#X obj 162 670 r \$0-CtlKVcfDrive;
+#X obj 299 670 r \$0-CtlKVcfEnv;
+#X obj 442 670 r \$0-CtlKVcfFreq;
+#X floatatom 569 692 5 0 0 0 - - -;
+#X obj 569 745 ctlout 49 14;
+#X obj 569 670 r \$0-CtlKVcfRes;
+#X obj 569 715 * 1;
+#X obj 442 715 * 1;
+#X obj 162 715 * 1;
+#X obj 28 715 * 64;
+#X floatatom 26 799 5 0 0 0 - - -;
+#X floatatom 179 799 5 0 0 0 - - -;
+#X floatatom 336 799 5 0 0 0 - - -;
+#X floatatom 479 799 5 0 0 0 - - -;
+#X obj 336 822 * 1;
+#X obj 479 822 * 1;
+#X obj 179 822 * 1;
+#X obj 26 822 * 64;
+#X obj 25 852 ctlout 50 14;
+#X obj 179 852 ctlout 51 14;
+#X obj 336 852 ctlout 52 14;
+#X obj 479 852 ctlout 53 14;
+#X obj 26 777 r \$0-CtlSThickUnison;
+#X obj 179 777 r \$0-CtlKThickCrush;
+#X obj 336 777 r \$0-CtlKThickDrive;
+#X obj 479 777 r \$0-CtlKThickDetune;
+#X floatatom 25 910 5 0 0 0 - - -;
+#X obj 25 933 * 128;
+#X obj 25 963 ctlout 54 14;
+#X obj 24 888 r \$0-CtlWKbdHold;
+#X floatatom 147 910 5 0 0 0 - - -;
+#X obj 147 933 * 1;
+#X obj 146 888 r \$0-CtlKKbdMod;
+#X floatatom 261 910 5 0 0 0 - - -;
+#X obj 261 933 * 1;
+#X obj 260 888 r \$0-CtlKKbdPB;
+#X obj 261 963 ctlout 56 14;
+#X obj 147 963 ctlout 1 14;
+#X text 786 783 THICK;
+#X text 776 674 FILTER;
+#X text 793 572 LFO;
+#X text 764 458 MOD ENV;
+#X text 746 368 FILTER ENV;
+#X text 765 252 AMP ENV;
+#X text 777 150 ORBIT;
+#X text 782 50 PATH;
+#X text 799 890 KBD;
+#X floatatom 23 1019 5 0 0 0 - - -;
+#X floatatom 157 1019 5 0 0 0 - - -;
+#X floatatom 294 1019 5 0 0 0 - - -;
+#X floatatom 437 1019 5 0 0 0 - - -;
+#X obj 437 1042 * 128;
+#X obj 157 1042 * 1;
+#X obj 294 1042 * 1;
+#X obj 23 1043 * 1;
+#X obj 23 997 r \$0-CtlKDlyTime;
+#X obj 157 997 r \$0-CtlKDlyFeed;
+#X obj 294 997 r \$0-CtlKDlyMix;
+#X obj 437 997 r \$0-CtlTDlySync;
+#X obj 23 1072 ctlout 57 14;
+#X obj 157 1072 ctlout 58 14;
+#X obj 294 1072 ctlout 59 14;
+#X obj 437 1072 ctlout 60 14;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 3 0 6 0;
+#X connect 4 0 3 0;
+#X connect 6 0 5 0;
+#X connect 7 0 9 0;
+#X connect 8 0 7 0;
+#X connect 9 0 10 0;
+#X connect 11 0 25 0;
+#X connect 12 0 24 0;
+#X connect 13 0 26 0;
+#X connect 14 0 11 0;
+#X connect 15 0 12 0;
+#X connect 16 0 13 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 23 0 20 0;
+#X connect 24 0 18 0;
+#X connect 25 0 17 0;
+#X connect 26 0 19 0;
+#X connect 27 0 32 0;
+#X connect 28 0 31 0;
+#X connect 29 0 33 0;
+#X connect 30 0 42 0;
+#X connect 31 0 36 0;
+#X connect 32 0 35 0;
+#X connect 33 0 37 0;
+#X connect 34 0 27 0;
+#X connect 39 0 28 0;
+#X connect 40 0 29 0;
+#X connect 41 0 30 0;
+#X connect 42 0 38 0;
+#X connect 43 0 48 0;
+#X connect 44 0 47 0;
+#X connect 45 0 49 0;
+#X connect 46 0 50 0;
+#X connect 47 0 52 0;
+#X connect 48 0 51 0;
+#X connect 49 0 53 0;
+#X connect 50 0 54 0;
+#X connect 55 0 43 0;
+#X connect 56 0 44 0;
+#X connect 57 0 45 0;
+#X connect 58 0 46 0;
+#X connect 59 0 64 0;
+#X connect 60 0 63 0;
+#X connect 61 0 65 0;
+#X connect 62 0 66 0;
+#X connect 63 0 68 0;
+#X connect 64 0 67 0;
+#X connect 65 0 69 0;
+#X connect 66 0 70 0;
+#X connect 71 0 59 0;
+#X connect 72 0 60 0;
+#X connect 73 0 61 0;
+#X connect 74 0 62 0;
+#X connect 75 0 90 0;
+#X connect 76 0 89 0;
+#X connect 77 0 79 0;
+#X connect 78 0 88 0;
+#X connect 79 0 82 0;
+#X connect 84 0 75 0;
+#X connect 85 0 76 0;
+#X connect 86 0 77 0;
+#X connect 87 0 78 0;
+#X connect 88 0 83 0;
+#X connect 89 0 81 0;
+#X connect 90 0 80 0;
+#X connect 91 0 110 0;
+#X connect 92 0 109 0;
+#X connect 93 0 95 0;
+#X connect 94 0 108 0;
+#X connect 95 0 98 0;
+#X connect 100 0 91 0;
+#X connect 101 0 92 0;
+#X connect 102 0 93 0;
+#X connect 103 0 94 0;
+#X connect 104 0 107 0;
+#X connect 106 0 104 0;
+#X connect 107 0 105 0;
+#X connect 108 0 99 0;
+#X connect 109 0 97 0;
+#X connect 110 0 96 0;
+#X connect 111 0 118 0;
+#X connect 112 0 117 0;
+#X connect 113 0 115 0;
+#X connect 114 0 116 0;
+#X connect 115 0 121 0;
+#X connect 116 0 122 0;
+#X connect 117 0 120 0;
+#X connect 118 0 119 0;
+#X connect 123 0 111 0;
+#X connect 124 0 112 0;
+#X connect 125 0 113 0;
+#X connect 126 0 114 0;
+#X connect 127 0 128 0;
+#X connect 128 0 129 0;
+#X connect 130 0 127 0;
+#X connect 131 0 132 0;
+#X connect 132 0 138 0;
+#X connect 133 0 131 0;
+#X connect 134 0 135 0;
+#X connect 135 0 137 0;
+#X connect 136 0 134 0;
+#X connect 148 0 155 0;
+#X connect 149 0 153 0;
+#X connect 150 0 154 0;
+#X connect 151 0 152 0;
+#X connect 152 0 163 0;
+#X connect 153 0 161 0;
+#X connect 154 0 162 0;
+#X connect 155 0 160 0;
+#X connect 156 0 148 0;
+#X connect 157 0 149 0;
+#X connect 158 0 150 0;
+#X connect 159 0 151 0;
+#X restore 233 20 pd ammod_map;
+#N canvas 48 79 890 671 ammod_orbit 0;
+#X obj 200 211 cnv 15 64 244 empty empty empty 20 12 1 12 -66577 -228856
+0;
+#X obj 214 274 hsl 36 36 0 127 0 0 \$0-CtlKOrbitTime empty TIME 7 42
+1 8 -191407 -66577 -228856 2500 1;
+#X obj 220 220 tgl 24 0 \$0-CtlWPathSync empty SYNC 0 32 1 8 -86277
+-258113 -228856 0 1;
+#X obj 200 200 cnv 11 64 12 empty empty ORBIT 18 8 1 8 -233017 -66577
+0;
+#X obj 214 339 hsl 36 36 0 127 0 0 \$0-CtlKOrbitXAmt empty XAMT 7 42
+1 8 -191407 -66577 -228856 0 1;
+#X obj 214 404 hsl 36 36 0 127 0 0 \$0-CtlKOrbitYAmt empty YAMT 7 42
+1 8 -191407 -66577 -228856 0 1;
+#X coords 0 -1 1 1 64 256 2 200 200;
+#X restore 46 77 pd ammod_orbit;
+#N canvas 576 195 956 509 ammod_vcaenv 0;
+#X obj 200 200 cnv 15 96 64 empty empty empty 20 12 0 14 -13381 -66577
+0;
+#X obj 212 218 vsl 15 32 0 127 0 0 \$0-CtlKVcaA empty A 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 232 218 vsl 15 32 0 127 0 0 \$0-CtlKVcaD empty D 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 252 218 vsl 15 32 0 127 0 0 \$0-CtlKVcaS empty S 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 272 218 vsl 15 32 0 127 0 0 \$0-CtlKVcaR empty R 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 200 255 cnv 15 96 16 empty empty AMP 20 4 1 8 -13381 -92993
+0;
+#X coords 0 -1 1 1 96 72 2 200 200;
+#X restore 243 77 pd ammod_vcaenv;
+#N canvas 509 119 956 509 ammod_vcaenv 0;
+#X obj 200 200 cnv 15 96 64 empty empty empty 20 12 0 14 -13381 -66577
+0;
+#X obj 212 218 vsl 15 32 0 127 0 0 \$0-CtlKVcfA empty A 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 232 218 vsl 15 32 0 127 0 0 \$0-CtlKVcfD empty D 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 252 218 vsl 15 32 0 127 0 0 \$0-CtlKVcfS empty S 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 272 218 vsl 15 32 0 127 0 0 \$0-CtlKVcfR empty R 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 200 255 cnv 15 96 16 empty empty FILTER 20 4 1 8 -29505 -4034
+0;
+#X coords 0 -1 1 1 96 72 2 200 200;
+#X restore 243 168 pd ammod_vcaenv;
+#N canvas 2582 81 956 509 ammod_vcaenv 0;
+#X obj 200 200 cnv 15 96 64 empty empty empty 20 12 0 14 -13381 -66577
+0;
+#X obj 212 218 vsl 15 32 0 127 0 0 \$0-CtlKModA empty A 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 232 218 vsl 15 32 0 127 0 0 \$0-CtlKModD empty D 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 252 218 vsl 15 32 0 127 0 0 \$0-CtlKModS empty S 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 272 218 vsl 15 32 0 127 0 0 \$0-CtlKModR empty R 4 -9 1 10 -59137
+-92993 -25345 0 1;
+#X obj 200 255 cnv 15 96 16 empty empty MOD 20 4 1 8 -29505 -4034 0
+;
+#X coords 0 -1 1 1 96 72 2 200 200;
+#X restore 243 261 pd ammod_vcaenv;
+#N canvas 703 206 450 492 ammod_lfo 0;
+#X obj 35 20 cnv 15 176 72 empty empty empty 0 7 0 14 -13381 -66577
+0;
+#X obj 48 41 hsl 36 36 0 127 0 0 \$0-CtlKLfoRate empty RATE 8 42 1
+8 -59137 -92993 -228856 0 1;
+#X obj 96 53 tgl 24 0 \$0-CtlTLfoSync \$0-CtlTLfoSync SYNC 0 30 1 8
+-59137 -59137 -228856 0 1;
+#X obj 177 53 tgl 24 0 \$0-CtlTLfoKbd \$0-CtlTLfoKbd KB 6 30 1 8 -59137
+-59137 -228856 0 1;
+#X obj 21 20 cnv 11 16 72 empty empty LFO 4 7 1 8 -13381 -92993 0;
+#X obj 131 41 hsl 36 36 0 4 0 0 \$0-CtlSLfoShape \$0-CtlSLfoShapeIn
+SHAPE 8 42 1 8 -59137 -92993 -228856 3700 1;
+#X coords 0 -1 1 1 192 72 2 20 20;
+#X restore 340 77 pd ammod_lfo;
+#N canvas 613 313 450 580 ammod_filter 0;
+#X obj 21 32 cnv 15 64 244 empty empty empty 20 12 0 14 -66577 -66577
+0;
+#X obj 35 46 hradio 12 1 0 3 \$0-CtlSVcfType empty TYPE 10 18 1 8 -191407
+-99865 -228856 0;
+#X obj 21 20 cnv 11 64 12 empty empty FILTER 18 7 1 8 -228856 -33289
+0;
+#X obj 36 158 hsl 36 36 0 127 0 0 \$0-CtlKVcfFreq empty FREQ 8 42 1
+8 -191407 -99865 -228856 0 1;
+#X obj 36 223 hsl 36 36 0 127 0 0 \$0-CtlKVcfRes empty RES. 8 42 1
+8 -191407 -99865 -228856 0 1;
+#X obj 31 88 vsl 15 36 0 127 0 0 \$0-CtlKVcfDrive empty DRIVE -4 44
+1 8 -191407 -1 -191407 0 1;
+#X obj 59 88 vsl 15 36 0 127 0 0 \$0-CtlKVcfEnv empty ENV. 0 44 1 8
+-191407 -1 -191407 0 1;
+#X coords 0 -1 1 1 64 256 2 20 20;
+#X restore 111 77 pd ammod_filter;
+#N canvas 1240 154 450 492 ammod_thick 0;
+#X obj 20 32 cnv 15 64 244 empty empty empty 20 12 0 14 -66577 -66577
+0;
+#X obj 35 238 hradio 12 1 0 3 \$0-CtlSThickUnison empty UNISON 4 18
+1 8 -191407 -99865 -228856 2;
+#X obj 20 20 cnv 11 64 12 empty empty THICK 18 7 1 8 -228856 -33289
+0;
+#X obj 34 43 hsl 36 36 0 127 0 0 \$0-CtlKThickCrush empty CRUSH 8 42
+1 8 -191407 -99865 -228856 0 1;
+#X obj 34 109 hsl 36 36 0 127 0 0 \$0-CtlKThickDrive empty DRIVE 8
+42 1 8 -191407 -99865 -228856 0 1;
+#X obj 35 174 hsl 36 36 0 127 0 0 \$0-CtlKThickDetune empty DETUNE
+2 42 1 8 -191407 -99865 -228856 0 1;
+#X coords 0 -1 1 1 64 256 2 20 20;
+#X restore 534 77 pd ammod_thick;
+#X obj 45 47 cnv 15 480 24 empty empty ____________________________[ANIMOOG]_______________moog
+20 12 1 14 -233017 -66577 0;
+#N canvas -1929 104 1920 1028 notesq 0;
+#X obj 45 214 random 12;
+#X msg 59 101 stop;
+#X obj 46 177 metro 250;
+#X obj 49 56 r \$0-seqStart;
+#X obj 155 56 r \$0-seqStop;
+#X obj 146 104 bng 15 250 50 0 \$0-seqStart \$0-seqStart > 5 7 0 10
+-262144 -13381 -13381;
+#X obj 165 104 bng 15 250 50 0 \$0-seqStop \$0-seqStop [] 2 7 0 10
+-262144 -99865 -99865;
+#N canvas -9 -9 1845 1028 BPMCalc 0;
+#X text 60 45 granularity;
+#X obj 227 8 inlet;
+#X obj 227 215 outlet;
+#X obj 227 97 /;
+#X obj 227 34 t b f;
+#X obj 227 66 int 60;
+#X obj 227 178 / 16;
+#X text 287 138 <- why the fuck 2 and not 4 \; figure out;
+#X obj 227 140 * 4000;
+#X connect 1 0 4 0;
+#X connect 3 0 8 0;
+#X connect 4 0 5 0;
+#X connect 4 1 3 1;
+#X connect 5 0 3 0;
+#X connect 6 0 2 0;
+#X connect 8 0 6 0;
+#X restore 106 136 pd BPMCalc;
+#X obj 141 367 notein;
+#X obj 141 471 noteout 14;
+#X obj 107 104 nbx 3 15 40 160 0 1 \$0-dispBPM \$0-dispBPM empty 0
+-9 0 10 -262144 -1 -1 120 256;
+#X obj 45 367 makenote 112;
+#X obj 651 145 array set \$0-lascala;
+#X obj 310 240 array define -yrange 0 11 -k \$0-lascala 14;
+#A 0 0 0 3 3 3 7 7 7 10 10 10 10 0 0;
+#X obj 45 254 array get \$0-lascala 0 1;
+#X obj 258 224 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 45 318 + 36;
+#X msg 651 90 0 0 3 3 3 7 7 7 10 0 0 10;
+#X floatatom 149 326 5 0 0 0 - - -;
+#X connect 0 0 14 0;
+#X connect 1 0 2 0;
+#X connect 2 0 15 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 1 0;
+#X connect 7 0 2 1;
+#X connect 8 0 9 0;
+#X connect 8 1 9 1;
+#X connect 10 0 7 0;
+#X connect 11 0 9 0;
+#X connect 11 1 9 1;
+#X connect 14 0 16 0;
+#X connect 16 0 11 0;
+#X connect 17 0 12 0;
+#X connect 18 0 11 2;
+#X coords 0 -1 1 1 85 24 2 100 100;
+#X restore 446 265 pd notesq;
+#N canvas 88 144 671 583 Kbd 0;
+#X obj 151 35 ctlin 1;
+#X obj 100 100 cnv 15 100 64 empty empty empty 20 12 0 14 -128992 -66577
+0;
+#X obj 179 107 tgl 16 0 \$0-CtlWKbdHold \$0-CtlWKbdHoldIn HOLD 0 8
+0 7 -49153 -49153 -174763 0 1;
+#X obj 104 109 vsl 16 48 0 127 0 0 \$0-CtlKKbdMod empty empty 0 -9
+0 10 -33289 -4034 -1 0 1;
+#X floatatom 84 256 5 0 0 0 - - -;
+#N canvas 599 73 1845 1028 color 0;
+#X obj 71 49 loadbang;
+#X symbolatom 71 221 10 0 0 0 - - -;
+#X symbolatom 146 221 10 0 0 0 - - -;
+#X symbolatom 222 221 10 0 0 0 - - -;
+#X msg 71 326 color \$1 \$2 \$3;
+#X obj 185 130 select 0 1;
+#X obj 222 246 t s s;
+#X obj 71 245 t s s;
+#X obj 71 170 unpack symbol symbol symbol symbol symbol symbol symbol
+;
+#X symbolatom 301 222 10 0 0 0 - - -;
+#X symbolatom 380 222 10 0 0 0 - - -;
+#X symbolatom 458 222 10 0 0 0 - - -;
+#X symbolatom 535 223 10 0 0 0 - - -;
+#X obj 146 247 t s s;
+#X msg 71 75 list #330000 #AA0000 #AAAAAA;
+#X obj 71 298 pack symbol symbol symbol symbol symbol symbol symbol
+;
+#X obj 504 364 outlet;
+#X obj 185 103 r \$0-CtlWKbdHold;
+#X obj 71 353 s \$0-CtlWKbdHoldIn;
+#X obj 504 338 int \$1;
+#X connect 0 0 14 0;
+#X connect 1 0 7 0;
+#X connect 2 0 13 0;
+#X connect 3 0 6 0;
+#X connect 4 0 18 0;
+#X connect 5 0 1 0;
+#X connect 5 0 19 0;
+#X connect 5 1 2 0;
+#X connect 6 1 15 2;
+#X connect 7 0 15 0;
+#X connect 7 1 15 1;
+#X connect 8 0 1 0;
+#X connect 8 1 2 0;
+#X connect 8 2 3 0;
+#X connect 8 3 9 0;
+#X connect 8 4 10 0;
+#X connect 8 5 11 0;
+#X connect 8 6 12 0;
+#X connect 13 0 15 0;
+#X connect 13 1 15 1;
+#X connect 14 0 8 0;
+#X connect 15 0 4 0;
+#X connect 17 0 5 0;
+#X connect 19 0 16 0;
+#X restore 84 230 pd color 7;
+#X connect 0 0 3 0;
+#X connect 5 0 4 0;
+#X coords 0 -1 1 1 100 64 2 100 100;
+#X restore 360 348 pd Kbd;
+#N canvas -9 -9 1845 1028 presetsel 0;
+#X obj 56 322 pgmout;
+#X obj 56 223 int 0;
+#X obj 160 222 +;
+#X msg 165 138 1;
+#X msg 105 138 -1;
+#X obj 72 267 pgmin;
+#X obj 100 100 cnv 8 85 24 empty empty PRESET 26 12 1 8 -13381 -92993
+0;
+#X obj 105 105 bng 15 250 50 0 empty empty < 4 7 0 10 -59137 -92993
+-92993;
+#X obj 165 105 bng 15 250 50 0 empty empty > 5 7 0 10 -59137 -92993
+-92993;
+#X obj 137 174 t b b f;
+#X obj 104 223 max 1;
+#X connect 1 0 0 0;
+#X connect 1 0 10 0;
+#X connect 2 0 1 1;
+#X connect 3 0 9 0;
+#X connect 4 0 9 0;
+#X connect 5 0 0 0;
+#X connect 7 0 4 0;
+#X connect 8 0 3 0;
+#X connect 9 0 1 0;
+#X connect 9 1 2 0;
+#X connect 9 2 2 1;
+#X connect 10 0 2 0;
+#X coords 0 -1 1 1 85 24 2 100 100;
+#X restore 239 382 pd presetsel;
+#N canvas 0 50 877 575 structAmpADSR-data 0;
+#X restore 397 16 pd structAmpADSR-data;
+#N canvas 870 625 862 300 structAmpADSR-template 0;
+#X obj 45 19 struct VcaEnv-template float a float d float s float r
+;
+#X obj 46 90 drawnumber a 0 0 9 Attack=;
+#X coords 0 150 1 149 85 60 0;
+#X restore 41 20 pd structAmpADSR-template;
+#N canvas 1299 223 450 639 ammod_dly 0;
+#X obj 20 33 cnv 15 64 244 empty empty empty 20 12 0 14 -66577 -66577
+0;
+#X obj 34 90 hsl 36 36 0 127 0 0 \$0-CtlKDlyTime empty RATE 8 42 1
+8 -191407 -99865 -228856 0 1;
+#X obj 40 40 tgl 24 0 \$0-CtlTDlySync \$0-CtlTDlySyncIn SYNC 1 30 1
+8 -86277 -258113 -228856 0 1;
+#X obj 20 20 cnv 11 64 12 empty empty DELAY 18 7 1 8 -228856 -66577
+0;
+#X obj 34 157 hsl 36 36 0 127 0 0 \$0-CtlKDlyFeed empty FBACK 4 42
+1 8 -191407 -99865 -228856 0 1;
+#X obj 34 224 hsl 36 36 0 127 0 0 \$0-CtlKDlyMix empty MIX 12 42 1
+8 -191407 -99865 -228856 0 1;
+#X coords 0 -1 1 1 64 256 2 20 20;
+#X restore 600 77 pd ammod_dly;

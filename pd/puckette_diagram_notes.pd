@@ -1,0 +1,99 @@
+#N canvas -9 -9 1845 1028 10;
+#N canvas -9 -9 1845 1028 measures_of_amplitude 0;
+#N canvas -1929 104 1920 1028 (subpatch) 0;
+#X array class_signal 103 float 1;
+#A 0 0.78 0.680689 0.408043 0.0314923 -0.353078 -0.647739 -0.777457
+-0.709199 -0.460348 -0.0942715 0.295811 0.610566 0.769845 0.733086
+0.509651 0.156436 -0.236615 -0.569412 -0.757213 -0.752192 -0.555631
+-0.21758 0.175875 0.524546 0.739643 0.766394 0.597987 0.277306 -0.11399
+-0.476258 -0.717251 -0.775599 -0.636445 -0.335224 0.0513604 0.424866
+0.690182 0.779746 0.670753 0.380362 0.0116037 -0.359935 -0.658612 -0.779387
+-0.700687 -0.454102 -0.0744921 0.32524 0.622748 0.771047 0.726052 0.484938
+0.136895 -0.243949 -0.582824 -0.764268 -0.746683 -0.550193 -0.198405
+0.206976 0.539099 0.742054 0.762445 0.576887 0.258621 -0.12161 -0.491859
+-0.729249 -0.773236 -0.631957 -0.317151 0.0833225 0.441412 0.693739
+0.778985 0.653814 0.373613 0.00389482 -0.409037 -0.675239 -0.779655
+-0.697266 -0.447812 -0.0425004 0.332231 0.62736 0.77755 0.713716 0.478877
+0.129299 -0.251259 -0.603648 -0.765772 -0.744417 -0.508767 -0.167217
+0.214399 0.544644 0.744393 0.755034 0.57167 0 440.5;
+#X coords 0 -1 100 1 720 64 1 24 24;
+#X restore 83 363 graph;
+#X floatatom 620 179 5 0 1 0 amplitude - -;
+#X floatatom 621 64 5 0 100 0 n - -;
+#X obj 642 309 array set class_signal;
+#X obj 657 210 cos;
+#X obj 643 244 *;
+#X floatatom 759 83 5 0 360 0 angular_frequency - -;
+#X obj 759 126 / 6.2831;
+#X floatatom 759 149 14 0 0 0 - - -;
+#X obj 657 179 *;
+#X obj 621 114 int;
+#X msg 643 270 \$1;
+#X obj 621 40 line 0 10;
+#X obj 759 104 * 44100;
+#X obj 621 148 t b i i b;
+#X floatatom 831 222 9 0 0 0 realtime - -;
+#X floatatom 798 31 5 0 0 0 samplerate - -;
+#X obj 831 195 / 44100;
+#X msg 461 258 0;
+#X obj 461 232 delay 4000;
+#X floatatom 547 320 5 0 0 0 peak - -;
+#X obj 461 207 select 100;
+#X msg 621 16 0 \, 100 2000;
+#X obj 370 241 max 0;
+#X floatatom 283 227 5 0 0 0 - - -;
+#X obj 585 256 abs;
+#X obj 396 210 t f f;
+#X obj 514 84 + 0;
+#X obj 369 179 abs;
+#X obj 394 282 max;
+#X obj 288 140 array get class_signal 0 1;
+#X obj 146 148 max;
+#X floatatom 182 84 5 0 0 0 - - -;
+#X floatatom 112 207 5 0 0 0 - - -;
+#X obj 65 121 min;
+#X floatatom 65 207 5 0 0 0 - - -;
+#X floatatom 169 285 5 0 0 0 - - -;
+#X obj 169 262 >;
+#X connect 1 0 5 0;
+#X connect 2 0 10 0;
+#X connect 2 0 27 0;
+#X connect 4 0 5 1;
+#X connect 5 0 11 0;
+#X connect 5 0 25 0;
+#X connect 6 0 13 0;
+#X connect 7 0 8 0;
+#X connect 7 0 9 1;
+#X connect 9 0 4 0;
+#X connect 10 0 14 0;
+#X connect 10 0 17 0;
+#X connect 10 0 21 0;
+#X connect 11 0 3 0;
+#X connect 12 0 2 0;
+#X connect 13 0 7 0;
+#X connect 14 0 1 0;
+#X connect 14 1 9 0;
+#X connect 14 2 3 1;
+#X connect 14 3 6 0;
+#X connect 16 0 13 1;
+#X connect 16 0 17 1;
+#X connect 17 0 15 0;
+#X connect 18 0 20 0;
+#X connect 19 0 18 0;
+#X connect 21 0 19 0;
+#X connect 22 0 12 0;
+#X connect 23 0 29 1;
+#X connect 26 0 23 0;
+#X connect 26 1 29 0;
+#X connect 27 0 30 0;
+#X connect 28 0 26 0;
+#X connect 29 0 20 0;
+#X connect 30 0 24 0;
+#X connect 30 0 28 0;
+#X connect 31 0 37 0;
+#X connect 32 0 31 1;
+#X connect 32 0 31 0;
+#X connect 32 0 37 1;
+#X connect 34 0 35 0;
+#X connect 37 0 36 0;
+#X restore 274 148 pd measures_of_amplitude;

@@ -1,0 +1,34 @@
+#N canvas -8 -8 1280 758 10;
+#X obj 13 12 bng 256 250 50 0 empty empty empty 17 7 0 10 -258113 -1
+-1;
+#X msg 461 466 stop;
+#X msg 410 552 open C:/Windows/Media/ringout.wav;
+#X msg 497 594 1;
+#X obj 497 573 delay 1500;
+#X obj 438 493 delay 1000;
+#X obj 409 652 dac~;
+#X obj 410 622 readsf~ 2;
+#X obj 413 11 bng 256 250 50 0 empty empty empty 17 7 0 10 -4034 -1
+-1;
+#X msg 528 594 0;
+#X obj 298 13 nbx 5 24 0 60 0 0 empty empty empty 0 -8 0 16 -262144
+-1 -1 59 256;
+#X obj 552 467 * 1000;
+#X obj 15 325 bng 32 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X connect 0 0 5 0;
+#X connect 1 0 5 0;
+#X connect 2 0 7 0;
+#X connect 3 0 7 0;
+#X connect 4 0 3 0;
+#X connect 5 0 2 0;
+#X connect 5 0 4 0;
+#X connect 7 0 6 0;
+#X connect 7 1 6 1;
+#X connect 7 2 4 0;
+#X connect 7 2 2 0;
+#X connect 8 0 9 0;
+#X connect 9 0 7 0;
+#X connect 10 0 11 0;
+#X connect 11 0 5 1;
+#X connect 12 0 1 0;

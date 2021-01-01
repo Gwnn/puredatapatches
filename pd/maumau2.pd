@@ -1,0 +1,42 @@
+#N canvas 0 0 1263 715 12;
+#N canvas 0 0 925 523 (subpatch) 0;
+#X array deck 52 float 2;
+#X coords 0 0 52 51 640 240 1;
+#X restore 617 23 graph;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array handPlayer 52 float 1;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 51 -1 200 140 1;
+#X restore 6 17 graph;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array handCpu 52 float 0;
+#X coords 0 1 51 -1 200 140 1;
+#X restore 6 566 graph;
+#X obj 375 636 tabwrite deck;
+#X floatatom 951 443 5 0 0 2 cardpointer - -;
+#X obj 890 404 tabread deck;
+#X msg 391 374 bang;
+#X obj 378 525 random 52;
+#X msg 378 488 bang;
+#X obj 452 333 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 890 351 myLooper 52;
+#X obj 900 314 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 890 471 select 0;
+#X obj 446 429 myLooper 51;
+#X msg 262 417 seed 12;
+#X connect 4 0 12 1;
+#X connect 5 0 12 0;
+#X connect 6 0 13 0;
+#X connect 7 0 3 0;
+#X connect 8 0 7 0;
+#X connect 9 0 6 0;
+#X connect 9 0 13 1;
+#X connect 10 0 5 0;
+#X connect 11 0 10 1;
+#X connect 11 0 10 0;
+#X connect 13 0 3 1;
+#X connect 13 0 8 0;
+#X connect 14 0 7 0;

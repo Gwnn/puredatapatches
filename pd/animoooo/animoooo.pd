@@ -2,8 +2,17 @@
 #N struct template_adsr_multi float x float y array adsra template_adsrs
 array adsrf template_adsrs array adsrm template_adsrs float gvisa float
 gvisf float gvism;
-#N struct template_adsrs float x float y float yamp;
-#N canvas -9 -9 1845 1028 12;
+#N struct template_adsrs float x float y float a float d float s float
+r;
+#N struct T_adsr_multi float x1 float y1 array vcae T_adsr array vcfe
+T_adsr array vcme T_adsr;
+#N struct T_adsr float y float ax float dx float dy float sy float
+rfx float rix float rx;
+#N struct T_StdMidiMap float x float y symbol id symbol rstdid float
+rv float rvn symbol sstdid float sv float svn array rsrvdlist T_MidiStandardId
+;
+#N struct T_MidiStandardId symbol id float v;
+#N canvas -9 -9 1846 1028 12;
 #X declare -path cpx;
 #N canvas 923 0 904 1010 ammod_path 0;
 #X obj 200 212 cnv 15 64 244 empty empty empty 20 12 1 12 -66577 -228856
@@ -65,8 +74,8 @@ CLEAR -2 32 1 8 -99865 -191407 -228856;
 #X connect 17 0 6 0;
 #X restore 79 83 pd color;
 #X coords 0 -1 1 1 64 256 2 200 200;
-#X restore 178 77 pd ammod_path;
-#N canvas -1929 104 1920 1028 ammod_map 0;
+#X restore 176 77 pd ammod_path;
+#N canvas -1929 81 1920 1028 ammod_map 0;
 #X obj 34 39 r \$0-CtlKPathRate;
 #X floatatom 34 61 5 0 0 0 - - -;
 #X obj 34 116 ctlout 22 14;
@@ -365,13 +374,13 @@ CLEAR -2 32 1 8 -99865 -191407 -228856;
 #X restore 46 77 pd ammod_orbit;
 #N canvas 757 18 956 750 ammod_vcaenv 0;
 #X obj 177 203 vsl 15 32 0 127 0 0 \$0-CtlKVcaA empty A 4 -9 1 10 -59137
--92993 -25345 6200 1;
+-92993 -25345 0 1;
 #X obj 197 203 vsl 15 32 0 127 0 0 \$0-CtlKVcaD empty D 4 -9 1 10 -59137
--92993 -25345 1074 1;
+-92993 -25345 0 1;
 #X obj 217 203 vsl 15 32 0 127 0 0 \$0-CtlKVcaS empty S 4 -9 1 10 -59137
--92993 -25345 5394 1;
+-92993 -25345 0 1;
 #X obj 237 203 vsl 15 32 0 127 0 0 \$0-CtlKVcaR empty R 4 -9 1 10 -59137
--92993 -25345 5000 1;
+-92993 -25345 0 1;
 #X obj 177 139 unpack f f f f;
 #X obj 172 98 r \$0-data_adsr_amp;
 #X connect 4 0 0 0;
@@ -389,18 +398,18 @@ CLEAR -2 32 1 8 -99865 -191407 -228856;
 #X obj 96 53 tgl 24 0 \$0-CtlTLfoSync \$0-CtlTLfoSync SYNC 0 30 1 8
 -59137 -59137 -228856 0 1;
 #X obj 177 53 tgl 24 0 \$0-CtlTLfoKbd \$0-CtlTLfoKbd KB 6 30 1 8 -59137
--59137 -228856 1 1;
-#X obj 21 20 cnv 11 16 72 empty empty LFO 4 7 1 8 -13381 -92993 0;
+-59137 -228856 0 1;
+#X obj 20 20 cnv 11 16 72 empty empty LFO 4 7 1 8 -13381 -92993 0;
 #X obj 131 41 hsl 36 36 0 4 0 0 \$0-CtlSLfoShape \$0-CtlSLfoShapeIn
 SHAPE 8 42 1 8 -59137 -92993 -228856 0 1;
 #X coords 0 -1 1 1 192 72 2 20 20;
-#X restore 244 261 pd ammod_lfo;
-#N canvas 613 313 450 580 ammod_filter 0;
-#X obj 21 32 cnv 15 64 244 empty empty empty 20 12 0 14 -66577 -66577
+#X restore 241 261 pd ammod_lfo;
+#N canvas -9 -9 1846 1028 ammod_filter 0;
+#X obj 20 32 cnv 15 64 244 empty empty empty 20 12 0 14 -66577 -66577
 0;
 #X obj 35 46 hradio 12 1 0 3 \$0-CtlSVcfType empty TYPE 10 18 1 8 -191407
 -99865 -228856 0;
-#X obj 21 20 cnv 11 64 12 empty empty FILTER 18 7 1 8 -228856 -33289
+#X obj 20 20 cnv 11 64 12 empty empty FILTER 18 7 1 8 -228856 -33289
 0;
 #X obj 36 158 hsl 36 36 0 127 0 0 \$0-CtlKVcfFreq empty FREQ 8 42 1
 8 -191407 -99865 -228856 0 1;
@@ -410,6 +419,38 @@ SHAPE 8 42 1 8 -59137 -92993 -228856 0 1;
 1 8 -191407 -1 -191407 0 1;
 #X obj 59 88 vsl 15 36 0 127 0 0 \$0-CtlKVcfEnv empty ENV. 0 44 1 8
 -191407 -1 -191407 0 1;
+#X obj 39 447 s multisend01;
+#X obj 204 35 r multisend01;
+#X floatatom 204 170 5 0 0 0 - - -;
+#X floatatom 282 170 5 0 0 0 - - -;
+#X floatatom 243 170 5 0 0 0 - - -;
+#X symbolatom 393 169 10 0 0 0 - - -;
+#X obj 353 93 f;
+#X obj 384 93 f;
+#X obj 415 93 f;
+#X obj 447 93 s;
+#X obj 204 89 unpack f f f s;
+#X obj 39 336 t f b b b;
+#X msg 249 378 \$1 \$2 \$3;
+#X obj 249 346 textfile;
+#X msg 249 316 bang;
+#X obj 182 401 list store;
+#X obj 182 425 print LIST;
+#X obj 204 203 ctlout, f 12;
+#X connect 8 0 17 0;
+#X connect 9 0 24 0;
+#X connect 10 0 24 2;
+#X connect 11 0 24 1;
+#X connect 17 0 9 0;
+#X connect 17 1 11 0;
+#X connect 17 2 10 0;
+#X connect 17 3 12 0;
+#X connect 18 0 7 0;
+#X connect 18 3 22 0;
+#X connect 19 0 22 1;
+#X connect 20 0 19 0;
+#X connect 21 0 20 0;
+#X connect 22 0 23 0;
 #X coords 0 -1 1 1 64 256 2 20 20;
 #X restore 111 77 pd ammod_filter;
 #N canvas 1240 154 450 492 ammod_thick 0;
@@ -547,7 +588,7 @@ SHAPE 8 42 1 8 -59137 -92993 -228856 0 1;
 #X connect 0 0 3 0;
 #X connect 5 0 4 0;
 #X coords 0 0 100 64 100 64 2 100 100;
-#X restore 376 388 pd Kbd;
+#X restore 433 77 pd Kbd;
 #N canvas -9 -9 1845 1028 presetsel 0;
 #X obj 56 322 pgmout;
 #X obj 56 223 int 0;
@@ -576,7 +617,7 @@ SHAPE 8 42 1 8 -59137 -92993 -228856 0 1;
 #X connect 9 2 2 1;
 #X connect 10 0 2 0;
 #X coords 0 -1 1 1 85 24 2 100 100;
-#X restore 244 231 pd presetsel;
+#X restore 241 236 pd presetsel;
 #N canvas 1299 223 450 639 ammod_dly 0;
 #X obj 20 33 cnv 15 64 244 empty empty empty 20 12 0 14 -66577 -66577
 0;
@@ -591,9 +632,9 @@ SHAPE 8 42 1 8 -59137 -92993 -228856 0 1;
 #X obj 34 224 hsl 36 36 0 127 0 0 \$0-CtlKDlyMix empty MIX 12 42 1
 8 -191407 -99865 -228856 0 1;
 #X coords 0 -1 1 1 64 256 2 20 20;
-#X restore 600 77 pd ammod_dly;
-#X obj 680 80 declare -path cpx;
-#X obj 680 109 loadbang;
+#X restore 599 77 pd ammod_dly;
+#X obj 296 12 declare -path cpx;
+#X obj 55 357 loadbang;
 #N canvas -9 -9 1845 1028 canvas_title 0;
 #X obj 161 114 cnv 15 640 24 empty empty empty 20 12 0 14 -233017 -66577
 0;
@@ -713,12 +754,12 @@ and dialect), f 70;
 #X connect 17 2 14 0;
 #X restore 681 414 pd template_adsr_mode;
 #N canvas 0 50 450 300 data_adsr_mode 0;
-#X scalar template_adsr_mode 0 0 ALL \;;
-#X scalar template_adsr_mode 64 0 VCA \;;
-#X scalar template_adsr_mode 128 0 VCF \;;
-#X scalar template_adsr_mode 192 0 MOD \;;
+#X scalar template_adsr_mode 0 0 symbol \;;
+#X scalar template_adsr_mode 64 0 symbol \;;
+#X scalar template_adsr_mode 128 0 symbol \;;
+#X scalar template_adsr_mode 192 0 symbol \;;
 #X coords 0 0 256 16 256 16 2 100 100;
-#X restore 246 209 pd data_adsr_mode;
+#X restore 241 218 pd data_adsr_mode;
 #N canvas 453 243 956 680 ammod_vcmenv 0;
 #X obj 212 218 vsl 15 32 0 127 0 0 \$0-CtlKModA empty A 4 -9 1 10 -59137
 -92993 -25345 0 1;
@@ -728,10 +769,10 @@ and dialect), f 70;
 -92993 -25345 0 1;
 #X obj 272 218 vsl 15 32 0 127 0 0 \$0-CtlKModR empty R 4 -9 1 10 -59137
 -92993 -25345 0 1;
-#X coords 0 680 1 679 96 72 0;
+#X coords 0 340 1 339 96 72 0;
 #X restore 681 337 pd ammod_vcmenv;
 #N canvas -1929 81 1920 1028 template_adsr_multi 0;
-#X obj 461 165 r struct_adsr_multi_init;
+#X obj 460 175 r struct_adsr_multi_init;
 #X text 761 367 shoudl be equiv to append;
 #X obj 501 279 append template_adsr_multi x y;
 #X obj 460 198 t b b b b;
@@ -752,7 +793,7 @@ ELEMENT \; SETSIZE FOR SUBSTRUCT \; SET SUBSTRUCT ELEMENT VALUES (multilist)
 #X text 593 449 template is just template \; pointers decide which
 data gets written \; so we could have several array of the same \;
 template;
-#X obj 26 74 filledpolygon 120 451 1 0 0 128 0 128 64 0 64 0 0;
+#X obj 25 75 filledpolygon 120 451 1 0 0 128 0 128 64 0 64 0 0;
 #X msg 27 342 0 62 0 \, 16 0 1 \, 32 32 2 \, 88 32 3 \, 88 62 4 \,
 120 62 5;
 #X obj 27 14 struct template_adsr_multi float x float y array adsra
@@ -767,8 +808,8 @@ adsra 500 1 1 1 2, f 75;
 adsrf 50 1 1 1 2, f 75;
 #X obj 25 138 plot -v gvism -x x(0:100)(0:128) -y yamp(0:100)(0:62)
 adsrm 5 1 1 1 2, f 75;
-#X obj 26 169 plot -y noy adsrm 5 1 1 1 2;
-#X obj 13 201 plot -x nox -y yamp adsrm 5 1 1 1 20;
+#X obj 34 246 plot -y noy adsrm 5 1 1 1 2;
+#X obj 33 268 plot -x nox -y yamp adsrm 5 1 1 1 20;
 #X connect 0 0 3 0;
 #X connect 2 0 9 0;
 #X connect 3 2 4 0;
@@ -801,15 +842,18 @@ adsrm 5 1 1 1 2, f 75;
 #X connect 18 0 8 0;
 #X restore 681 364 pd template_adsr_multi;
 #N canvas 0 50 1308 883 data_adsr_multi 0;
-#X scalar template_adsr_multi 0 0 0 0 0 \; 0 0 62 \; 17.3828 0 1.60041
-\; 32 0 32 \; 68.3594 0 0 \; 84.2891 0 66.8012 \; 100 0 34.7834 \;
-\; 0 0 62 \; 21.4688 0 0 \; 36.1016 0 0 \; 66.4063 0 49.2126 \; 88
-0 62 \; 120 0 62 \; \; 0.75 61.5194 11.9854 \; 11.25 61.2714 37.5359
-\; 41.8047 61.2714 56.3887 \; 69.2891 60.7753 56.3886 \; 68.8906 59.0388
-23.8924 \; 100 57.7985 12.4815 \; \;;
-#X coords 0 0 128 64 256 129 2 100 100;
+#X scalar template_adsr_multi 0 0 1 1 1 \; 0 0 0 0 0 0 \; 16 0 0 0
+0 0 \; 32 0 0 0 0 0 \; 88 0 0 0 0 0 \; 88 0 0 0 0 0 \; 120 0 0 0 0
+0 \; \; 0 0 0 0 0 0 \; 16 0 0 0 0 0 \; 32 0 0 0 0 0 \; 88 0 0 0 0 0
+\; 88 0 0 0 0 0 \; 120 0 0 0 0 0 \; \; 0 0 0 0 0 0 \; 16 0 0 0 0 0
+\; 32 0 0 0 0 0 \; 88 0 0 0 0 0 \; 88 0 0 0 0 0 \; 120 0 0 0 0 0 \;
+\;;
+#X coords 0 0 128 64 128 64 2 100 100;
 #X restore 246 77 pd data_adsr_multi;
-#N canvas -1929 81 1920 1028 template_adsrs 0;
+#N canvas -9 -9 1845 1028 data_adsrs 0;
+#X coords 0 514 1 513 256 128 0;
+#X restore 682 480 pd data_adsrs;
+#N canvas -1929 81 1920 1028 template_adsr 0;
 #X obj 404 172 s \$0-data_adsr_amp;
 #N canvas 722 444 849 504 clipnscale_adsr 0;
 #X obj 22 29 inlet;
@@ -858,7 +902,8 @@ adsrm 5 1 1 1 2, f 75;
 #X obj 404 98 get template_adsrs dx1 dx2 sy rx3;
 #X text 326 272 TODO R \, E \, W \, R \, I \, T \, E;
 #X obj 445 382 filledpolygon 240 240 0 -1 -1 1 -1 1 1 -1 1 -1 -1;
-#X obj 404 11 struct template_adsrs float x float y float yamp;
+#X obj 404 11 struct template_adsrs float x float y float a float d
+float s float r;
 #X connect 1 0 0 0;
 #X connect 2 0 4 0;
 #X connect 2 1 3 0;
@@ -868,10 +913,400 @@ adsrm 5 1 1 1 2, f 75;
 #X connect 4 3 1 3;
 #X connect 7 0 2 0;
 #X coords 0 514 1 513 85 60 0;
-#X restore 681 385 pd template_adsrs;
-#N canvas -9 -9 1845 1028 data_adsrs 0;
-#X coords 0 514 1 513 256 128 0;
-#X restore 678 471 pd data_adsrs;
-#X msg 680 147 \; pd-data_adsr_mode clear \; pd-data_adsr_multi clear
-\; struct_adsr_multi_init bang \; struct_adsr_mode_init 4 \;;
-#X connect 12 0 22 0;
+#X restore 681 385 pd template_adsr;
+#N canvas -9 -9 1845 1028 T_adsr_multi 0;
+#X obj 339 188 r t_adsr_multi_init;
+#N canvas -9 -9 1845 1028 \$0-on_init 0;
+#X obj 37 37 inlet;
+#X obj 37 61 t f b;
+#X obj 37 85 until;
+#X obj 79 193 append T_adsr_multi x1 y1;
+#X obj 250 158 cpx_structptr0 pd-D_adsr_multi;
+#X msg 38 138 10 10;
+#X obj 72 220 trigger bang bang pointer;
+#X obj 361 362 element T_adsr_multi vcenv;
+#X obj 157 284 setsize T_adsr_multi vcenv;
+#X msg 157 252 3;
+#X msg 75 312 64 0 20 64 64 64 64 72 1 \, 64 0 20 64 64 64 64 72 2
+\, 64 0 20 64 64 64 64 72 3, f 89;
+#X obj 80 342 unpack f f f f f f f f f, f 31;
+#X obj 74 407 set T_adsr y ax dx dy sy rfx rix rx, f 42;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 4 0;
+#X connect 2 0 5 0;
+#X connect 3 0 6 0;
+#X connect 4 0 3 2;
+#X connect 5 0 3 0;
+#X connect 6 0 10 0;
+#X connect 6 1 9 0;
+#X connect 6 2 7 1;
+#X connect 6 2 8 1;
+#X connect 7 0 12 8;
+#X connect 9 0 8 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 11 1 12 1;
+#X connect 11 2 12 2;
+#X connect 11 3 12 3;
+#X connect 11 4 12 4;
+#X connect 11 5 12 5;
+#X connect 11 6 12 6;
+#X connect 11 7 12 7;
+#X connect 11 8 7 0;
+#X restore 339 212 pd \$0-on_init;
+#X obj 187 54 struct T_adsr_multi float x1 float y1 array vcae T_adsr
+array vcfe T_adsr array vcme T_adsr;
+#X obj 227 320 plot vcae 600 1 0 0 32;
+#X connect 0 0 1 0;
+#X restore 682 458 pd T_adsr_multi;
+#N canvas 0 50 450 300 D_adsr_multi 0;
+#X scalar T_adsr_multi 10 10 \; 0 0 0 0 0 0 0 0 \; \; 0 0 0 0 0 0 0
+0 \; \; 0 0 0 0 0 0 0 0 \; \;;
+#X coords 0 0 128 64 128 64 2 100 100;
+#X restore 515 382 pd D_adsr_multi;
+#N canvas 0 50 1060 622 T_adsr 0;
+#X obj 91 95 filledpolygon 50 50 1 0 0 2 0 2 2 0 2 0 0;
+#X obj 49 30 struct T_adsr float y float ax float dx float dy float
+sy float rfx float rix float rx;
+#X restore 682 436 pd T_adsr;
+#N canvas -1929 81 1920 1028 visual_prototype 0;
+#N canvas 0 50 939 504 SoftwareInstrumentExtenal 0;
+#X obj 107 34 inlet;
+#N canvas 0 50 450 300 Params 0;
+#N canvas 0 50 450 300 MIDIMapIn 0;
+#X obj 101 57 inlet;
+#X coords 0 -1 1 1 85 24 1 100 100;
+#X restore 105 133 pd MIDIMapIn;
+#X coords 0 -1 1 1 118 59 1 100 100;
+#X restore 103 118 pd Params;
+#X coords 0 -1 1 1 103 83 1 100 100;
+#X restore 120 329 pd SoftwareInstrumentExtenal;
+#N canvas 0 50 708 402 SoftwareController 0;
+#X obj 107 34 inlet;
+#X obj 110 60 outlet;
+#N canvas 0 50 950 621 Params 0;
+#N canvas 0 50 450 300 MIDIMapIn 0;
+#X obj 101 57 inlet;
+#X coords 0 -1 1 1 85 24 1 100 100;
+#X restore 103 122 pd MIDIMapIn;
+#N canvas 0 50 450 300 MIDIMapOut 0;
+#X obj 101 57 outlet;
+#X coords 0 -1 1 1 85 24 1 100 100;
+#X restore 103 147 pd MIDIMapOut;
+#X coords 0 -1 1 1 124 72 1 100 100;
+#X restore 109 116 pd Params;
+#X coords 0 -1 1 1 185 94 1 100 100;
+#X restore 120 196 pd SoftwareController;
+#N canvas 0 50 1250 635 SoftwareHost 0;
+#X obj 107 34 inlet;
+#X obj 110 60 outlet;
+#N canvas 0 50 450 300 ControlSurfaceAbstraction 0;
+#N canvas 0 50 450 300 Params 0;
+#N canvas 0 50 450 300 MIDIMapIn 0;
+#X obj 101 57 inlet;
+#X coords 0 -1 1 1 85 24 1 100 100;
+#X restore 105 133 pd MIDIMapIn;
+#X coords 0 -1 1 1 116 62 1 100 100;
+#X restore 104 123 pd Params;
+#X coords 0 -1 1 1 85 96 1 100 100;
+#X restore 106 121 pd ControlSurfaceAbstraction;
+#X text 313 133 x 6;
+#X coords 0 -1 1 1 332 122 1 100 100;
+#X restore 376 196 pd SoftwareHost;
+#N canvas 0 50 759 575 SoftwareInstrumentHostAbstraction 0;
+#X obj 107 34 inlet;
+#N canvas 0 50 450 300 MacroMap 0;
+#N canvas 735 79 450 300 Device 0;
+#N canvas 0 50 450 300 Params 0;
+#X coords 0 -1 1 1 60 32 1 100 100;
+#X restore 102 120 pd Params;
+#X coords 0 -1 1 1 85 60 1 100 100;
+#X restore 103 117 pd Device;
+#X coords 0 -1 1 1 96 85 1 100 100;
+#X restore 102 120 pd MacroMap;
+#X coords 0 -1 1 1 96 113 1 100 100;
+#X restore 376 330 pd SoftwareInstrumentHostAbstraction;
+#N canvas 0 50 1153 632 HardwareController 0;
+#X obj 107 34 inlet;
+#X obj 106 231 outlet;
+#N canvas -9 -9 1846 1028 Presets 0;
+#N canvas 0 50 450 300 Params 0;
+#N canvas 0 50 450 300 MIDIMapOut 0;
+#X obj 102 100 outlet;
+#X coords 0 -1 1 1 85 24 1 100 100;
+#X restore 105 122 pd MIDIMapOut;
+#X coords 0 -1 1 1 127 62 1 100 100;
+#X restore 111 122 pd Params;
+#X coords 0 -1 1 1 146 90 1 100 100;
+#X restore 107 128 pd Presets;
+#X text 259 128 x 30;
+#X coords 0 -1 1 1 200 132 1 100 100;
+#X restore 84 37 pd HardwareController;
+#X text 322 62 UML like diagram for MIDI mapping between components
+;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 2 0 3 0;
+#X connect 4 0 1 0;
+#X connect 4 0 0 0;
+#X connect 4 0 2 0;
+#X restore 165 39 pd visual_prototype;
+#N canvas -1929 81 1920 1028 T_StdMidiMap 1;
+#X obj 373 16 r t_stdmidimap_init;
+#N canvas -1929 81 1920 1028 \$0-t_stdmidimap_oninit 0;
+#X obj 37 37 inlet;
+#X obj 37 96 until;
+#X obj 37 119 cpx_ci 1 128, f 15;
+#X obj 209 164 cpx_structptr0 pd-D_StdMidiMap;
+#N canvas -9 -9 1846 1028 populate_rsrvdlist 0;
+#X obj 338 170 int 128;
+#X obj 266 277 until;
+#X obj 266 328 textfile;
+#X obj 332 329 cpx_ci 1 128;
+#X obj 266 299 t b b;
+#X obj 338 193 setsize T_StdMidiMap rsrvdlist;
+#X obj 452 396 element T_StdMidiMap rsrvdlist;
+#X obj 266 432 set -symbol T_MidiStandardId id;
+#X obj 302 464 set T_MidiStandardId v;
+#X obj 332 353 t f f;
+#X msg 412 83 rewind;
+#X obj 267 357 symbol;
+#X obj 266 36 inlet;
+#X msg 484 83 read ../data/midiccstd.txt cr;
+#X obj 266 60 t b b b b p, f 42;
+#X obj 557 130 s \$0-setpointers;
+#X obj 273 130 s \$0-clearcounters;
+#X obj 545 169 r \$0-setpointers;
+#X obj 659 371 r \$0-setpointers;
+#X obj 412 307 r \$0-clearcounters;
+#X obj 412 130 s \$0-fileiocontrol;
+#X obj 129 277 r \$0-fileiocontrol;
+#X connect 0 0 5 0;
+#X connect 1 0 4 0;
+#X connect 2 0 11 0;
+#X connect 2 1 1 1;
+#X connect 3 0 9 0;
+#X connect 4 0 2 0;
+#X connect 4 1 3 0;
+#X connect 6 0 7 1;
+#X connect 6 0 8 1;
+#X connect 9 0 8 0;
+#X connect 9 1 6 0;
+#X connect 10 0 20 0;
+#X connect 11 0 7 0;
+#X connect 12 0 14 0;
+#X connect 13 0 20 0;
+#X connect 14 0 1 0;
+#X connect 14 1 0 0;
+#X connect 14 1 16 0;
+#X connect 14 2 10 0;
+#X connect 14 3 13 0;
+#X connect 14 4 15 0;
+#X connect 17 0 5 1;
+#X connect 18 0 6 1;
+#X connect 19 0 3 1;
+#X connect 21 0 2 0;
+#X restore 101 323 pd populate_rsrvdlist;
+#X obj 34 323 textfile;
+#X msg 85 233 rewind;
+#X obj 33 379 symbol;
+#X msg 134 233 read \$1 cr;
+#X obj 33 400 set -symbol T_StdMidiMap id;
+#X obj 37 58 t b b s, f 15;
+#X obj 38 215 t b p;
+#X obj 38 166 pack f f;
+#X obj 38 189 append T_StdMidiMap sv y;
+#X obj 91 144 * 12;
+#X connect 0 0 10 0;
+#X connect 1 0 2 0;
+#X connect 2 0 12 0;
+#X connect 2 0 14 0;
+#X connect 3 0 13 2;
+#X connect 5 0 7 0;
+#X connect 5 1 1 1;
+#X connect 6 0 5 0;
+#X connect 7 0 9 0;
+#X connect 8 0 5 0;
+#X connect 10 0 1 0;
+#X connect 10 1 2 1;
+#X connect 10 1 3 0;
+#X connect 10 1 6 0;
+#X connect 10 2 8 0;
+#X connect 11 0 5 0;
+#X connect 11 1 4 0;
+#X connect 11 1 9 1;
+#X connect 12 0 13 0;
+#X connect 13 0 11 0;
+#X connect 14 0 12 1;
+#X restore 373 40 pd \$0-t_stdmidimap_oninit;
+#X obj 31 285 element T_StdMidiMap rsrvdlist;
+#X obj 31 310 get T_MidiStandardId id;
+#X obj 35 82 route click change;
+#X obj 162 175 getsize T_StdMidiMap rsrvdlist;
+#X obj 40 252 set T_StdMidiMap rvn;
+#X obj 31 227 cpxg_intgran 24 128;
+#X obj 84 131 s \$0-this;
+#X obj 171 228 r \$0-this;
+#X obj 202 262 r \$0-this;
+#X obj 202 331 r \$0-this;
+#X obj 162 153 r \$0-this;
+#X obj 518 239 drawnumber rv 35 0 222;
+#X obj 518 217 filledpolygon 999 222 1 10 1 180 1 180 12 10 12 10 1
+;
+#X obj 516 172 drawnumber rvn 11 0 222;
+#X obj 574 263 drawsymbol id 184 0 222;
+#X obj 518 353 drawnumber sv 360 0 222;
+#X obj 519 332 filledpolygon 999 222 1 324 1 504 1 504 12 324 12 324
+1;
+#X obj 517 287 drawnumber svn 325 0 222;
+#X obj 35 16 struct T_StdMidiMap float x float y symbol id symbol rstdid
+float rv float rvn symbol sstdid float sv float svn array rsrvdlist
+T_MidiStandardId, f 47;
+#X obj 31 354 set -symbol T_StdMidiMap rstdid;
+#X obj 518 309 drawsymbol sstdid 364 0 222;
+#X obj 517 194 drawsymbol rstdid 40 0 222;
+#X obj 31 200 get T_StdMidiMap rv sv, f 29;
+#X obj 274 229 cpxg_intgran 24 128;
+#X obj 274 284 element T_StdMidiMap rsrvdlist;
+#X obj 274 314 get T_MidiStandardId id;
+#X obj 421 230 r \$0-this;
+#X obj 433 258 r \$0-this;
+#X obj 428 330 r \$0-this;
+#X obj 274 353 set -symbol T_StdMidiMap sstdid;
+#X obj 283 258 set T_StdMidiMap svn;
+#X obj 31 179 pointer;
+#X obj 31 108 t b p, f 8;
+#X obj 39 158 r \$0-this;
+#X text 514 129 NOTE: Z-ORDER IS IMPLICIT (last object created);
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 21 0;
+#X connect 4 1 34 0;
+#X connect 5 0 7 1;
+#X connect 5 0 25 1;
+#X connect 7 0 6 0;
+#X connect 7 0 2 0;
+#X connect 9 0 6 1;
+#X connect 10 0 2 1;
+#X connect 11 0 21 1;
+#X connect 12 0 5 0;
+#X connect 20 0 4 0;
+#X connect 24 0 7 0;
+#X connect 24 1 25 0;
+#X connect 25 0 32 0;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
+#X connect 27 0 31 0;
+#X connect 28 0 32 1;
+#X connect 29 0 26 1;
+#X connect 30 0 31 1;
+#X connect 33 0 24 0;
+#X connect 34 0 33 0;
+#X connect 34 1 8 0;
+#X connect 35 0 33 1;
+#X restore 698 74 pd T_StdMidiMap;
+#N canvas 0 50 1302 701 T_MidiStandardId 0;
+#X obj 30 32 struct T_MidiStandardId symbol id float v;
+#X obj 194 210 drawnumber v 10 10 222;
+#X obj 192 175 drawsymbol id 10 20 222;
+#X restore 699 119 pd T_MidiStandardId;
+#N canvas -9 -9 1846 1028 D_MidiStandardId 0;
+#X restore 699 142 pd D_MidiStandardId;
+#N canvas -9 -9 1846 1028 D_StdMidiMap 0;
+#X scalar T_StdMidiMap 0 36 KuracOdOvce ProgramChange 0 0 ProgramChange
+19 0 \; ProgramChange 0 \; Modulation 1 \; PitchBend 2 \; symbol 3
+\; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; \;;
+#X scalar T_StdMidiMap 0 0 SvorcSam ProgramChange 21 0 Modulation 41
+1 \; ProgramChange 0 \; Modulation 1 \; PitchBend 2 \; symbol 3 \;
+symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; \;;
+#X scalar T_StdMidiMap 0 12 NemaPiva ProgramChange 0 0 Modulation 36
+1 \; ProgramChange 0 \; Modulation 1 \; PitchBend 2 \; symbol 3 \;
+symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; \;;
+#X scalar T_StdMidiMap 0 24 symbol PitchBend 52 2 PitchBend 56 2 \;
+ProgramChange 0 \; Modulation 1 \; PitchBend 2 \; symbol 3 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol 0 \; symbol
+0 \; symbol 0 \; symbol 0 \; symbol 0 \; \;;
+#X coords 0 0 1 1 384 720 0;
+#X restore 247 159 pd D_StdMidiMap;
+#X msg 55 395 \; pd-D_MidiStandardId clear \; pd-D_StdMidiMap clear
+\; t_stdmidimap_init symbol ../data/animoogctl.txt \;;

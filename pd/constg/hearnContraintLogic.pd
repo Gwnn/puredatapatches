@@ -1,0 +1,207 @@
+#N canvas 961 0 940 1010 12;
+#N canvas 0 50 627 638 redblue_conv_ANDOR 0;
+#X obj 46 196 cg_vertex 2;
+#X obj 232 199 cg_vertex 2;
+#X obj 143 195 cg_vertex 2;
+#X obj 191 124 cg_vertex 2;
+#X obj 99 122 cg_vertex 2;
+#X obj 145 53 cg_vertex 2;
+#X obj 156 117 vsl 8 26 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 191 90 vsl 8 26 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 116 89 vsl 8 26 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 116 152 vsl 8 26 1 1 0 0 empty empty empty 0 -9 0 10 -258113
+-258113 -258113 0 1;
+#X obj 190 154 vsl 8 26 1 1 0 0 empty empty empty 0 -9 0 10 -258113
+-258113 -258113 0 1;
+#X obj 63 157 vsl 8 26 1 1 0 0 empty empty empty 0 -9 0 10 -258113
+-258113 -258113 0 1;
+#X obj 232 160 vsl 8 26 1 1 0 0 empty empty empty 0 -9 0 10 -258113
+-258113 -258113 0 1;
+#X obj 162 18 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 44 232 vsl 8 26 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 249 233 vsl 8 26 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X floatatom 44 266 5 0 0 0 - - -;
+#X floatatom 249 267 5 0 0 0 - - -;
+#X connect 0 0 14 0;
+#X connect 1 1 15 0;
+#X connect 2 0 6 0;
+#X connect 3 0 10 0;
+#X connect 3 1 12 0;
+#X connect 4 0 11 0;
+#X connect 4 1 9 0;
+#X connect 5 0 8 0;
+#X connect 5 1 7 0;
+#X connect 6 0 5 0;
+#X connect 7 0 3 0;
+#X connect 8 0 4 1;
+#X connect 9 0 2 0;
+#X connect 10 0 2 1;
+#X connect 11 0 0 1;
+#X connect 12 0 1 0;
+#X connect 13 0 5 1;
+#X connect 14 0 16 0;
+#X connect 15 0 17 0;
+#X restore 223 41 pd redblue_conv_ANDOR;
+#X obj 152 406 hsl 8 8 1 1 0 0 empty empty empty -2 -8 0 10 -258113
+-258113 -258113 0 1;
+#N canvas 0 50 625 508 g_OR 0;
+#X obj 113 83 cg_vertex 2;
+#X obj 113 126 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 74 16 inlet;
+#X obj 146 15 inlet;
+#X obj 111 183 outlet;
+#X obj 113 59 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 128 59 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 5 0;
+#X connect 3 0 6 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 2;
+#X restore 73 154 pd g_OR;
+#N canvas 1342 157 450 509 g_FANOUT 0;
+#X obj 113 83 cg_vertex 2;
+#X obj 74 16 inlet;
+#X obj 73 184 outlet;
+#X obj 142 184 outlet;
+#X obj 113 60 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 117 143 vsl 8 8 1 1 0 0 empty empty empty 0 -9 0 10 -258113
+-258113 -258113 0 1;
+#X obj 134 143 vsl 8 8 1 1 0 0 empty empty empty 0 -9 0 10 -258113
+-258113 -258113 0 1;
+#X connect 0 0 5 0;
+#X connect 0 1 6 0;
+#X connect 1 0 4 0;
+#X connect 4 0 0 0;
+#X connect 5 0 2 0;
+#X connect 6 0 3 0;
+#X restore 71 233 pd g_FANOUT;
+#N canvas 917 34 511 437 g_AND 0;
+#X obj 113 57 vsl 8 8 1 1 0 0 empty empty empty 0 -9 0 10 -258113 -258113
+-258113 0 1;
+#X obj 113 83 cg_vertex 2;
+#X obj 130 57 vsl 8 8 1 1 0 0 empty empty empty 0 -9 0 10 -258113 -258113
+-258113 0 1;
+#X obj 113 126 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 74 16 inlet;
+#X obj 146 15 inlet;
+#X obj 111 183 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 2 0 1 2;
+#X connect 3 0 6 0;
+#X connect 4 0 0 0;
+#X connect 5 0 2 0;
+#X restore 68 185 pd g_AND;
+#N canvas 0 50 1077 667 choice_ANDOR 0;
+#N canvas 917 34 511 437 g_AND 0;
+#X obj 113 57 vsl 8 8 1 1 0 0 empty empty empty 0 -9 0 10 -258113 -258113
+-258113 0 1;
+#X obj 113 83 cg_vertex 2;
+#X obj 130 57 vsl 8 8 1 1 0 0 empty empty empty 0 -9 0 10 -258113 -258113
+-258113 0 1;
+#X obj 113 126 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 74 16 inlet;
+#X obj 146 15 inlet;
+#X obj 111 183 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 2 0 1 2;
+#X connect 3 0 6 0;
+#X connect 4 0 0 0;
+#X connect 5 0 2 0;
+#X restore 266 193 pd g_AND;
+#N canvas 1342 157 450 509 g_FANOUT 0;
+#X obj 113 83 cg_vertex 2;
+#X obj 74 16 inlet;
+#X obj 73 184 outlet;
+#X obj 142 184 outlet;
+#X obj 113 60 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 117 143 vsl 8 8 1 1 0 0 empty empty empty 0 -9 0 10 -258113
+-258113 -258113 0 1;
+#X obj 134 143 vsl 8 8 1 1 0 0 empty empty empty 0 -9 0 10 -258113
+-258113 -258113 0 1;
+#X connect 0 0 5 0;
+#X connect 0 1 6 0;
+#X connect 1 0 4 0;
+#X connect 4 0 0 0;
+#X connect 5 0 2 0;
+#X connect 6 0 3 0;
+#X restore 181 124 pd g_FANOUT;
+#N canvas 1342 157 450 509 g_FANOUT 0;
+#X obj 113 83 cg_vertex 2;
+#X obj 74 16 inlet;
+#X obj 73 184 outlet;
+#X obj 142 184 outlet;
+#X obj 113 60 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 117 143 vsl 8 8 1 1 0 0 empty empty empty 0 -9 0 10 -258113
+-258113 -258113 0 1;
+#X obj 134 143 vsl 8 8 1 1 0 0 empty empty empty 0 -9 0 10 -258113
+-258113 -258113 0 1;
+#X connect 0 0 5 0;
+#X connect 0 1 6 0;
+#X connect 1 0 4 0;
+#X connect 4 0 0 0;
+#X connect 5 0 2 0;
+#X connect 6 0 3 0;
+#X restore 315 124 pd g_FANOUT;
+#X obj 175 32 inlet;
+#X obj 266 215 outlet;
+#X connect 0 0 4 0;
+#X connect 1 0 0 0;
+#X connect 1 1 2 0;
+#X connect 2 1 0 1;
+#X connect 3 0 1 0;
+#X restore 224 181 pd choice_ANDOR;
+#N canvas 539 182 572 577 loose_edge 0;
+#X obj 127 75 cg_vertex 2;
+#X obj 92 109 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 49 142 cg_vertex 2;
+#X obj 135 46 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 93 189 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 176 113 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 204 148 cg_vertex 2;
+#X obj 182 191 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 138 191 vsl 8 8 2 2 0 0 empty empty empty 0 -9 0 10 -4160 -4160
+-4160 0 1;
+#X obj 128 146 cg_vertex 2;
+#X obj 92 148 hsl 8 8 2 2 0 0 empty empty empty -2 -8 0 10 -4160 -4160
+-4160 0 1;
+#X obj 182 149 hsl 8 8 2 2 0 0 empty empty empty -2 -8 0 10 -4160 -4160
+-4160 0 1;
+#X obj 130 209 cg_vertex 2;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 2 1 10 0;
+#X connect 3 0 0 1;
+#X connect 4 0 2 1;
+#X connect 5 0 0 2;
+#X connect 6 0 11 0;
+#X connect 6 1 5 0;
+#X connect 7 0 6 1;
+#X connect 8 0 12 1;
+#X connect 9 0 8 0;
+#X connect 10 0 9 0;
+#X connect 11 0 9 2;
+#X connect 12 0 4 0;
+#X connect 12 1 7 0;
+#X restore 226 125 pd loose_edge;

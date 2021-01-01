@@ -1,0 +1,15 @@
+#N canvas -8 -8 1280 758 10;
+#X obj 83 42 adc~;
+#X obj 83 276 dac~;
+#X obj 320 -79 vsl 32 720 0.1 6 0 0 empty empty Hey 0 -9 0 10 -203904
+-1 -1 28300 1;
+#X obj 140 146 *~;
+#X obj 183 147 *~;
+#X obj 364 36 vu 8 240 empty empty -1 -8 0 10 -191407 -1 1 0;
+#X obj 433 35 vu 8 240 empty empty -1 -8 0 10 -191407 -1 1 0;
+#X connect 0 0 3 0;
+#X connect 0 1 4 0;
+#X connect 2 0 3 1;
+#X connect 2 0 4 1;
+#X connect 3 0 1 0;
+#X connect 4 0 1 1;
